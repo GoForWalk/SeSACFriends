@@ -21,10 +21,12 @@
 		CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C0E2918D3C500E586A1 /* FontConstant.swift */; };
 		CFDF0C132918D7F100E586A1 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C122918D76D00E586A1 /* NotoSansKR-Medium.otf */; };
 		CFDF0C142918D7F100E586A1 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C112918D76C00E586A1 /* NotoSansKR-Regular.otf */; };
-		CFDF0C172918DF8500E586A1 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C162918DF8500E586A1 /* InputTextField.swift */; };
+		CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C162918DF8500E586A1 /* TextArea.swift */; };
 		CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C182918DF9200E586A1 /* BaseView.swift */; };
 		CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */; };
 		CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C1E2918E9D000E586A1 /* ImageConstant.swift */; };
+		CFDF0C212918FDDC00E586A1 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C202918FDDC00E586A1 /* InputTextField.swift */; };
+		CFDF0C23291910E300E586A1 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C22291910E300E586A1 /* UILable+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,10 +43,12 @@
 		CFDF0C0E2918D3C500E586A1 /* FontConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConstant.swift; sourceTree = "<group>"; };
 		CFDF0C112918D76C00E586A1 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		CFDF0C122918D76D00E586A1 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
-		CFDF0C162918DF8500E586A1 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		CFDF0C162918DF8500E586A1 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		CFDF0C182918DF9200E586A1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CFDF0C1E2918E9D000E586A1 /* ImageConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConstant.swift; sourceTree = "<group>"; };
+		CFDF0C202918FDDC00E586A1 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		CFDF0C22291910E300E586A1 /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 			children = (
 				CFDF0C182918DF9200E586A1 /* BaseView.swift */,
 				CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */,
+				CFDF0C22291910E300E586A1 /* UILable+Extension.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -144,7 +149,8 @@
 		CFDF0C1D2918DFB500E586A1 /* TextArea */ = {
 			isa = PBXGroup;
 			children = (
-				CFDF0C162918DF8500E586A1 /* InputTextField.swift */,
+				CFDF0C162918DF8500E586A1 /* TextArea.swift */,
+				CFDF0C202918FDDC00E586A1 /* InputTextField.swift */,
 			);
 			path = TextArea;
 			sourceTree = "<group>";
@@ -233,12 +239,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDF0C212918FDDC00E586A1 /* InputTextField.swift in Sources */,
 				CF0467B22918BF5800E72CC9 /* ViewController.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
-				CFDF0C172918DF8500E586A1 /* InputTextField.swift in Sources */,
+				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,
 				CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */,
 				CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */,
+				CFDF0C23291910E300E586A1 /* UILable+Extension.swift in Sources */,
 				CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */,
 				CFDF0C0D2918D0A800E586A1 /* ColorConstant.swift in Sources */,
 				CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */,
