@@ -10,9 +10,13 @@
 		CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */; };
 		CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */; };
 		CF0467B22918BF5800E72CC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467B12918BF5800E72CC9 /* ViewController.swift */; };
-		CF0467B52918BF5800E72CC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B32918BF5800E72CC9 /* Main.storyboard */; };
 		CF0467B72918BF5900E72CC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B62918BF5900E72CC9 /* Assets.xcassets */; };
 		CF0467BA2918BF5900E72CC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */; };
+		CFDF0BFA2918C20F00E586A1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BF92918C20F00E586A1 /* RxCocoa */; };
+		CFDF0BFC2918C20F00E586A1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFB2918C20F00E586A1 /* RxSwift */; };
+		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
+		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
+		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +24,11 @@
 		CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CF0467B12918BF5800E72CC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CF0467B42918BF5800E72CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF0467B62918BF5900E72CC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF0467B92918BF5900E72CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF0467BB2918BF5900E72CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */,
+				CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */,
+				CFDF0BFC2918C20F00E586A1 /* RxSwift in Frameworks */,
+				CFDF0BFA2918C20F00E586A1 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,8 @@
 		CF0467A12918BF5800E72CC9 = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C092918CD8800E586A1 /* .gitignore */,
+				CFDF0C062918C35100E586A1 /* README.md */,
 				CF0467AC2918BF5800E72CC9 /* SeSACFriends */,
 				CF0467AB2918BF5800E72CC9 /* Products */,
 			);
@@ -56,15 +67,22 @@
 		CF0467AC2918BF5800E72CC9 /* SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C052918C2ED00E586A1 /* IgnoreFolder */,
 				CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */,
 				CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */,
 				CF0467B12918BF5800E72CC9 /* ViewController.swift */,
-				CF0467B32918BF5800E72CC9 /* Main.storyboard */,
 				CF0467B62918BF5900E72CC9 /* Assets.xcassets */,
 				CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */,
 				CF0467BB2918BF5900E72CC9 /* Info.plist */,
 			);
 			path = SeSACFriends;
+			sourceTree = "<group>";
+		};
+		CFDF0C052918C2ED00E586A1 /* IgnoreFolder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IgnoreFolder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +101,12 @@
 			dependencies = (
 			);
 			name = SeSACFriends;
+			packageProductDependencies = (
+				CFDF0BF92918C20F00E586A1 /* RxCocoa */,
+				CFDF0BFB2918C20F00E586A1 /* RxSwift */,
+				CFDF0BFE2918C22200E586A1 /* SnapKit */,
+				CFDF0C012918C29900E586A1 /* TextFieldEffects */,
+			);
 			productName = SeSACFriends;
 			productReference = CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +135,11 @@
 				Base,
 			);
 			mainGroup = CF0467A12918BF5800E72CC9;
+			packageReferences = (
+				CFDF0BF82918C20F00E586A1 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CFDF0C002918C29900E586A1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+			);
 			productRefGroup = CF0467AB2918BF5800E72CC9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,8 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF0467BA2918BF5900E72CC9 /* LaunchScreen.storyboard in Resources */,
+				CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */,
 				CF0467B72918BF5900E72CC9 /* Assets.xcassets in Resources */,
-				CF0467B52918BF5800E72CC9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +176,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CF0467B32918BF5800E72CC9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF0467B42918BF5800E72CC9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,9 +313,9 @@
 				INFOPLIST_FILE = SeSACFriends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +323,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lec.sesac.SeSACFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,9 +344,9 @@
 				INFOPLIST_FILE = SeSACFriends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +354,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lec.sesac.SeSACFriends;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -358,6 +385,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CFDF0BF82918C20F00E586A1 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		CFDF0C002918C29900E586A1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CFDF0BF92918C20F00E586A1 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFDF0BF82918C20F00E586A1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CFDF0BFB2918C20F00E586A1 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFDF0BF82918C20F00E586A1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		CFDF0BFE2918C22200E586A1 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CFDF0C012918C29900E586A1 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFDF0C002918C29900E586A1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF0467A22918BF5800E72CC9 /* Project object */;
 }
