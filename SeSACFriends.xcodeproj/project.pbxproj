@@ -17,6 +17,14 @@
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
+		CFDF0C0D2918D0A800E586A1 /* ColorConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */; };
+		CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C0E2918D3C500E586A1 /* FontConstant.swift */; };
+		CFDF0C132918D7F100E586A1 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C122918D76D00E586A1 /* NotoSansKR-Medium.otf */; };
+		CFDF0C142918D7F100E586A1 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C112918D76C00E586A1 /* NotoSansKR-Regular.otf */; };
+		CFDF0C172918DF8500E586A1 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C162918DF8500E586A1 /* InputTextField.swift */; };
+		CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C182918DF9200E586A1 /* BaseView.swift */; };
+		CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */; };
+		CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C1E2918E9D000E586A1 /* ImageConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +37,14 @@
 		CF0467BB2918BF5900E72CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
+		CFDF0C0E2918D3C500E586A1 /* FontConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConstant.swift; sourceTree = "<group>"; };
+		CFDF0C112918D76C00E586A1 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		CFDF0C122918D76D00E586A1 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		CFDF0C162918DF8500E586A1 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		CFDF0C182918DF9200E586A1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CFDF0C1E2918E9D000E586A1 /* ImageConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +83,9 @@
 		CF0467AC2918BF5800E72CC9 /* SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C152918DEF900E586A1 /* Utility */,
+				CFDF0C102918D57200E586A1 /* Fonts */,
+				CFDF0C0B2918D08F00E586A1 /* Constants */,
 				CFDF0C052918C2ED00E586A1 /* IgnoreFolder */,
 				CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */,
 				CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */,
@@ -83,6 +102,51 @@
 			children = (
 			);
 			path = IgnoreFolder;
+			sourceTree = "<group>";
+		};
+		CFDF0C0B2918D08F00E586A1 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */,
+				CFDF0C0E2918D3C500E586A1 /* FontConstant.swift */,
+				CFDF0C1E2918E9D000E586A1 /* ImageConstant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		CFDF0C102918D57200E586A1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C122918D76D00E586A1 /* NotoSansKR-Medium.otf */,
+				CFDF0C112918D76C00E586A1 /* NotoSansKR-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CFDF0C152918DEF900E586A1 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C1D2918DFB500E586A1 /* TextArea */,
+				CFDF0C1A2918DF9500E586A1 /* Base */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		CFDF0C1A2918DF9500E586A1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C182918DF9200E586A1 /* BaseView.swift */,
+				CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CFDF0C1D2918DFB500E586A1 /* TextArea */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C162918DF8500E586A1 /* InputTextField.swift */,
+			);
+			path = TextArea;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +218,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDF0C132918D7F100E586A1 /* NotoSansKR-Medium.otf in Resources */,
+				CFDF0C142918D7F100E586A1 /* NotoSansKR-Regular.otf in Resources */,
 				CF0467BA2918BF5900E72CC9 /* LaunchScreen.storyboard in Resources */,
 				CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */,
 				CF0467B72918BF5900E72CC9 /* Assets.xcassets in Resources */,
@@ -170,6 +236,12 @@
 				CF0467B22918BF5800E72CC9 /* ViewController.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
+				CFDF0C172918DF8500E586A1 /* InputTextField.swift in Sources */,
+				CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */,
+				CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */,
+				CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */,
+				CFDF0C0D2918D0A800E586A1 /* ColorConstant.swift in Sources */,
+				CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
