@@ -7,8 +7,8 @@
 
 import UIKit
 
-// 폰트, 
-typealias FontsInfo = (UIFont, CGFloat)
+// 폰트,
+typealias FontsInfo = (font: UIFont, fontSize: CGFloat)
 
 @frozen enum Fonts {
     

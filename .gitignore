@@ -1,5 +1,6 @@
 # SeSACFriends IgnoreFiles
 SeSACFriends/IgnoreFolder/
+SeSACFriends/GoogleService-Info.plist
 
 # Created by https://www.toptal.com/developers/gitignore/api/swift,cocoapods,swiftpackagemanager,xcode,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,cocoapods,swiftpackagemanager,xcode,firebase

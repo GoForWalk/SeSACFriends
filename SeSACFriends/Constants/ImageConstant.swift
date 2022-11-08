@@ -8,7 +8,7 @@
 import UIKit
 
 /// 이미지, 이미지 사이즈(폰트)
-typealias ImageInfo = (UIImage, CGFloat)
+typealias ImageInfo = (image: UIImage, imageSize: CGFloat)
 
 @frozen enum Images {
     
