@@ -32,18 +32,19 @@ final class MainButton: UIButton {
         super.init(frame: frame)
     }
     
-    private init (frame: CGRect, buttonMode: MainButtonMode, buttonSize: MainButtonSize, hasIcon: Bool) {
+    init(frame: CGRect, buttonMode: MainButtonMode, buttonSize: MainButtonSize, hasIcon: Bool) {
         self.buttonSize = buttonSize
         self.buttonMode = buttonMode
         super.init(frame: frame)
         
         constraints()
         setButtonIcon(hasIcon: hasIcon)
+        buttonConfigure(mainbuttonConfig: buttonMode.buttonConfig)
     }
     
-    convenience init(buttonMode: MainButtonMode, buttonSize: MainButtonSize) {
-        self.init(frame: CGRect.zero)
-    }
+//    convenience init(buttonMode: MainButtonMode, buttonSize: MainButtonSize) {
+//        self.init(frame: CGRect.zero)
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -63,7 +64,7 @@ private extension MainButton {
     }
 
     func buttonConfigure(mainbuttonConfig: MainButtonConfig) {
-        self.backgroundColor = mainbuttonConfig.background
+        backgroundColor = mainbuttonConfig.background
         layer.borderColor = mainbuttonConfig.borderColor
         layer.borderWidth = mainbuttonConfig.borderWidth
         setTitleColor(mainbuttonConfig.titleColor, for: .normal)

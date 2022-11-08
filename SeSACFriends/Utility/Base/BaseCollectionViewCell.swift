@@ -1,13 +1,14 @@
 //
-//  BaseView.swift
+//  BaseCollectionViewCell.swift
 //  SeSACFriends
 //
-//  Created by sae hun chung on 2022/11/07.
+//  Created by sae hun chung on 2022/11/08.
 //
 
 import UIKit
 
-class BaseView: UIView {
+
+class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,7 +21,7 @@ class BaseView: UIView {
     }
     
     func configure() {
-        backgroundColor = Colors.white
+        contentView.backgroundColor = Colors.white
     }
     
     func setConstraints() {

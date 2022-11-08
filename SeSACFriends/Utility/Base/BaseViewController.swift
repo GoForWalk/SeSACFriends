@@ -22,4 +22,8 @@ class BaseViewController: UIViewController {
     func constraints() {
         
     }
+    
+    deinit {
+        print("❌❌❌❌❌❌❌❌❌ \(self.description) ❌❌❌❌❌❌❌❌❌")
+    }
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */; };
 		CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */; };
-		CF0467B22918BF5800E72CC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467B12918BF5800E72CC9 /* ViewController.swift */; };
 		CF0467B72918BF5900E72CC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B62918BF5900E72CC9 /* Assets.xcassets */; };
 		CF0467BA2918BF5900E72CC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */; };
 		CFDF0BFA2918C20F00E586A1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BF92918C20F00E586A1 /* RxCocoa */; };
@@ -34,15 +33,17 @@
 		CFDF0C2E291921E900E586A1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C2D291921E900E586A1 /* FirebaseMessaging */; };
 		CFDF0C38291928C500E586A1 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C37291928C500E586A1 /* MainButton.swift */; };
 		CFDF0C3A2919484700E586A1 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C392919484700E586A1 /* UIButton+Extension.swift */; };
-		CFDF0C3C29194D7400E586A1 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C3B29194D7400E586A1 /* FirstOnboardingViewController.swift */; };
-		CFDF0C3E29194DEB00E586A1 /* OnBoardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C3D29194DEB00E586A1 /* OnBoardingPageViewController.swift */; };
+		CFDF0C3C29194D7400E586A1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C3B29194D7400E586A1 /* OnboardingViewController.swift */; };
+		CFDF0C41291A130900E586A1 /* ObBoardingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C40291A130900E586A1 /* ObBoardingScrollView.swift */; };
+		CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C43291A133900E586A1 /* BaseCollectionViewCell.swift */; };
+		CFDF0C46291A1DD500E586A1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C45291A1DD500E586A1 /* OnboardingView.swift */; };
+		CFDF0C49291A53B000E586A1 /* PhoneAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C48291A53B000E586A1 /* PhoneAuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CF0467B12918BF5800E72CC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CF0467B62918BF5900E72CC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF0467B92918BF5900E72CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF0467BB2918BF5900E72CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,8 +62,11 @@
 		CFDF0C24291920E700E586A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CFDF0C37291928C500E586A1 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		CFDF0C392919484700E586A1 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		CFDF0C3B29194D7400E586A1 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
-		CFDF0C3D29194DEB00E586A1 /* OnBoardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageViewController.swift; sourceTree = "<group>"; };
+		CFDF0C3B29194D7400E586A1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		CFDF0C40291A130900E586A1 /* ObBoardingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObBoardingScrollView.swift; sourceTree = "<group>"; };
+		CFDF0C43291A133900E586A1 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFDF0C45291A1DD500E586A1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CFDF0C48291A53B000E586A1 /* PhoneAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +119,6 @@
 				CFDF0C052918C2ED00E586A1 /* IgnoreFolder */,
 				CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */,
 				CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */,
-				CF0467B12918BF5800E72CC9 /* ViewController.swift */,
 				CF0467B62918BF5900E72CC9 /* Assets.xcassets */,
 				CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */,
 				CF0467BB2918BF5900E72CC9 /* Info.plist */,
@@ -153,6 +156,7 @@
 		CFDF0C152918DEF900E586A1 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C42291A131700E586A1 /* Extension */,
 				CFDF0C1D2918DFB500E586A1 /* SubView */,
 				CFDF0C1A2918DF9500E586A1 /* Base */,
 			);
@@ -164,8 +168,7 @@
 			children = (
 				CFDF0C182918DF9200E586A1 /* BaseView.swift */,
 				CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */,
-				CFDF0C22291910E300E586A1 /* UILable+Extension.swift */,
-				CFDF0C392919484700E586A1 /* UIButton+Extension.swift */,
+				CFDF0C43291A133900E586A1 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 		CFDF0C2F291925B700E586A1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C47291A528500E586A1 /* PhoneAuth */,
 				CFDF0C36291927A800E586A1 /* OnBoarding */,
 				CFDF0C352919265500E586A1 /* SignUp */,
 				CFDF0C342919264D00E586A1 /* Tabbar */,
@@ -228,10 +232,36 @@
 		CFDF0C36291927A800E586A1 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				CFDF0C3B29194D7400E586A1 /* FirstOnboardingViewController.swift */,
-				CFDF0C3D29194DEB00E586A1 /* OnBoardingPageViewController.swift */,
+				CFDF0C3F291A12E800E586A1 /* SubView */,
+				CFDF0C3B29194D7400E586A1 /* OnboardingViewController.swift */,
+				CFDF0C45291A1DD500E586A1 /* OnboardingView.swift */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		CFDF0C3F291A12E800E586A1 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C40291A130900E586A1 /* ObBoardingScrollView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		CFDF0C42291A131700E586A1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C22291910E300E586A1 /* UILable+Extension.swift */,
+				CFDF0C392919484700E586A1 /* UIButton+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CFDF0C47291A528500E586A1 /* PhoneAuth */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C48291A53B000E586A1 /* PhoneAuthView.swift */,
+			);
+			path = PhoneAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,20 +354,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDF0C49291A53B000E586A1 /* PhoneAuthView.swift in Sources */,
 				CFDF0C212918FDDC00E586A1 /* InputTextField.swift in Sources */,
-				CF0467B22918BF5800E72CC9 /* ViewController.swift in Sources */,
 				CFDF0C3A2919484700E586A1 /* UIButton+Extension.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
 				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,
-				CFDF0C3C29194D7400E586A1 /* FirstOnboardingViewController.swift in Sources */,
-				CFDF0C3E29194DEB00E586A1 /* OnBoardingPageViewController.swift in Sources */,
+				CFDF0C3C29194D7400E586A1 /* OnboardingViewController.swift in Sources */,
 				CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */,
+				CFDF0C41291A130900E586A1 /* ObBoardingScrollView.swift in Sources */,
+				CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */,
 				CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */,
 				CFDF0C23291910E300E586A1 /* UILable+Extension.swift in Sources */,
 				CFDF0C38291928C500E586A1 /* MainButton.swift in Sources */,
 				CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */,
 				CFDF0C0D2918D0A800E586A1 /* ColorConstant.swift in Sources */,
+				CFDF0C46291A1DD500E586A1 /* OnboardingView.swift in Sources */,
 				CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
