@@ -7,6 +7,17 @@
 		<string>NotoSansKR-Regular.otf</string>
 		<string>NotoSansKR-Medium.otf</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app-1-952535579092-ios-d21a1516f21e2d85827e41</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

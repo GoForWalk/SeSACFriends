@@ -38,6 +38,10 @@
 		CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C43291A133900E586A1 /* BaseCollectionViewCell.swift */; };
 		CFDF0C46291A1DD500E586A1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C45291A1DD500E586A1 /* OnboardingView.swift */; };
 		CFDF0C49291A53B000E586A1 /* PhoneAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C48291A53B000E586A1 /* PhoneAuthView.swift */; };
+		CFDF0C4B291A626F00E586A1 /* PhoneAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C4A291A626E00E586A1 /* PhoneAuthViewController.swift */; };
+		CFDF0C4F291A65DC00E586A1 /* MessageAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C4E291A65DC00E586A1 /* MessageAuthView.swift */; };
+		CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C50291A6F0700E586A1 /* MessageAuthViewController.swift */; };
+		CFDF0C54291A72F900E586A1 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C53291A72F900E586A1 /* AuthUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +71,10 @@
 		CFDF0C43291A133900E586A1 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFDF0C45291A1DD500E586A1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		CFDF0C48291A53B000E586A1 /* PhoneAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthView.swift; sourceTree = "<group>"; };
+		CFDF0C4A291A626E00E586A1 /* PhoneAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthViewController.swift; sourceTree = "<group>"; };
+		CFDF0C4E291A65DC00E586A1 /* MessageAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAuthView.swift; sourceTree = "<group>"; };
+		CFDF0C50291A6F0700E586A1 /* MessageAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAuthViewController.swift; sourceTree = "<group>"; };
+		CFDF0C53291A72F900E586A1 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +194,7 @@
 		CFDF0C2F291925B700E586A1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				CFDF0C47291A528500E586A1 /* PhoneAuth */,
+				CFDF0C4D291A65AE00E586A1 /* Auth */,
 				CFDF0C36291927A800E586A1 /* OnBoarding */,
 				CFDF0C352919265500E586A1 /* SignUp */,
 				CFDF0C342919264D00E586A1 /* Tabbar */,
@@ -204,6 +212,7 @@
 		CFDF0C31291925C800E586A1 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C52291A72DF00E586A1 /* Auth */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -260,8 +269,35 @@
 			isa = PBXGroup;
 			children = (
 				CFDF0C48291A53B000E586A1 /* PhoneAuthView.swift */,
+				CFDF0C4A291A626E00E586A1 /* PhoneAuthViewController.swift */,
 			);
 			path = PhoneAuth;
+			sourceTree = "<group>";
+		};
+		CFDF0C4C291A657400E586A1 /* MessageAuth */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C4E291A65DC00E586A1 /* MessageAuthView.swift */,
+				CFDF0C50291A6F0700E586A1 /* MessageAuthViewController.swift */,
+			);
+			path = MessageAuth;
+			sourceTree = "<group>";
+		};
+		CFDF0C4D291A65AE00E586A1 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C47291A528500E586A1 /* PhoneAuth */,
+				CFDF0C4C291A657400E586A1 /* MessageAuth */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CFDF0C52291A72DF00E586A1 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C53291A72F900E586A1 /* AuthUseCase.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +393,8 @@
 				CFDF0C49291A53B000E586A1 /* PhoneAuthView.swift in Sources */,
 				CFDF0C212918FDDC00E586A1 /* InputTextField.swift in Sources */,
 				CFDF0C3A2919484700E586A1 /* UIButton+Extension.swift in Sources */,
+				CFDF0C4F291A65DC00E586A1 /* MessageAuthView.swift in Sources */,
+				CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
 				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,
@@ -368,9 +406,11 @@
 				CFDF0C23291910E300E586A1 /* UILable+Extension.swift in Sources */,
 				CFDF0C38291928C500E586A1 /* MainButton.swift in Sources */,
 				CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */,
+				CFDF0C54291A72F900E586A1 /* AuthUseCase.swift in Sources */,
 				CFDF0C0D2918D0A800E586A1 /* ColorConstant.swift in Sources */,
 				CFDF0C46291A1DD500E586A1 /* OnboardingView.swift in Sources */,
 				CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */,
+				CFDF0C4B291A626F00E586A1 /* PhoneAuthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
