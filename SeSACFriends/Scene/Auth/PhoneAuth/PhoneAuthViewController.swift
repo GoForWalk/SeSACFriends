@@ -9,15 +9,16 @@ import UIKit
 
 import RxCocoa
 import RxSwift
-import FirebaseAuth
 
 class PhoneAuthViewController: BaseViewController {
 
     // +82 10-8989-9999  , 123123
     let phoneNumber = "+821089899999"
-    let verificationID = "123123"
+    let verificationCode = "123123"
     
-    let mainView = PhoneAuthView()
+    private let disposeBag = DisposeBag()
+    private let mainView = PhoneAuthView()
+    var viewModel = PhoneAuthViewModel()
     
     override func loadView() {
         self.view = mainView
@@ -25,23 +26,41 @@ class PhoneAuthViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        authPhone()
     }
     
-    private func authPhone() {
+    override func bind() {
         
-        Auth.auth().languageCode = "kr"
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
-        PhoneAuthProvider.provider()
-          .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-              if let error = error {
-//                self.showMessagePrompt(error.localizedDescription)
-                return
-              }
-              
-              print(verificationID)
-          }
+        let input = PhoneAuthViewModel.Input(
+            phoneNum: mainView.textField.rx.text,
+            sendMessageButton: mainView.authButton.rx.tap
+        )
         
+        let output = viewModel.transform(input: input, disposeBag: self.disposeBag)
+        
+        output.phoneNumText
+            .asDriver(onErrorJustReturn: "")
+            .drive(mainView.textField.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.phoneNumValidated
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] bool in
+                switch bool {
+                case true: self?.mainView.authButton.buttonMode = .fill
+                case false: self?.mainView.authButton.buttonMode = .disable
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        output.messageAuthFlow
+            .asDriver(onErrorJustReturn: false)
+            .drive { [weak self] bool in
+                if bool {
+                    let vc = MessageAuthViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
 }
