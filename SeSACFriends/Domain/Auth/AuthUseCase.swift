@@ -145,6 +145,7 @@ private extension AuthUseCaseImpi {
             }
             
             print("✅✅✅ idToken: \(idToken)")
+            UserDefaults.idToken = idToken
         }
     }
 }
