@@ -8,9 +8,9 @@
 import Foundation
 
 @frozen enum UserDefaultConstant {
-    /// Auth Key: String
-    static let authKey = "authKey"
+    /// IDToken: String
+    static let idToken = "IDToken"
     
-    /// Auth Passed: Bool
-    static let authPassed = "authPassed"
+    /// Auth Passed: String
+    static let fcmToken = "FCMToken"
 }

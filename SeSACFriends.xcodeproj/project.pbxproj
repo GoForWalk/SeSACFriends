@@ -49,6 +49,7 @@
 		CFDF0C64291BF21300E586A1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C63291BF21300E586A1 /* Toast */; };
 		CFDF0C6B291C2B2500E586A1 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C6A291C2B2500E586A1 /* AuthError.swift */; };
 		CFDF0C6F291CDE8900E586A1 /* CustomUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C6E291CDE8900E586A1 /* CustomUserDefaults.swift */; };
+		CFDF0C71291CFC4C00E586A1 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C70291CFC4C00E586A1 /* UserDefaults+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		CFDF0C5F291A8C1600E586A1 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		CFDF0C6A291C2B2500E586A1 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		CFDF0C6E291CDE8900E586A1 /* CustomUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserDefaults.swift; sourceTree = "<group>"; };
+		CFDF0C70291CFC4C00E586A1 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +180,7 @@
 		CFDF0C152918DEF900E586A1 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				CFDF0C6C291CDE3A00E586A1 /* UserDefault */,
+				CFDF0C6C291CDE3A00E586A1 /* UserDefaults */,
 				CFDF0C69291C244500E586A1 /* Error */,
 				CFDF0C5E291A8C0000E586A1 /* Protocols */,
 				CFDF0C42291A131700E586A1 /* Extension */,
@@ -391,13 +393,14 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		CFDF0C6C291CDE3A00E586A1 /* UserDefault */ = {
+		CFDF0C6C291CDE3A00E586A1 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
 				CFDF0C5C291A8BE800E586A1 /* UserDefaultsConstant.swift */,
 				CFDF0C6E291CDE8900E586A1 /* CustomUserDefaults.swift */,
+				CFDF0C70291CFC4C00E586A1 /* UserDefaults+Extension.swift */,
 			);
-			path = UserDefault;
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,6 +501,7 @@
 				CFDF0C4F291A65DC00E586A1 /* MessageAuthView.swift in Sources */,
 				CFDF0C59291A8B0900E586A1 /* MessageAuthViewModel.swift in Sources */,
 				CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */,
+				CFDF0C71291CFC4C00E586A1 /* UserDefaults+Extension.swift in Sources */,
 				CFDF0C5D291A8BE800E586A1 /* UserDefaultsConstant.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
 				CFDF0C6B291C2B2500E586A1 /* AuthError.swift in Sources */,
