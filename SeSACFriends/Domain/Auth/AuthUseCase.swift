@@ -88,7 +88,7 @@ private extension AuthUseCaseImpi {
     
     func authPhone(phoneNumber: String, isResend: Bool) {
         Auth.auth().languageCode = "kr"
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         
         PhoneAuthProvider.provider()
           .verifyPhoneNumber(phoneNumber, uiDelegate: nil) {[weak self] verificationID, error in
