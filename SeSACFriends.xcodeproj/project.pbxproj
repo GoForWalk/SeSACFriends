@@ -46,6 +46,8 @@
 		CFDF0C5B291A8B1600E586A1 /* PhoneAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C5A291A8B1600E586A1 /* PhoneAuthViewModel.swift */; };
 		CFDF0C5D291A8BE800E586A1 /* UserDefaultsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C5C291A8BE800E586A1 /* UserDefaultsConstant.swift */; };
 		CFDF0C60291A8C1600E586A1 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C5F291A8C1600E586A1 /* ViewModelType.swift */; };
+		CFDF0C64291BF21300E586A1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C63291BF21300E586A1 /* Toast */; };
+		CFDF0C6B291C2B2500E586A1 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C6A291C2B2500E586A1 /* AuthError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,7 @@
 		CFDF0C5A291A8B1600E586A1 /* PhoneAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthViewModel.swift; sourceTree = "<group>"; };
 		CFDF0C5C291A8BE800E586A1 /* UserDefaultsConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConstant.swift; sourceTree = "<group>"; };
 		CFDF0C5F291A8C1600E586A1 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		CFDF0C6A291C2B2500E586A1 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,7 @@
 				CFDF0C2E291921E900E586A1 /* FirebaseMessaging in Frameworks */,
 				CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */,
 				CFDF0C2A291921E900E586A1 /* FirebaseAuth in Frameworks */,
+				CFDF0C64291BF21300E586A1 /* Toast in Frameworks */,
 				CFDF0C28291921E900E586A1 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				CFDF0C2C291921E900E586A1 /* FirebaseCrashlytics in Frameworks */,
 				CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */,
@@ -173,6 +177,7 @@
 		CFDF0C152918DEF900E586A1 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C69291C244500E586A1 /* Error */,
 				CFDF0C5E291A8C0000E586A1 /* Protocols */,
 				CFDF0C42291A131700E586A1 /* Extension */,
 				CFDF0C1D2918DFB500E586A1 /* SubView */,
@@ -223,6 +228,7 @@
 		CFDF0C31291925C800E586A1 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C68291BF2DC00E586A1 /* Network */,
 				CFDF0C52291A72DF00E586A1 /* Auth */,
 			);
 			path = Domain;
@@ -231,6 +237,9 @@
 		CFDF0C32291925CD00E586A1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CFDF0C67291BF2CE00E586A1 /* DTO */,
+				CFDF0C66291BF2C300E586A1 /* Entitiy */,
+				CFDF0C65291BF2B700E586A1 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -352,6 +361,42 @@
 			path = Coordinate;
 			sourceTree = "<group>";
 		};
+		CFDF0C65291BF2B700E586A1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CFDF0C66291BF2C300E586A1 /* Entitiy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entitiy;
+			sourceTree = "<group>";
+		};
+		CFDF0C67291BF2CE00E586A1 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		CFDF0C68291BF2DC00E586A1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CFDF0C69291C244500E586A1 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF0C6A291C2B2500E586A1 /* AuthError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -377,6 +422,7 @@
 				CFDF0C29291921E900E586A1 /* FirebaseAuth */,
 				CFDF0C2B291921E900E586A1 /* FirebaseCrashlytics */,
 				CFDF0C2D291921E900E586A1 /* FirebaseMessaging */,
+				CFDF0C63291BF21300E586A1 /* Toast */,
 			);
 			productName = SeSACFriends;
 			productReference = CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */;
@@ -411,6 +457,7 @@
 				CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CFDF0C002918C29900E586A1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				CFDF0C26291921E900E586A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CFDF0C62291BF21300E586A1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = CF0467AB2918BF5800E72CC9 /* Products */;
 			projectDirPath = "";
@@ -450,6 +497,7 @@
 				CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */,
 				CFDF0C5D291A8BE800E586A1 /* UserDefaultsConstant.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
+				CFDF0C6B291C2B2500E586A1 /* AuthError.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
 				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,
 				CFDF0C3C29194D7400E586A1 /* OnboardingViewController.swift in Sources */,
@@ -716,6 +764,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CFDF0C62291BF21300E586A1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -758,6 +814,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CFDF0C26291921E900E586A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		CFDF0C63291BF21300E586A1 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFDF0C62291BF21300E586A1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

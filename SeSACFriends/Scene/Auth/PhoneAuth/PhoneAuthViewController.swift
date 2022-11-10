@@ -13,10 +13,10 @@ import RxSwift
 class PhoneAuthViewController: BaseViewController {
 
     // +82 10-8989-9999  , 123123
-    let phoneNumber = "+821089899999"
-    let verificationCode = "123123"
+//    let phoneNumber = "+821089899999"
+//    let verificationCode = "123123"
     
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     private let mainView = PhoneAuthView()
     var viewModel = PhoneAuthViewModel()
     
@@ -56,7 +56,9 @@ class PhoneAuthViewController: BaseViewController {
             .asDriver(onErrorJustReturn: false)
             .drive { [weak self] bool in
                 if bool {
+                    guard let useCase = self?.viewModel.authUseCase else { return }
                     let vc = MessageAuthViewController()
+                    vc.viewModel = MessageAuthViewModel(useCase: useCase)
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             }

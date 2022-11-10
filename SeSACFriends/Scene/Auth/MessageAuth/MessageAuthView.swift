@@ -44,6 +44,7 @@ final class MessageAuthView: BaseView {
         let textField = InputTextField()
         textField.keyboardType = .numberPad
         textField.placeholder = "인증번호 입력"
+        textField.textContentType = .oneTimeCode
         return textField
     }()
 
@@ -73,7 +74,7 @@ final class MessageAuthView: BaseView {
             make.centerY.equalTo(resendButton)
             make.left.equalTo(self.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(48)
-            make.right.equalTo(resendButton.snp.left).offset(8)
+            make.right.equalTo(resendButton.snp.left).offset(-8)
         }
         
         label.snp.makeConstraints { make in
@@ -82,9 +83,9 @@ final class MessageAuthView: BaseView {
         }
         
         timeLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(12)
             make.centerY.equalToSuperview()
             make.width.equalTo(40)
+            make.right.equalToSuperview().inset(12)
         }
         
     }

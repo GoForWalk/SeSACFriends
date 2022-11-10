@@ -12,7 +12,7 @@ import RxCocoa
 
 final class PhoneAuthViewModel: ViewModelType {
         
-    private let authUseCase: AuthUseCase = AuthUseCaseImpi()
+    let authUseCase: AuthUseCase = AuthUseCaseImpi()
     private var tempCount = 0
 
 //    init(authUseCase: AuthUseCase) {
@@ -52,7 +52,7 @@ private extension PhoneAuthViewModel {
         
         input.sendMessageButton
             .bind { [weak self] in
-                self?.authUseCase.sendMessage()
+                self?.authUseCase.sendMessage(isResend: false)
             }
             .disposed(by: disposeBag)
     }
@@ -80,21 +80,20 @@ private extension PhoneAuthViewModel {
     }
     
     private func displayText(str: String) -> String {
-        var result = str.replacingOccurrences(of: "-", with: "")
-        print(tempCount)
-        guard tempCount < result.count else {
+        print("tempCount: \(tempCount) str.count: \(str.count)" )
+        guard tempCount < str.count else {
             tempCount -= 1
             return str }
+        tempCount = str.count
         
-        tempCount = result.count
-        
+        var result = str.replacingOccurrences(of: "-", with: "")
         switch result.count {
         case 3...5:
             result.insert("-", at: String.Index(utf16Offset: 3, in: result))
         case 6...10:
             result.insert("-", at: String.Index(utf16Offset: 3, in: result))
             result.insert("-", at: String.Index(utf16Offset: 7, in: result))
-        case 11:
+        case 11...20 :
             result.insert("-", at: String.Index(utf16Offset: 3, in: result))
             result.insert("-", at: String.Index(utf16Offset: 8, in: result))
         default:
