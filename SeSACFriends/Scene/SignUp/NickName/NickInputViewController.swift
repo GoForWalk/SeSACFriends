@@ -48,6 +48,7 @@ final class NickInputViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        // TODO: 여기 코드도 수정
         mainView.authButton.rx.tap
             .bind { [weak self] in
                 

@@ -11,7 +11,7 @@
 		CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */; };
 		CF0467B72918BF5900E72CC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B62918BF5900E72CC9 /* Assets.xcassets */; };
 		CF0467BA2918BF5900E72CC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */; };
-		CF2E8308291D69AA00D2DE1C /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8307291D69AA00D2DE1C /* SignUpUseCase.swift */; };
+		CF2E8308291D69AA00D2DE1C /* SignUpUseCaseImpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8307291D69AA00D2DE1C /* SignUpUseCaseImpi.swift */; };
 		CF2E830A291D69E900D2DE1C /* NickInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8309291D69E900D2DE1C /* NickInputView.swift */; };
 		CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E830D291D6ABE00D2DE1C /* NickInputViewController.swift */; };
 		CF2E8310291D6EC100D2DE1C /* NickInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E830F291D6EC100D2DE1C /* NickInputViewModel.swift */; };
@@ -27,6 +27,8 @@
 		CF2E832A291D771900D2DE1C /* GenderInputCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8329291D771900D2DE1C /* GenderInputCollectionViewCell.swift */; };
 		CF2E832C291D7B3D00D2DE1C /* CheckNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E832B291D7B3D00D2DE1C /* CheckNetworkStatus.swift */; };
 		CF2E832E291D7BA700D2DE1C /* CheckIDToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E832D291D7BA700D2DE1C /* CheckIDToken.swift */; };
+		CF2E8331291E95F600D2DE1C /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */; };
+		CF2E8333291E961300D2DE1C /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8332291E961300D2DE1C /* AuthUseCase.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
@@ -54,7 +56,7 @@
 		CFDF0C4B291A626F00E586A1 /* PhoneAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C4A291A626E00E586A1 /* PhoneAuthViewController.swift */; };
 		CFDF0C4F291A65DC00E586A1 /* MessageAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C4E291A65DC00E586A1 /* MessageAuthView.swift */; };
 		CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C50291A6F0700E586A1 /* MessageAuthViewController.swift */; };
-		CFDF0C54291A72F900E586A1 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C53291A72F900E586A1 /* AuthUseCase.swift */; };
+		CFDF0C54291A72F900E586A1 /* AuthUseCaseImpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C53291A72F900E586A1 /* AuthUseCaseImpi.swift */; };
 		CFDF0C59291A8B0900E586A1 /* MessageAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C58291A8B0900E586A1 /* MessageAuthViewModel.swift */; };
 		CFDF0C5B291A8B1600E586A1 /* PhoneAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C5A291A8B1600E586A1 /* PhoneAuthViewModel.swift */; };
 		CFDF0C5D291A8BE800E586A1 /* UserDefaultsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C5C291A8BE800E586A1 /* UserDefaultsConstant.swift */; };
@@ -80,7 +82,7 @@
 		CF0467B62918BF5900E72CC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF0467B92918BF5900E72CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF0467BB2918BF5900E72CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF2E8307291D69AA00D2DE1C /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		CF2E8307291D69AA00D2DE1C /* SignUpUseCaseImpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCaseImpi.swift; sourceTree = "<group>"; };
 		CF2E8309291D69E900D2DE1C /* NickInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickInputView.swift; sourceTree = "<group>"; };
 		CF2E830D291D6ABE00D2DE1C /* NickInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickInputViewController.swift; sourceTree = "<group>"; };
 		CF2E830F291D6EC100D2DE1C /* NickInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickInputViewModel.swift; sourceTree = "<group>"; };
@@ -96,6 +98,8 @@
 		CF2E8329291D771900D2DE1C /* GenderInputCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderInputCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF2E832B291D7B3D00D2DE1C /* CheckNetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetworkStatus.swift; sourceTree = "<group>"; };
 		CF2E832D291D7BA700D2DE1C /* CheckIDToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIDToken.swift; sourceTree = "<group>"; };
+		CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		CF2E8332291E961300D2DE1C /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
@@ -118,7 +122,7 @@
 		CFDF0C4A291A626E00E586A1 /* PhoneAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthViewController.swift; sourceTree = "<group>"; };
 		CFDF0C4E291A65DC00E586A1 /* MessageAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAuthView.swift; sourceTree = "<group>"; };
 		CFDF0C50291A6F0700E586A1 /* MessageAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAuthViewController.swift; sourceTree = "<group>"; };
-		CFDF0C53291A72F900E586A1 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		CFDF0C53291A72F900E586A1 /* AuthUseCaseImpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseImpi.swift; sourceTree = "<group>"; };
 		CFDF0C58291A8B0900E586A1 /* MessageAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAuthViewModel.swift; sourceTree = "<group>"; };
 		CFDF0C5A291A8B1600E586A1 /* PhoneAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthViewModel.swift; sourceTree = "<group>"; };
 		CFDF0C5C291A8BE800E586A1 /* UserDefaultsConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConstant.swift; sourceTree = "<group>"; };
@@ -196,8 +200,9 @@
 		CF2E8306291D698500D2DE1C /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				CFDF0C53291A72F900E586A1 /* AuthUseCase.swift */,
-				CF2E8307291D69AA00D2DE1C /* SignUpUseCase.swift */,
+				CF2E832F291E95C400D2DE1C /* Protocols */,
+				CFDF0C53291A72F900E586A1 /* AuthUseCaseImpi.swift */,
+				CF2E8307291D69AA00D2DE1C /* SignUpUseCaseImpi.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -248,6 +253,15 @@
 				CF2E8329291D771900D2DE1C /* GenderInputCollectionViewCell.swift */,
 			);
 			path = Gender;
+			sourceTree = "<group>";
+		};
+		CF2E832F291E95C400D2DE1C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */,
+				CF2E8332291E961300D2DE1C /* AuthUseCase.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CFDF0C052918C2ED00E586A1 /* IgnoreFolder */ = {
@@ -593,6 +607,8 @@
 				CF2E831E291D74C300D2DE1C /* EmailInputViewController.swift in Sources */,
 				CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */,
 				CFDF0C49291A53B000E586A1 /* PhoneAuthView.swift in Sources */,
+				CF2E8331291E95F600D2DE1C /* SignUpUseCase.swift in Sources */,
+				CF2E8333291E961300D2DE1C /* AuthUseCase.swift in Sources */,
 				CFDF0C75291D098700E586A1 /* Endpoint.swift in Sources */,
 				CFDF0C212918FDDC00E586A1 /* InputTextField.swift in Sources */,
 				CFDF0C3A2919484700E586A1 /* UIButton+Extension.swift in Sources */,
@@ -616,7 +632,7 @@
 				CFDF0C6F291CDE8900E586A1 /* CustomUserDefaults.swift in Sources */,
 				CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */,
 				CFDF0C41291A130900E586A1 /* ObBoardingScrollView.swift in Sources */,
-				CF2E8308291D69AA00D2DE1C /* SignUpUseCase.swift in Sources */,
+				CF2E8308291D69AA00D2DE1C /* SignUpUseCaseImpi.swift in Sources */,
 				CF2E832A291D771900D2DE1C /* GenderInputCollectionViewCell.swift in Sources */,
 				CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */,
 				CF2E8328291D751900D2DE1C /* GenderInputViewModel.swift in Sources */,
@@ -631,7 +647,7 @@
 				CF2E832E291D7BA700D2DE1C /* CheckIDToken.swift in Sources */,
 				CFDF0C60291A8C1600E586A1 /* ViewModelType.swift in Sources */,
 				CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */,
-				CFDF0C54291A72F900E586A1 /* AuthUseCase.swift in Sources */,
+				CFDF0C54291A72F900E586A1 /* AuthUseCaseImpi.swift in Sources */,
 				CFDF0C0D2918D0A800E586A1 /* ColorConstant.swift in Sources */,
 				CFDF0C46291A1DD500E586A1 /* OnboardingView.swift in Sources */,
 				CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */,

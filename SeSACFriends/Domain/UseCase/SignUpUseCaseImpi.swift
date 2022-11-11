@@ -19,7 +19,6 @@ protocol SignUpUseCase {
     func checkNickValidate(str: String)
     func checkBirthValidate(date: Date)
     func checkEmailValidate(str: String)
-
 }
 
 final class SignInUseCaseImpi: SignUpUseCase {
@@ -32,6 +31,7 @@ final class SignInUseCaseImpi: SignUpUseCase {
     // MARK: - Stored Properties
     private var nickName: String?
     private var birth: Date?
+    private var email: String?
     
     deinit {
         print("🐙🐙🐙🐙🐙🐙🐙 UseCase deinit \(self) 🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙")
@@ -68,9 +68,10 @@ extension SignInUseCaseImpi {
     
     func checkEmailValidate(str: String) {
         if validateEmailRegEx(str) {
-            
+            emailValidateion.onNext(true)
+            self.email = str
         } else {
-            
+            emailValidateion.onNext(false)
         }
     }
 }

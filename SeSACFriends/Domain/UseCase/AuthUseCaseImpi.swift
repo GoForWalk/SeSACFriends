@@ -10,19 +10,6 @@ import Foundation
 import RxSwift
 import FirebaseAuth
 
-protocol AuthUseCase {
-    var validation: BehaviorSubject<Bool> { get }
-    var phoneNumText: BehaviorSubject<String> { get }
-    var messageApproved: BehaviorSubject<Bool> { get }
-    var messageValidation: BehaviorSubject<Bool> { get }
-    var apiconnect: PublishSubject<Int> { get }
-
-    func sendMessage(isResend: Bool)
-    func validatePhone(_ string: String)
-    func validateMessage(str: String)
-    func messageAuthDone()
-}
-
 final class AuthUseCaseImpi: AuthUseCase {
     
     private var phoneNum: String?
@@ -85,7 +72,6 @@ private extension AuthUseCaseImpi {
     func makeSendableString(_ string: String) -> String {
         var str = string
         str.removeFirst()
-        
         return "+82\(str)"
     }
     
@@ -127,7 +113,6 @@ private extension AuthUseCaseImpi {
             }
             
             print("authResult: \(authResult.user)")
-            
             self?.getUserToken()
         }
         
@@ -156,7 +141,6 @@ private extension AuthUseCaseImpi {
     }
     
     func apiconnects() {
-        
         apiService.getUser { [weak self] result in
             switch result {
             case .failure(let error):
@@ -169,9 +153,7 @@ private extension AuthUseCaseImpi {
     }
     
     func makeSendablePhoneNum(phoneNum: String?) -> String {
-        
         guard let phoneNum else { return "" }
-        
         return phoneNum.replacingOccurrences(of: "-", with: phoneNum)
     }
 }

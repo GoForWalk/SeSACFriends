@@ -23,7 +23,7 @@ final class EmailInputViewModel: ViewModelType {
     }
     
     struct Output {
-        
+        let emailValidation = BehaviorRelay(value: false)
     }
     
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
@@ -36,13 +36,18 @@ final class EmailInputViewModel: ViewModelType {
 private extension EmailInputViewModel {
     
     func configureInput(input: Input, disposeBag: DisposeBag) {
-        
+        input.emailTextInput.orEmpty
+            .withUnretained(self)
+            .bind { $0.useCase.checkEmailValidate(str: $1) }
+            .disposed(by: disposeBag)
     }
     
     func createOutput(input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
-        
+        useCase.emailValidateion
+            .bind(to: output.emailValidation)
+            .disposed(by: disposeBag)
         
         return output
     }

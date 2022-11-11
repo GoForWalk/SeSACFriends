@@ -31,34 +31,52 @@ final class BirthInputViewController: BaseViewController {
             datePicked: mainView.datePickerView.rx.date
         )
         
-        let output = viewModel?.transform(input: input, disposeBag: disposeBag)
+        guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }
         
-        output?.pickedDay
+        output.pickedDay
             .map {"\($0)"}
             .asDriver(onErrorJustReturn: "")
             .drive(mainView.dayTextField.rx.text)
             .disposed(by: disposeBag)
         
-        output?.pickedMonth
+        output.pickedMonth
             .map {"\($0)"}
             .asDriver(onErrorJustReturn: "")
             .drive(mainView.monthTextField.rx.text)
             .disposed(by: disposeBag)
         
-        output?.pickedYear
+        output.pickedYear
             .map {"\($0)"}
             .asDriver(onErrorJustReturn: "")
             .drive(mainView.monthTextField.rx.text)
             .disposed(by: disposeBag)
         
-        output?.availableAge
+        output.availableAge
             .asDriver(onErrorJustReturn: false)
             .drive(onNext: { [weak self] bool in
                 if bool {
-                    self?.presentNextView()
+                    self?.mainView.authButton.buttonMode = .fill
+                } else {
+                    self?.mainView.authButton.buttonMode = .disable
                 }
             })
             .disposed(by: disposeBag)
+        
+        Observable.combineLatest(
+            output.availableAge,
+            mainView.authButton.rx.tap
+                .debounce(.seconds(1), scheduler: MainScheduler.instance)
+        )
+        .subscribe { [weak self] element in
+            switch element.0 {
+            case true:
+                self?.presentNextView()
+            case false:
+                return // TODO: Toast 시키기
+            }
+            
+        }
+        .disposed(by: disposeBag)
     }
     
 }
@@ -71,4 +89,5 @@ private extension BirthInputViewController {
         vc.viewModel = EmailInputViewModel(useCase: useCase)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
