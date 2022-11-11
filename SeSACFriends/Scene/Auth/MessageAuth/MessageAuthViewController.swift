@@ -62,6 +62,14 @@ class MessageAuthViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        output?.apiConnectResult
+            .asDriver(onErrorJustReturn: 501)
+            .drive(onNext: { int in
+                if int == 406 {
+                    // TODO: SignUp View Load
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 }

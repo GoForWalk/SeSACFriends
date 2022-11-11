@@ -15,4 +15,6 @@ extension UserDefaults {
     @CustomUserDefault(key: UserDefaultConstant.fcmToken, defaultValue: nil)
     static var fcmToken: String?
     
+    
+    static var phoneNum: String?
 }

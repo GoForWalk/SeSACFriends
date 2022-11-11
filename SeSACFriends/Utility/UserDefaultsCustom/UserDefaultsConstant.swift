@@ -13,4 +13,7 @@ import Foundation
     
     /// Auth Passed: String
     static let fcmToken = "FCMToken"
+    
+    /// PhoneNum: String
+    static let phoneNum = "phoneNum"
 }

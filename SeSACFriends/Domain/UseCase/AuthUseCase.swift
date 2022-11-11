@@ -15,7 +15,8 @@ protocol AuthUseCase {
     var phoneNumText: BehaviorSubject<String> { get }
     var messageApproved: BehaviorSubject<Bool> { get }
     var messageValidation: BehaviorSubject<Bool> { get }
-    
+    var apiconnect: PublishSubject<Int> { get }
+
     func sendMessage(isResend: Bool)
     func validatePhone(_ string: String)
     func validateMessage(str: String)
@@ -27,16 +28,18 @@ final class AuthUseCaseImpi: AuthUseCase {
     private var phoneNum: String?
     private var authVerificationID: String?
     private var messageCode: String?
+    private let apiService: APIService = APIServiceImpi()
     // MARK: - PHONE AUTH PROPERTYS
     let validation = BehaviorSubject<Bool>(value: false)
     let phoneNumText = BehaviorSubject<String>(value: "")
     let messageApproved = BehaviorSubject<Bool>(value: false)
+    var apiconnect = PublishSubject<Int>()
     
     // MARK: - MESSAGE AUTH PROPERTYS
     let messageValidation = BehaviorSubject(value: false)
     
     deinit {
-        print("🐙🐙🐙🐙🐙🐙🐙 UseCase \(self) 🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙")
+        print("🐙🐙🐙🐙🐙🐙🐙 UseCase deinit \(self) 🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙")
     }
     
     func validatePhone(_ string: String) {
@@ -132,7 +135,8 @@ private extension AuthUseCaseImpi {
     
     func getUserToken() {
         let currentUser = Auth.auth().currentUser
-        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+        currentUser?.getIDTokenForcingRefresh(true) { [weak self] idToken, error in
+            
             if let error = error {
                 // Handle error
                 print(#function, "error: \(error)")
@@ -146,6 +150,28 @@ private extension AuthUseCaseImpi {
             
             print("✅✅✅ idToken: \(idToken)")
             UserDefaults.idToken = idToken
+            UserDefaults.phoneNum = self?.makeSendablePhoneNum(phoneNum: self?.phoneNum)
+            self?.apiconnects()
         }
+    }
+    
+    func apiconnects() {
+        
+        apiService.getUser { [weak self] result in
+            switch result {
+            case .failure(let error):
+                guard let error = error as? APIError else { return }
+                self?.apiconnect.onNext(error.rawValue)
+            default:
+                return
+            }
+        }
+    }
+    
+    func makeSendablePhoneNum(phoneNum: String?) -> String {
+        
+        guard let phoneNum else { return "" }
+        
+        return phoneNum.replacingOccurrences(of: "-", with: phoneNum)
     }
 }

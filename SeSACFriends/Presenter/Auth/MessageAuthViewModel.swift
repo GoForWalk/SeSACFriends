@@ -31,6 +31,7 @@ final class MessageAuthViewModel: ViewModelType {
         let authButtonTap = BehaviorRelay<Bool>(value: false)
         let messageNumValidate = BehaviorSubject<Bool>(value: false)
         let isMessageExpired = BehaviorRelay<Bool>(value: false)
+        let apiConnectResult = BehaviorRelay(value: 0)
     }
     
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
@@ -81,6 +82,9 @@ private extension MessageAuthViewModel {
             .bind(to: output.messageNumValidate)
             .disposed(by: disposeBag)
         
+        useCase.apiconnect
+            .bind(to: output.apiConnectResult)
+            .disposed(by: disposeBag)
         
         return output
     }
