@@ -37,7 +37,7 @@ final class AuthUseCaseImpi: AuthUseCase {
         print(result)
         if result {
             print(string)
-            phoneNum = string
+            phoneNum = makeSendableString(string) 
         }
     }
         

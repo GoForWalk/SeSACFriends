@@ -13,7 +13,7 @@ final class GenderCollectionViewCell: BaseCollectionViewCell {
     
     let genderImageView: UIImageView = {
         let imageView = UIImageView()
-        
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
@@ -26,6 +26,8 @@ final class GenderCollectionViewCell: BaseCollectionViewCell {
     }()
     
     override func configure() {
+        super.configure()
+        contentView.backgroundColor = Colors.white
         clipsToBounds = true
         self.layer.borderWidth = 1
         self.layer.borderColor = Colors.gray3.cgColor
@@ -40,15 +42,13 @@ final class GenderCollectionViewCell: BaseCollectionViewCell {
         
         genderLabel.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.bottom.equalTo(contentView.snp.bottom).inset(14)
+            make.top.equalTo(genderImageView.snp.bottom).inset(4)
             make.height.equalTo(26)
         }
         
         genderImageView.snp.makeConstraints { make in
-            make.centerX.equalTo(contentView)
+            make.centerX.centerY.equalTo(contentView)
             make.width.height.equalTo(64)
-            make.top.equalTo(contentView.snp.top).inset(14)
-            make.bottom.equalTo(genderLabel.snp.top).offset(2)
         }
         
     }

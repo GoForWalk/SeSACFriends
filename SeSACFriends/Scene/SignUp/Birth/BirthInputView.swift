@@ -31,7 +31,7 @@ final class BirthInputView: BaseView {
     
     let yearTextField: InputTextField = {
         let textField = InputTextField()
-        textField.placeholder = "1990"
+        textField.placeholder = ""
         textField.placeholderLabel.setLineHeight(fontInfo: Fonts.title4R14)
         return textField
     }()
@@ -46,7 +46,7 @@ final class BirthInputView: BaseView {
     
     let monthTextField: InputTextField = {
         let textField = InputTextField()
-        textField.placeholder = "1"
+        textField.placeholder = ""
         textField.placeholderLabel.setLineHeight(fontInfo: Fonts.title4R14)
         
         return textField
@@ -63,7 +63,7 @@ final class BirthInputView: BaseView {
 
     let dayTextField: InputTextField = {
         let textField = InputTextField()
-        textField.placeholder = "1"
+        textField.placeholder = ""
         textField.placeholderLabel.setLineHeight(fontInfo: Fonts.title4R14)
         
         return textField
@@ -127,7 +127,7 @@ final class BirthInputView: BaseView {
             }
         }
         
-        [monthlabel, daylabel].forEach {
+        [monthTextField, dayTextField].forEach {
             $0.snp.makeConstraints { make in
                 make.width.equalTo(yearTextField.snp.width)
             }

@@ -23,7 +23,7 @@ final class EmailInputViewModel: ViewModelType {
     }
     
     struct Output {
-        let emailValidation = BehaviorRelay(value: false)
+        let emailValidation = PublishRelay<Bool>()
     }
     
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
@@ -45,7 +45,7 @@ private extension EmailInputViewModel {
     func createOutput(input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
-        useCase.emailValidateion
+        useCase.emailValidation
             .bind(to: output.emailValidation)
             .disposed(by: disposeBag)
         

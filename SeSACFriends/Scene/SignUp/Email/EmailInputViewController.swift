@@ -15,7 +15,7 @@ final class EmailInputViewController: BaseViewController {
     private let mainView = EmailInputView()
     private let disposeBag = DisposeBag()
     var viewModel: EmailInputViewModel?
-    
+
     override func loadView() {
         view = mainView
     }
@@ -33,7 +33,11 @@ final class EmailInputViewController: BaseViewController {
         
         guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }
         
-        output.emailValidation
+        let emailValidation = output.emailValidation
+        let tap = mainView.authButton.rx.tap
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+        
+        emailValidation
             .asDriver(onErrorJustReturn: false)
             .drive(onNext: { [weak self] bool in
                 if bool {
@@ -44,21 +48,18 @@ final class EmailInputViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(
-            output.emailValidation,
-            mainView.authButton.rx.tap
-                .debounce(.seconds(1), scheduler: MainScheduler.instance)
-        )
-        .subscribe { [weak self] element in
-            switch element.0 {
-            case true:
-                self?.presentNextView()
-            case false:
-                return // TODO: Toast 시키기
+        tap
+            .map { true }
+            .withLatestFrom(emailValidation)
+            .debug()
+            .subscribe { [weak self] element in
+                if element {
+                    self?.presentNextView()
+                } else {
+                    // TODO: Toast 시키기
+                }
             }
-        }
-        .disposed(by: disposeBag)
-        
+            .disposed(by: disposeBag)
     }
     
 }

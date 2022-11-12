@@ -64,12 +64,23 @@ class MessageAuthViewController: BaseViewController {
         
         output?.apiConnectResult
             .asDriver(onErrorJustReturn: 501)
-            .drive(onNext: { int in
+            .drive(onNext: { [weak self] int in
                 if int == 406 {
                     // TODO: SignUp View Load
+                    self?.presentNextView()
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+}
+
+private extension MessageAuthViewController {
+    
+    func presentNextView() {
+        let vc = NickInputViewController()
+        vc.viewModel = NickInputViewModel(useCase: SignInUseCaseImpi())
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

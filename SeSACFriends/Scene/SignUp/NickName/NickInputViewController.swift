@@ -31,33 +31,45 @@ final class NickInputViewController: BaseViewController {
             nickTextInput: mainView.textField.rx.text
         )
         
-        let output = viewModel?.transform(input: input, disposeBag: disposeBag)
+        guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }
         
-        output?.nickValidation
+        output.nickValidation
             .asDriver(onErrorJustReturn: false)
             .drive(onNext: { [weak self] bool in
                 guard let self else { return }
                 switch bool {
                 case true:
                     self.mainView.authButton.buttonMode = .fill
-                    self.mainView.authButton.isEnabled = true
                 case false:
                     self.mainView.authButton.buttonMode = .disable
-                    self.mainView.authButton.isEnabled = false
                 }
             })
             .disposed(by: disposeBag)
         
-        // TODO: 여기 코드도 수정
         mainView.authButton.rx.tap
-            .bind { [weak self] in
-                
-                guard let useCase = self?.viewModel?.useCase else { return }
-                
-                let vc = BirthInputViewController()
-                vc.viewModel = BirthInputViewModel(useCase: useCase)
+            .map { true }
+            .withLatestFrom(output.nickValidation)
+            .debug()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe { [weak self] element in
+                if element {
+                    self?.presentNextView()
+                } else {
+                    // TODO: Toast 시키기
+                }
             }
             .disposed(by: disposeBag)
+    }
+    
+}
+
+private extension NickInputViewController {
+    
+    func presentNextView() {
+        guard let useCase = viewModel?.useCase else { return }
+        let vc = BirthInputViewController()
+        vc.viewModel = BirthInputViewModel(useCase: useCase)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

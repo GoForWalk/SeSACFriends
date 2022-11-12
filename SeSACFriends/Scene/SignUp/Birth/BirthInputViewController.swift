@@ -48,7 +48,7 @@ final class BirthInputViewController: BaseViewController {
         output.pickedYear
             .map {"\($0)"}
             .asDriver(onErrorJustReturn: "")
-            .drive(mainView.monthTextField.rx.text)
+            .drive(mainView.yearTextField.rx.text)
             .disposed(by: disposeBag)
         
         output.availableAge
@@ -62,21 +62,19 @@ final class BirthInputViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(
-            output.availableAge,
-            mainView.authButton.rx.tap
-                .debounce(.seconds(1), scheduler: MainScheduler.instance)
-        )
-        .subscribe { [weak self] element in
-            switch element.0 {
-            case true:
-                self?.presentNextView()
-            case false:
-                return // TODO: Toast 시키기
+        mainView.authButton.rx.tap
+            .map { true }
+            .withLatestFrom(output.availableAge)
+            .debug()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe { [weak self] element in
+                if element {
+                    self?.presentNextView()
+                } else {
+                    // TODO: Toast 시키기
+                }
             }
-            
-        }
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
     
 }

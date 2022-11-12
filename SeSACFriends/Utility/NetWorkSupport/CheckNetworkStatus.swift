@@ -7,4 +7,8 @@
 
 import Foundation
 
+import Network
 // TODO: Check NetWork Status
+// NWPathMonitor: A simple class that notifies the app when there is a change in the network reachability. (Available from iOS 12.0+)
+
+

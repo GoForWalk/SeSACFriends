@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 final class OnBoardingView: BaseView {
     
     lazy var collectionView: UICollectionView = {
-
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
         collectionView.isPagingEnabled = true
         collectionView.isScrollEnabled = true

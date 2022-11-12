@@ -34,7 +34,7 @@ final class EmailInputView: BaseView {
     
     let textField: InputTextField = {
         let textField = InputTextField()
-        textField.keyboardType = .phonePad
+        textField.keyboardType = .emailAddress
         textField.placeholder = "SeSAC@email.com"
         textField.font = Fonts.title4R14.font
         return textField

@@ -29,6 +29,7 @@
 		CF2E832E291D7BA700D2DE1C /* CheckIDToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E832D291D7BA700D2DE1C /* CheckIDToken.swift */; };
 		CF2E8331291E95F600D2DE1C /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */; };
 		CF2E8333291E961300D2DE1C /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8332291E961300D2DE1C /* AuthUseCase.swift */; };
+		CF2E833629200CF200D2DE1C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E833529200CF200D2DE1C /* StartViewController.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
@@ -100,6 +101,7 @@
 		CF2E832D291D7BA700D2DE1C /* CheckIDToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIDToken.swift; sourceTree = "<group>"; };
 		CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		CF2E8332291E961300D2DE1C /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		CF2E833529200CF200D2DE1C /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
@@ -264,6 +266,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		CF2E833429200CD700D2DE1C /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E833529200CF200D2DE1C /* StartViewController.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
 		CFDF0C052918C2ED00E586A1 /* IgnoreFolder */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +336,7 @@
 		CFDF0C2F291925B700E586A1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CF2E833429200CD700D2DE1C /* Start */,
 				CFDF0C4D291A65AE00E586A1 /* Auth */,
 				CFDF0C36291927A800E586A1 /* OnBoarding */,
 				CFDF0C352919265500E586A1 /* SignUp */,
@@ -625,6 +636,7 @@
 				CFDF0C7E291D30FC00E586A1 /* APIError.swift in Sources */,
 				CF2E8320291D74D000D2DE1C /* GenderInputView.swift in Sources */,
 				CF2E8322291D74DC00D2DE1C /* GenderInputViewController.swift in Sources */,
+				CF2E833629200CF200D2DE1C /* StartViewController.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
 				CFDF0C78291D0ACF00E586A1 /* HTTPHeader.swift in Sources */,
 				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,

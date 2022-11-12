@@ -23,7 +23,6 @@ final class NickInputView: BaseView {
     
     let textField: InputTextField = {
         let textField = InputTextField()
-        textField.keyboardType = .phonePad
         textField.placeholder = "10자 이내로 입력"
         return textField
     }()

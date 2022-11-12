@@ -27,7 +27,7 @@ final class BirthInputViewModel: ViewModelType {
         let pickedDay = BehaviorSubject(value: 1)
         let pickedMonth = BehaviorSubject(value: 1)
         let pickedYear = BehaviorSubject(value: 1990)
-        let availableAge = BehaviorSubject(value: false)
+        let availableAge = PublishSubject<Bool>()
     }
     
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
