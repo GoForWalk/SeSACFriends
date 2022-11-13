@@ -8,25 +8,26 @@
 import Foundation
 
 import RxSwift
-import Network
+//import Network
 
 protocol APIService: AnyObject {
     func getUser(completionHandler: @escaping (Result<UserInfo, Error>) -> Void)
     func postUser(nick: String, birth: String, email: String, gender: Int, completionHandler: @escaping (Result<Int, Error>) -> Void)
 }
 
-final class APIServiceImpi: APIService, CheckNetworkStatus {
+//final class APIServiceImpi: APIService, CheckNetworkStatus {
+final class APIServiceImpi: APIService {
     
-    var monitor: NWPathMonitor?
+//    var monitor: NWPathMonitor?
     var isMonitoring: Bool = false
     var handleDidStartNetworkMonitoring: (() -> Void)?
     var handleDidStoppedNetworkMonitoring: (() -> Void)?
     
     func getUser(completionHandler: @escaping (Result<UserInfo, Error>) -> Void) {
-        handleDidStartNetworkMonitoring = {
-            completionHandler(.failure(APIError.notConnected))
-        }
-        startMonitering()
+//        handleDidStartNetworkMonitoring = {
+//            completionHandler(.failure(APIError.notConnected))
+//        }
+//        startMonitering()
         let getUser = Endpoint.getUser
         let urlComponents = URLComponents(string: getUser.url)
         
@@ -59,7 +60,7 @@ final class APIServiceImpi: APIService, CheckNetworkStatus {
             guard let userInfo = try? decoder.decode(UserInfo.self, from: data) else { return }
             print("✅✅✅ Get userInfo")
             completionHandler(.success(userInfo))
-            self?.stopMonitoring()
+//            self?.stopMonitoring()
         }
         task.resume()
     }//: getUser()
@@ -67,21 +68,21 @@ final class APIServiceImpi: APIService, CheckNetworkStatus {
     
     func postUser(nick: String, birth: String, email: String, gender: Int, completionHandler: @escaping (Result<Int, Error>) -> Void) {
         
-        handleDidStartNetworkMonitoring = {
-            completionHandler(.failure(APIError.notConnected))
-        }
-        startMonitering()
+//        handleDidStartNetworkMonitoring = {
+//                completionHandler(.failure(APIError.notConnected))
+//        }
+//        startMonitering()
        
         let postUser = Endpoint.postUser
         var urlComponents = URLComponents(string: postUser.url)
         
         guard
-//            let phoneNumber = UserDefaults.phoneNum,
+            let phoneNumber = UserDefaults.phoneNum,
                 let fcmToken = UserDefaults.fcmToken else { return }
         
         let formData: [String: String] = [
-            //            "phoneNumber" : phoneNumber,
-            "phoneNumber" : "+821027359012",
+                        "phoneNumber" : phoneNumber,
+//            "phoneNumber" : "+821027359012",
             "FCMtoken" : fcmToken,
             //            "FCMtoken" : "dD3d-FVHkUdmrU5jIbigv6:APA91bHduYferz4CvD2wfcMxTqWcKHSEwMQCxnYARS-9604LA_Q-Je_YNXpW_LD32KimC2zFhJozzryqxm-5eo86HijL1LK9cIaKdgbl9uuT9AEN7nwxZVPiMeeWhX-6NqP2WTLObxPY",
             "nick" : nick,
@@ -123,7 +124,7 @@ final class APIServiceImpi: APIService, CheckNetworkStatus {
             print("✅✅✅✅✅✅ signUp Done")
             print(data)
             completionHandler(.success(200))
-            self?.stopMonitoring()
+//            self?.stopMonitoring()
         }
         task.resume()
     }

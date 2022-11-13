@@ -19,11 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let rootViewController = PhoneAuthViewController()
 //        let navVC = UINavigationController(rootViewController: rootViewController)
         
-        let vc = NickInputViewController()
-        vc.viewModel = NickInputViewModel(useCase: SignInUseCaseImpi())
-        let navVC = UINavigationController(rootViewController: vc)
+        let vc = StartViewController()
+        vc.apiService = APIServiceImpi()
         
-        self.window?.rootViewController = navVC
+        self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
     }
 

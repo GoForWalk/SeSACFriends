@@ -29,7 +29,7 @@ extension CheckNetworkStatus {
         if isMonitoring { return }
         monitor = NWPathMonitor()
         
-        let queue = DispatchQueue(label: "NWMonitor")
+        let queue = DispatchQueue(label: "NWMonitor", qos: .default)
         monitor?.start(queue: queue)
         monitor?.pathUpdateHandler = { [weak self] _ in
             self?.handleDidStartNetworkMonitoring?()

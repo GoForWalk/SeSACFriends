@@ -37,14 +37,15 @@ final class AuthUseCaseImpi: AuthUseCase {
         print(result)
         if result {
             print(string)
-            phoneNum = makeSendableString(string) 
+            phoneNum = makeSendableString(string)
         }
     }
         
     func sendMessage(isResend: Bool) {
         guard let phoneNum else { return }
         print(phoneNum)
-        authPhone(phoneNumber: makeSendableString(phoneNum), isResend: isResend)
+        authPhone(phoneNumber: phoneNum, isResend: isResend)
+        UserDefaults.phoneNum = phoneNum
     }
 
     func validateMessage(str: String) {
@@ -135,7 +136,6 @@ private extension AuthUseCaseImpi {
             
             print("✅✅✅ idToken: \(idToken)")
             UserDefaults.idToken = idToken
-            UserDefaults.phoneNum = self?.makeSendablePhoneNum(phoneNum: self?.phoneNum)
             self?.apiconnects()
         }
     }

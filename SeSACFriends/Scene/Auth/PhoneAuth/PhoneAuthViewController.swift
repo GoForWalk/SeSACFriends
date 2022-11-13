@@ -52,6 +52,19 @@ class PhoneAuthViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+//        mainView.authButton.rx.tap
+//            .map { true }
+//            .withLatestFrom(output.phoneNumValidated)
+//            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+//            .debug()
+//            .subscribe { [weak self] validate in
+//                if validate {
+//                    
+//                } else {
+//                    self?.presentToast(message: "")
+//                }
+//            }
+        
         output.messageAuthFlow
             .asDriver(onErrorJustReturn: false)
             .drive { [weak self] bool in
