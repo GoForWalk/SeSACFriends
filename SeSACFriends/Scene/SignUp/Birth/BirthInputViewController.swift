@@ -71,7 +71,7 @@ final class BirthInputViewController: BaseViewController {
                 if element {
                     self?.presentNextView()
                 } else {
-                    // TODO: Toast 시키기
+                    self?.presentToast(message: "새싹스터디는 만 17세 이상만 사용할 수 있습니다.")
                 }
             }
             .disposed(by: disposeBag)

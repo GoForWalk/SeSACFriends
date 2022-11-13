@@ -56,7 +56,7 @@ final class EmailInputViewController: BaseViewController {
                 if element {
                     self?.presentNextView()
                 } else {
-                    // TODO: Toast 시키기
+                    self?.presentToast(message: "이메일 형식이 올바르지 않습니다.")
                 }
             }
             .disposed(by: disposeBag)

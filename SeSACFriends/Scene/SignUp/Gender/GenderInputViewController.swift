@@ -59,27 +59,16 @@ final class GenderInputViewController: BaseViewController {
             .withLatestFrom(output.signUpResult)
             .debug()
             .subscribe { [weak self] resultCode in
-                if resultCode == 200 {
-                    self?.presentNextView()
-                } else if resultCode == 202 {
+                if resultCode.element == 200 {
+//                    self?.presentVC(presentType: <#T##PresentType#>, initViewController: <#T##() -> BaseViewController#>)
+                    print("TabbBar View Present!!")
+                } else if resultCode.element == 202 {
                     self?.moveToNickVC()
                 } else {
-                    //TODO: 닉네임 튕겨내면 닉네임으로...ㅎ
-                    print("에러!!")
+                    self?.presentToast(message: APIError(rawValue: resultCode.element!)?.errorDescription ?? "기타 에러 [ERROR CODE: \(resultCode.element!)")
                 }
             }
             .disposed(by: disposeBag)
-        
-//        output.signUpResult
-//            .subscribe { [weak self] resultCode in
-//                if resultCode == 200 {
-//                    self?.presentNextView()
-//                } else {
-//                    //TODO: 닉네임 튕겨내면 닉네임으로...ㅎ
-//                    print("에러!!")
-//                }
-//            }
-//            .disposed(by: disposeBag)
     }
     
 }
@@ -104,24 +93,7 @@ private extension GenderInputViewController {
         return layout
     }
     
-    func presentNextView() {
-        // iOS13+ SceneDelegate를 쓸 때 동작하는 코드
-        // 앱을 처음 실행하는 것 처럼 동작하게 한다.
-        // SceneDelegate 밖에서 window에 접근하는 방법
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        // 생명주기 담당
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        
-//        guard let vc = UIStoryboard(name: <#name#>, bundle: nil).instantiateViewController(withIdentifier: <#identifier#>) as? <#ViewController.Type#> else { return }
-        
-        // window에 접근
-//        sceneDelegate?.window?.rootViewController = vc
-//        sceneDelegate?.window?.makeKeyAndVisible()
-
-    }
-    
     func moveToNickVC() {
-        
         guard let controllers = self.navigationController?.viewControllers else { return }
         for vc in controllers {
             if vc is NickInputViewController {

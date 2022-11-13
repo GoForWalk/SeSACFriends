@@ -55,7 +55,7 @@ final class NickInputViewController: BaseViewController {
                 if element {
                     self?.presentNextView()
                 } else {
-                    // TODO: Toast 시키기
+                    self?.presentToast(message: "닉네임은 1자 이상 10자 이내로 부탁드려요.")
                 }
             }
             .disposed(by: disposeBag)
