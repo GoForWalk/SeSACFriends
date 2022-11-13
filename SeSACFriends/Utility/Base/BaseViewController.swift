@@ -7,13 +7,22 @@
 
 import UIKit
 import Toast
+import Network
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, CheckNetworkStatus {
+    
+    var monitor: NWPathMonitor?
+    var isMonitoring: Bool = false
+    var handleDidStartNetworkMonitoring: (() -> Void)?
+    var handleDidStoppedNetworkMonitoring: (() -> Void)?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         bind()
+        handleDidStoppedNetworkMonitoring = { [weak self] in
+            self?.presentToast(message: "네트워크 연결이 원활하지 않습니다.")
+        }
     }
     
     func configure() {
@@ -27,6 +36,7 @@ class BaseViewController: UIViewController {
     deinit {
         print("❌❌❌❌❌❌❌❌❌ \(self.description) ❌❌❌❌❌❌❌❌❌")
     }
+    
 }
 
 extension BaseViewController {
@@ -38,7 +48,7 @@ extension BaseViewController {
     
     // present View
     func presentVC(presentType: PresentType, initViewController: @escaping () -> BaseViewController, presentStyle: UIModalPresentationStyle = .automatic) {
-        
+        self.startMonitering()
         switch presentType {
         case .push:
             navigationController?.pushViewController(initViewController(), animated: true)
@@ -56,6 +66,7 @@ extension BaseViewController {
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
         }
+        self.stopMonitoring()
     }
 }
 

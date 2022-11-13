@@ -15,7 +15,7 @@ enum APIError: Int, Error {
     case notUser = 406
     case serverError = 500
     case clientError = 501
-    
+    case notConnected = 800
 }
 
 extension APIError {
@@ -34,6 +34,8 @@ extension APIError {
             return "Server Error"
         case .clientError:
             return "client Error"
+        case .notConnected:
+            return "네트워크 연결이 원활하지 않습니다."
         }
     }
     

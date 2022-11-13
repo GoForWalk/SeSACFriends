@@ -8,15 +8,25 @@
 import Foundation
 
 import RxSwift
+import Network
 
-protocol APIService {
+protocol APIService: AnyObject {
     func getUser(completionHandler: @escaping (Result<UserInfo, Error>) -> Void)
     func postUser(nick: String, birth: String, email: String, gender: Int, completionHandler: @escaping (Result<Int, Error>) -> Void)
 }
 
-struct APIServiceImpi: APIService {
+final class APIServiceImpi: APIService, CheckNetworkStatus {
+    
+    var monitor: NWPathMonitor?
+    var isMonitoring: Bool = false
+    var handleDidStartNetworkMonitoring: (() -> Void)?
+    var handleDidStoppedNetworkMonitoring: (() -> Void)?
     
     func getUser(completionHandler: @escaping (Result<UserInfo, Error>) -> Void) {
+        handleDidStartNetworkMonitoring = {
+            completionHandler(.failure(APIError.notConnected))
+        }
+        startMonitering()
         let getUser = Endpoint.getUser
         let urlComponents = URLComponents(string: getUser.url)
         
@@ -29,7 +39,7 @@ struct APIServiceImpi: APIService {
         
         let defaultSession = URLSession(configuration: .default)
         
-        let task = defaultSession.dataTask(with: request) { data, response, error in
+        let task = defaultSession.dataTask(with: request) { [weak self] data, response, error in
             guard error == nil else {
                 print("Error occur: error calling Get - \(String(describing: error))")
                 completionHandler(.failure(APIError.serverError))
@@ -49,14 +59,20 @@ struct APIServiceImpi: APIService {
             guard let userInfo = try? decoder.decode(UserInfo.self, from: data) else { return }
             print("✅✅✅ Get userInfo")
             completionHandler(.success(userInfo))
+            self?.stopMonitoring()
         }
         task.resume()
     }//: getUser()
     
     
     func postUser(nick: String, birth: String, email: String, gender: Int, completionHandler: @escaping (Result<Int, Error>) -> Void) {
-        let postUser = Endpoint.postUser
         
+        handleDidStartNetworkMonitoring = {
+            completionHandler(.failure(APIError.notConnected))
+        }
+        startMonitering()
+       
+        let postUser = Endpoint.postUser
         var urlComponents = URLComponents(string: postUser.url)
         
         guard
@@ -90,7 +106,7 @@ struct APIServiceImpi: APIService {
         request.httpBody = formEncodedData
         
         let defaultSession = URLSession(configuration: .default)
-        let task = defaultSession.dataTask(with: request) { data, response, error in
+        let task = defaultSession.dataTask(with: request) {[weak self] data, response, error in
             
             guard error == nil else {
                 print("Error occur: error calling POST - \(String(describing: error))")
@@ -107,6 +123,7 @@ struct APIServiceImpi: APIService {
             print("✅✅✅✅✅✅ signUp Done")
             print(data)
             completionHandler(.success(200))
+            self?.stopMonitoring()
         }
         task.resume()
     }
