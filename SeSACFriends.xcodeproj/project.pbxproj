@@ -30,6 +30,8 @@
 		CF2E8331291E95F600D2DE1C /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */; };
 		CF2E8333291E961300D2DE1C /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8332291E961300D2DE1C /* AuthUseCase.swift */; };
 		CF2E833629200CF200D2DE1C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E833529200CF200D2DE1C /* StartViewController.swift */; };
+		CF2E833929202EC500D2DE1C /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = CF2E833829202EC500D2DE1C /* Reachability */; };
+		CF2E833C2920C63900D2DE1C /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E833B2920C63900D2DE1C /* UseCase.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
@@ -102,6 +104,7 @@
 		CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		CF2E8332291E961300D2DE1C /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		CF2E833529200CF200D2DE1C /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		CF2E833B2920C63900D2DE1C /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 				CFDF0C64291BF21300E586A1 /* Toast in Frameworks */,
 				CFDF0C28291921E900E586A1 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				CFDF0C2C291921E900E586A1 /* FirebaseCrashlytics in Frameworks */,
+				CF2E833929202EC500D2DE1C /* Reachability in Frameworks */,
 				CFFFBED7291D503F00E4DAB4 /* RxCocoa in Frameworks */,
 				CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */,
 			);
@@ -262,6 +266,7 @@
 			children = (
 				CF2E8330291E95F600D2DE1C /* SignUpUseCase.swift */,
 				CF2E8332291E961300D2DE1C /* AuthUseCase.swift */,
+				CF2E833B2920C63900D2DE1C /* UseCase.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 				CFDF0C63291BF21300E586A1 /* Toast */,
 				CFFFBED6291D503F00E4DAB4 /* RxCocoa */,
 				CFFFBED8291D503F00E4DAB4 /* RxSwift */,
+				CF2E833829202EC500D2DE1C /* Reachability */,
 			);
 			productName = SeSACFriends;
 			productReference = CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */;
@@ -584,6 +590,7 @@
 				CFDF0C26291921E900E586A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CFDF0C62291BF21300E586A1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CFFFBED5291D503F00E4DAB4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CF2E833729202EC500D2DE1C /* XCRemoteSwiftPackageReference "Reachability.swift" */,
 			);
 			productRefGroup = CF0467AB2918BF5800E72CC9 /* Products */;
 			projectDirPath = "";
@@ -628,6 +635,7 @@
 				CFDF0C59291A8B0900E586A1 /* MessageAuthViewModel.swift in Sources */,
 				CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */,
 				CF2E8326291D750900D2DE1C /* EmailInputViewModel.swift in Sources */,
+				CF2E833C2920C63900D2DE1C /* UseCase.swift in Sources */,
 				CF2E8314291D73BB00D2DE1C /* BirthInputView.swift in Sources */,
 				CF2E831B291D74AA00D2DE1C /* EmailInputView.swift in Sources */,
 				CFDF0C71291CFC4C00E586A1 /* UserDefaults+Extension.swift in Sources */,
@@ -884,6 +892,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF2E833729202EC500D2DE1C /* XCRemoteSwiftPackageReference "Reachability.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.1.0;
+			};
+		};
 		CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -927,6 +943,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF2E833829202EC500D2DE1C /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF2E833729202EC500D2DE1C /* XCRemoteSwiftPackageReference "Reachability.swift" */;
+			productName = Reachability;
+		};
 		CFDF0BFE2918C22200E586A1 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */;

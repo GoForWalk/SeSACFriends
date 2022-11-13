@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol SignUpUseCase {
+protocol SignUpUseCase: UseCase {
     var nickValidation: BehaviorSubject<Bool> { get }
     var birthValidation: BehaviorSubject<Bool> { get }
     var emailValidation: BehaviorSubject<Bool> { get }
@@ -46,7 +46,7 @@ final class SignInUseCaseImpi: SignUpUseCase {
 }
 
 // MARK: - Input
-extension SignInUseCaseImpi {
+extension SignInUseCaseImpi : CheckAndRefreshIDToken{
 
     func checkNickValidate(str: String) {
         if str.count > 0 && str.count <= 10 {
@@ -103,6 +103,7 @@ extension SignInUseCaseImpi {
             case .success(let statusCode):
                 self.signUpResult.onNext(statusCode)
             case .failure(let error as APIError):
+                self.checkRefreshToken(errorCode: error.rawValue, task: self.signUpStart)
                 self.signUpResult.onNext(error.rawValue)
             default:
                 return

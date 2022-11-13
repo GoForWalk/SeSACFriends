@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol AuthUseCase {
+protocol AuthUseCase: UseCase {
     var validation: BehaviorSubject<Bool> { get }
     var phoneNumText: BehaviorSubject<String> { get }
     var messageApproved: BehaviorSubject<Bool> { get }

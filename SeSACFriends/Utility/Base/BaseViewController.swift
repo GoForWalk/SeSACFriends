@@ -9,6 +9,8 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    var childViewContollerList: [UIViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -26,4 +28,18 @@ class BaseViewController: UIViewController {
     deinit {
         print("❌❌❌❌❌❌❌❌❌ \(self.description) ❌❌❌❌❌❌❌❌❌")
     }
+}
+
+extension BaseViewController {
+    
+    // Toast View
+    
+    // present View
+    
+}
+
+private extension BaseViewController {
+    
+    
+    
 }

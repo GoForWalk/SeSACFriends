@@ -61,6 +61,8 @@ final class GenderInputViewController: BaseViewController {
             .subscribe { [weak self] resultCode in
                 if resultCode == 200 {
                     self?.presentNextView()
+                } else if resultCode == 202 {
+                    self?.moveToNickVC()
                 } else {
                     //TODO: 닉네임 튕겨내면 닉네임으로...ㅎ
                     print("에러!!")
@@ -117,6 +119,18 @@ private extension GenderInputViewController {
 //        sceneDelegate?.window?.makeKeyAndVisible()
 
     }
+    
+    func moveToNickVC() {
+        
+        guard let controllers = self.navigationController?.viewControllers else { return }
+        for vc in controllers {
+            if vc is NickInputViewController {
+                _ = self.navigationController?.popToViewController(vc as! NickInputViewController, animated: true)
+            }
+        }
+        
+    }
+
 }
 
 extension GenderInputViewController: UICollectionViewDelegate, UICollectionViewDataSource {
