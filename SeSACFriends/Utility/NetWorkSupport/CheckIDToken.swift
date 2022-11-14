@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseAuth
 
-// TODO: Check NetWork Status
 protocol CheckAndRefreshIDToken: AnyObject where Self: UseCase{
     
 }

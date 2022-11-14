@@ -56,11 +56,14 @@ final class GenderInputViewController: BaseViewController {
         
         input.signUpButtonTapped
             .map { 0 }
+            .debounce(.seconds(3), scheduler: MainScheduler.instance)
             .withLatestFrom(output.signUpResult)
             .debug()
             .subscribe { [weak self] resultCode in
                 if resultCode.element == 200 {
-//                    self?.presentVC(presentType: <#T##PresentType#>, initViewController: <#T##() -> BaseViewController#>)
+                    self?.presentVC(presentType: .makeNewView, initViewController: {
+                        return TabbarController()
+                    })
                     print("TabbBar View Present!!")
                 } else if resultCode.element == 202 {
                     self?.moveToNickVC()

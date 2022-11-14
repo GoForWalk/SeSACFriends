@@ -13,8 +13,7 @@ import Network
 protocol CheckNetworkStatus: AnyObject {
     var monitor: NWPathMonitor? { get set }
     var isMonitoring: Bool { get set }
-    var handleDidStartNetworkMonitoring: (() -> Void)? { get set }
-    var handleDidStoppedNetworkMonitoring: (() -> Void)? { get set }
+    var handleNetworkDisConnected: (() -> Void)? { get set }
 }
 
 extension CheckNetworkStatus {
@@ -30,21 +29,32 @@ extension CheckNetworkStatus {
         monitor = NWPathMonitor()
         
         let queue = DispatchQueue(label: "NWMonitor", qos: .default)
-        monitor?.start(queue: queue)
-        monitor?.pathUpdateHandler = { [weak self] _ in
-            self?.handleDidStartNetworkMonitoring?()
+        monitor?.pathUpdateHandler = { [weak self] path in
+            print("👀👀👀 Monitoring NetWork Connection start: \(self)")
+            self?.setNetWorkCheck(path: path, handler: self?.handleNetworkDisConnected)
         }
+        monitor?.start(queue: queue)
         isMonitoring = true
-        handleDidStartNetworkMonitoring?()
     }
     /// Network connection 모니터링 종료 함수
     func stopMonitoring() {
         if isMonitoring, let monitor {
+            print("👀👀👀 Monitoring NetWork Connection done: \(self)")
             monitor.cancel()
             self.monitor = nil
             isMonitoring = false
-            
-            handleDidStoppedNetworkMonitoring?()
+        }
+        
+    }
+    
+    private func setNetWorkCheck(path: NWPath, handler: (() -> Void)?) {
+        
+        if isConnected {
+            print("👀👀👀 Monitoring NetWork Connection: \(self)")
+            return
+        } else {
+            guard let handler else { return }
+            handler()
         }
         
     }

@@ -7,23 +7,23 @@
 
 import UIKit
 import Toast
-//import Network
+import Network
 
-//class BaseViewController: UIViewController, CheckNetworkStatus {
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, CheckNetworkStatus {
+//class BaseViewController: UIViewController {
     
-//    var monitor: NWPathMonitor?
+    var monitor: NWPathMonitor?
     var isMonitoring: Bool = false
-    var handleDidStartNetworkMonitoring: (() -> Void)?
-    var handleDidStoppedNetworkMonitoring: (() -> Void)?
+    var handleNetworkDisConnected: (() -> Void)?
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
-        bind()
-        handleDidStartNetworkMonitoring = { [weak self] in
+        handleNetworkDisConnected = { [weak self] in
             self?.presentToast(message: "네트워크 연결이 원활하지 않습니다.")
         }
+        startMonitering()
+        configure()
+        bind()
     }
     
     func configure() {
@@ -34,7 +34,13 @@ class BaseViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startMonitering()
+    }
+    
     deinit {
+        stopMonitoring()
         print("❌❌❌❌❌❌❌❌❌ \(self.description) ❌❌❌❌❌❌❌❌❌")
     }
     
@@ -51,8 +57,7 @@ extension BaseViewController {
     }
     
     // present View
-    func presentVC(presentType: PresentType, initViewController: @escaping () -> BaseViewController, presentStyle: UIModalPresentationStyle = .automatic) {
-//        self.startMonitering()
+    func presentVC(presentType: PresentType, initViewController: @escaping () -> UIViewController, presentStyle: UIModalPresentationStyle = .automatic) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             switch presentType {
@@ -74,13 +79,12 @@ extension BaseViewController {
             }
 
         }
-//        self.stopMonitoring()
     }
 }
 
 private extension BaseViewController {
     
-    func makeNewView(vc: BaseViewController) {
+    func makeNewView(vc: UIViewController) {
         // iOS13+ SceneDelegate를 쓸 때 동작하는 코드
         // 앱을 처음 실행하는 것 처럼 동작하게 한다.
         // SceneDelegate 밖에서 window에 접근하는 방법

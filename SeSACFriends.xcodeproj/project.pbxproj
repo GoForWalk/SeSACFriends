@@ -31,6 +31,18 @@
 		CF2E8333291E961300D2DE1C /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8332291E961300D2DE1C /* AuthUseCase.swift */; };
 		CF2E833629200CF200D2DE1C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E833529200CF200D2DE1C /* StartViewController.swift */; };
 		CF2E833C2920C63900D2DE1C /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E833B2920C63900D2DE1C /* UseCase.swift */; };
+		CF2E833E29221AC700D2DE1C /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E833D29221AC700D2DE1C /* TabbarViewController.swift */; };
+		CF2E834429221BF400D2DE1C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E834329221BF400D2DE1C /* HomeViewController.swift */; };
+		CF2E834629221D4100D2DE1C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E834529221D4100D2DE1C /* ShopViewController.swift */; };
+		CF2E834829221D5A00D2DE1C /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E834729221D5A00D2DE1C /* FriendsViewController.swift */; };
+		CF2E834A29221E9400D2DE1C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E834929221E9400D2DE1C /* ProfileViewController.swift */; };
+		CF2E834D292221BE00D2DE1C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E834C292221BE00D2DE1C /* ProfileView.swift */; };
+		CF2E834F292221D300D2DE1C /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E834E292221D300D2DE1C /* FriendsView.swift */; };
+		CF2E8351292221E600D2DE1C /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8350292221E600D2DE1C /* ShopView.swift */; };
+		CF2E8353292221F300D2DE1C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8352292221F300D2DE1C /* HomeView.swift */; };
+		CF2E835B29222BCF00D2DE1C /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835A29222BCF00D2DE1C /* BaseTableViewCell.swift */; };
+		CF2E835E29222CDF00D2DE1C /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835D29222CDF00D2DE1C /* InfoTableViewCell.swift */; };
+		CF2E836029222CEE00D2DE1C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835F29222CEE00D2DE1C /* MainTableViewCell.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
@@ -104,6 +116,18 @@
 		CF2E8332291E961300D2DE1C /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		CF2E833529200CF200D2DE1C /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CF2E833B2920C63900D2DE1C /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		CF2E833D29221AC700D2DE1C /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		CF2E834329221BF400D2DE1C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CF2E834529221D4100D2DE1C /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		CF2E834729221D5A00D2DE1C /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		CF2E834929221E9400D2DE1C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CF2E834C292221BE00D2DE1C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CF2E834E292221D300D2DE1C /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		CF2E8350292221E600D2DE1C /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		CF2E8352292221F300D2DE1C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CF2E835A29222BCF00D2DE1C /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		CF2E835D29222CDF00D2DE1C /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		CF2E835F29222CEE00D2DE1C /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
@@ -277,6 +301,67 @@
 			path = Start;
 			sourceTree = "<group>";
 		};
+		CF2E833F29221BB900D2DE1C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E834329221BF400D2DE1C /* HomeViewController.swift */,
+				CF2E8352292221F300D2DE1C /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CF2E834029221BBE00D2DE1C /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E834529221D4100D2DE1C /* ShopViewController.swift */,
+				CF2E8350292221E600D2DE1C /* ShopView.swift */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		CF2E834129221BC200D2DE1C /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E834729221D5A00D2DE1C /* FriendsViewController.swift */,
+				CF2E834E292221D300D2DE1C /* FriendsView.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		CF2E834229221BCD00D2DE1C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E83582922266B00D2DE1C /* ProfileMain */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CF2E83572922246500D2DE1C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CF2E83582922266B00D2DE1C /* ProfileMain */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E835929222B4000D2DE1C /* subView */,
+				CF2E834929221E9400D2DE1C /* ProfileViewController.swift */,
+				CF2E834C292221BE00D2DE1C /* ProfileView.swift */,
+			);
+			path = ProfileMain;
+			sourceTree = "<group>";
+		};
+		CF2E835929222B4000D2DE1C /* subView */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E835D29222CDF00D2DE1C /* InfoTableViewCell.swift */,
+				CF2E835F29222CEE00D2DE1C /* MainTableViewCell.swift */,
+			);
+			path = subView;
+			sourceTree = "<group>";
+		};
 		CFDF0C052918C2ED00E586A1 /* IgnoreFolder */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +407,7 @@
 				CFDF0C182918DF9200E586A1 /* BaseView.swift */,
 				CFDF0C1B2918DFA700E586A1 /* BaseViewController.swift */,
 				CFDF0C43291A133900E586A1 /* BaseCollectionViewCell.swift */,
+				CF2E835A29222BCF00D2DE1C /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -351,6 +437,7 @@
 		CFDF0C30291925C200E586A1 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CF2E83572922246500D2DE1C /* Profile */,
 				CF2E830B291D6A9500D2DE1C /* SignUp */,
 				CFDF0C55291A895A00E586A1 /* Auth */,
 			);
@@ -379,6 +466,11 @@
 		CFDF0C342919264D00E586A1 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				CF2E833D29221AC700D2DE1C /* TabbarViewController.swift */,
+				CF2E834229221BCD00D2DE1C /* Profile */,
+				CF2E834129221BC200D2DE1C /* Friends */,
+				CF2E834029221BBE00D2DE1C /* Shop */,
+				CF2E833F29221BB900D2DE1C /* Home */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -619,22 +711,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2E831E291D74C300D2DE1C /* EmailInputViewController.swift in Sources */,
+				CF2E835E29222CDF00D2DE1C /* InfoTableViewCell.swift in Sources */,
 				CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */,
 				CFDF0C49291A53B000E586A1 /* PhoneAuthView.swift in Sources */,
 				CF2E8331291E95F600D2DE1C /* SignUpUseCase.swift in Sources */,
+				CF2E835B29222BCF00D2DE1C /* BaseTableViewCell.swift in Sources */,
 				CF2E8333291E961300D2DE1C /* AuthUseCase.swift in Sources */,
 				CFDF0C75291D098700E586A1 /* Endpoint.swift in Sources */,
 				CFDF0C212918FDDC00E586A1 /* InputTextField.swift in Sources */,
 				CFDF0C3A2919484700E586A1 /* UIButton+Extension.swift in Sources */,
+				CF2E833E29221AC700D2DE1C /* TabbarViewController.swift in Sources */,
 				CFFFBEDB291D533100E4DAB4 /* APIService.swift in Sources */,
 				CFDF0C4F291A65DC00E586A1 /* MessageAuthView.swift in Sources */,
 				CFDF0C59291A8B0900E586A1 /* MessageAuthViewModel.swift in Sources */,
+				CF2E834629221D4100D2DE1C /* ShopViewController.swift in Sources */,
 				CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */,
 				CF2E8326291D750900D2DE1C /* EmailInputViewModel.swift in Sources */,
 				CF2E833C2920C63900D2DE1C /* UseCase.swift in Sources */,
+				CF2E834D292221BE00D2DE1C /* ProfileView.swift in Sources */,
 				CF2E8314291D73BB00D2DE1C /* BirthInputView.swift in Sources */,
 				CF2E831B291D74AA00D2DE1C /* EmailInputView.swift in Sources */,
 				CFDF0C71291CFC4C00E586A1 /* UserDefaults+Extension.swift in Sources */,
+				CF2E834829221D5A00D2DE1C /* FriendsViewController.swift in Sources */,
 				CFDF0C5D291A8BE800E586A1 /* UserDefaultsConstant.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
 				CFDF0C7E291D30FC00E586A1 /* APIError.swift in Sources */,
@@ -642,13 +740,16 @@
 				CF2E8322291D74DC00D2DE1C /* GenderInputViewController.swift in Sources */,
 				CF2E833629200CF200D2DE1C /* StartViewController.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
+				CF2E8351292221E600D2DE1C /* ShopView.swift in Sources */,
 				CFDF0C78291D0ACF00E586A1 /* HTTPHeader.swift in Sources */,
 				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,
+				CF2E834F292221D300D2DE1C /* FriendsView.swift in Sources */,
 				CFDF0C3C29194D7400E586A1 /* OnboardingViewController.swift in Sources */,
 				CFDF0C6F291CDE8900E586A1 /* CustomUserDefaults.swift in Sources */,
 				CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */,
 				CFDF0C41291A130900E586A1 /* ObBoardingScrollView.swift in Sources */,
 				CF2E8308291D69AA00D2DE1C /* SignUpUseCaseImpi.swift in Sources */,
+				CF2E836029222CEE00D2DE1C /* MainTableViewCell.swift in Sources */,
 				CF2E832A291D771900D2DE1C /* GenderInputCollectionViewCell.swift in Sources */,
 				CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */,
 				CF2E8328291D751900D2DE1C /* GenderInputViewModel.swift in Sources */,
@@ -657,6 +758,9 @@
 				CF2E8324291D74F600D2DE1C /* BirthInputViewModel.swift in Sources */,
 				CF2E8317291D73D300D2DE1C /* BirthInputViewController.swift in Sources */,
 				CFDF0C7A291D0AFE00E586A1 /* HTTPMethod.swift in Sources */,
+				CF2E834A29221E9400D2DE1C /* ProfileViewController.swift in Sources */,
+				CF2E834429221BF400D2DE1C /* HomeViewController.swift in Sources */,
+				CF2E8353292221F300D2DE1C /* HomeView.swift in Sources */,
 				CFDF0C23291910E300E586A1 /* UILabel+Extension.swift in Sources */,
 				CFDF0C38291928C500E586A1 /* MainButton.swift in Sources */,
 				CFDF0C5B291A8B1600E586A1 /* PhoneAuthViewModel.swift in Sources */,

@@ -52,10 +52,11 @@ final class NickInputViewController: BaseViewController {
             .debug()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe { [weak self] element in
+                guard let element = element.element, let self else { return }
                 if element {
-                    self?.presentNextView()
+                    self.presentVC(presentType: .push, initViewController: self.presentNextView)
                 } else {
-                    self?.presentToast(message: "닉네임은 1자 이상 10자 이내로 부탁드려요.")
+                    self.presentToast(message: "닉네임은 1자 이상 10자 이내로 부탁드려요.")
                 }
             }
             .disposed(by: disposeBag)
@@ -65,11 +66,12 @@ final class NickInputViewController: BaseViewController {
 
 private extension NickInputViewController {
     
-    func presentNextView() {
-        guard let useCase = viewModel?.useCase else { return }
+    func presentNextView() -> BaseViewController {
+        guard let useCase = viewModel?.useCase else { return  BaseViewController() }
         let vc = BirthInputViewController()
         vc.viewModel = BirthInputViewModel(useCase: useCase)
-        navigationController?.pushViewController(vc, animated: true)
+//        navigationController?.pushViewController(vc, animated: true)
+        return vc
     }
     
 }
