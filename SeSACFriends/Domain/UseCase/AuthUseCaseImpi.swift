@@ -15,7 +15,7 @@ final class AuthUseCaseImpi: AuthUseCase {
     private var phoneNum: String?
     private var authVerificationID: String?
     private var messageCode: String?
-    private let apiService: APIService = APIServiceImpi()
+    private let apiService: UserAPIService = UserAPIServiceImpi()
     // MARK: - PHONE AUTH PROPERTYS
     let validation = BehaviorSubject<Bool>(value: false)
     let phoneNumText = BehaviorSubject<String>(value: "")

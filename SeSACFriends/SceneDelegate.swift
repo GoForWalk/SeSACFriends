@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let navVC = UINavigationController(rootViewController: rootViewController)
         
         let vc = StartViewController()
-        vc.apiService = APIServiceImpi()
+        vc.apiService = UserAPIServiceImpi()
         
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()

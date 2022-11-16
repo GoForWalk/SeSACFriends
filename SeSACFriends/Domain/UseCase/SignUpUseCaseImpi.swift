@@ -24,7 +24,7 @@ final class SignInUseCaseImpi: SignUpUseCase {
     private var birth: String?
     private var email: String?
     private var gender: Int?
-    private let apiService: APIService = APIServiceImpi()
+    private let apiService: UserAPIService = UserAPIServiceImpi()
 
     deinit {
         print("🐙🐙🐙🐙🐙🐙🐙 UseCase deinit \(self) 🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙")

@@ -10,13 +10,12 @@ import Foundation
 import RxSwift
 import Network
 
-protocol APIService: AnyObject {
+protocol UserAPIService: AnyObject {
     func getUser(completionHandler: @escaping (Result<UserInfo, Error>) -> Void)
     func postUser(nick: String, birth: String, email: String, gender: Int, completionHandler: @escaping (Result<Int, Error>) -> Void)
 }
 
-final class APIServiceImpi: APIService, CheckNetworkStatus {
-//final class APIServiceImpi: APIService {
+final class UserAPIServiceImpi: UserAPIService, CheckNetworkStatus {
     
     var monitor: NWPathMonitor?
     var isMonitoring: Bool = false

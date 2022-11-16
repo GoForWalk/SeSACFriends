@@ -13,7 +13,7 @@ import FirebaseMessaging
 
 class StartViewController: BaseViewController, CheckAndRefreshIDToken {
 
-    var apiService: APIService?
+    var apiService: UserAPIService?
         
     let mainImageView: UIImageView = {
        let imageView = UIImageView()
