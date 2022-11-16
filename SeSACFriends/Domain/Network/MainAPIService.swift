@@ -11,7 +11,6 @@ import Network
 import RxSwift
 
 protocol MainAPIService: AnyObject {
-//    func postSearch(lat: Double, long: Double, completionHandler: @escaping (Result<Int, Error>) -> Void)
     func postSearch(lat: Double, long: Double) -> Single<SearchUser>
 
     
@@ -69,10 +68,9 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
     
     func postSearch(lat: Double, long: Double) -> Single<SearchUser> {
         return Single<SearchUser>.create { [weak self] single in
-            // Single Strat
+            // Single Start
             
             self?.handleNetworkDisConnected = {
-                //                completionHandler(.failure(APIError.notConnected))
                 single(.failure(APIError.notConnected))
             }
             startMonitering()
@@ -103,7 +101,6 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
                 
                 guard error == nil else {
                     print("Error occur: error calling POST - \(String(describing: error))")
-                    //                    completionHandler(.failure(APIError.serverError))
                     single(.failure(APIError.serverError))
                     return
                 }
@@ -111,30 +108,26 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
                 guard let data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     let response = response as! HTTPURLResponse
                     print("StatusCode Not 200, Now StatusCode:\(response.statusCode)")
-                    //                    completionHandler(.failure(APIError(rawValue: response.statusCode) ?? .serverError))
                     single(.failure(APIError(rawValue: response.statusCode) ?? .serverError))
                     return
                 }
                 print("✅✅✅✅✅✅ Search Done")
-                print(data)
                 
                 let jsonDecoder = JSONDecoder()
-                //                completionHandler(.success(200))
-                single(.success(jsonDecoder.decode(SearchUser.self, from: data)))
+                let result = jsonDecoder.decode(SearchUser.self, from: data)
+                single(.success(result))
+                print(result)
                 self?.stopMonitoring()
             }
             task.resume()
             
             // Single End
             return Disposables.create {
-                // task.cancel()
+                 task.cancel()
             }
         }
     }
-        
-        
     
-    //    func withdrawUser() { }
 
 }
 
