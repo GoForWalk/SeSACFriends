@@ -37,6 +37,7 @@ extension CheckAndRefreshIDToken {
     @discardableResult
     func checkRefreshToken(errorCode: Int, tokenErrorNumber: Int = 401, task: @escaping () -> Void) -> Int {
         if errorCode == tokenErrorNumber {
+            print("😡😡😡ID Token Refresh Request")
             refreshToken(task: task)
         }
         return errorCode

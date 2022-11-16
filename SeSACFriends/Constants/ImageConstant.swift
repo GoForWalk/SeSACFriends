@@ -53,6 +53,7 @@ typealias ImageInfo = (image: UIImage, imageSize: CGFloat)
     static let man: ImageInfo = (UIImage(named: "man")!, 64)
     static let message: ImageInfo = (UIImage(named: "message")!, 24)
     static let moreArrow: ImageInfo = (UIImage(named: "more_arrow")!, 16)
+    static let upmoreArrow: ImageInfo = (UIImage(named: "upCross")!, 16)
     static let more: ImageInfo = (UIImage(named: "more")!, 24)
     static let notice: ImageInfo = (UIImage(named: "notice")!, 24)
     static let permit: ImageInfo = (UIImage(named: "permit")!, 24)
@@ -66,4 +67,21 @@ typealias ImageInfo = (image: UIImage, imageSize: CGFloat)
     static let woman: ImageInfo = (UIImage(named: "woman")!, 64)
     static let write: ImageInfo = (UIImage(named: "write")!, 24)
     
+    // sesac Face
+    static let sesacFace1: ImageInfo = (UIImage(named: "sesac_face_1")!, 160)
+    static let sesacFace2: ImageInfo = (UIImage(named: "sesac_face_2")!, 160)
+    static let sesacFace3: ImageInfo = (UIImage(named: "sesac_face_3")!, 160)
+    static let sesacFace4: ImageInfo = (UIImage(named: "sesac_face_4")!, 160)
+    static let sesacFace5: ImageInfo = (UIImage(named: "sesac_face_5")!, 160)
+    
+    // background
+    static let background1 = UIImage(named: "sesac_background_1")!
+    static let background2 = UIImage(named: "sesac_background_2")!
+    static let background3 = UIImage(named: "sesac_background_3")!
+    static let background4 = UIImage(named: "sesac_background_4")!
+    static let background5 = UIImage(named: "sesac_background_5")!
+    static let background6 = UIImage(named: "sesac_background_6")!
+    static let background7 = UIImage(named: "sesac_background_7")!
+    static let background8 = UIImage(named: "sesac_background_8")!
+    static let background9 = UIImage(named: "sesac_background_9")!
 }

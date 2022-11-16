@@ -41,8 +41,21 @@
 		CF2E8351292221E600D2DE1C /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8350292221E600D2DE1C /* ShopView.swift */; };
 		CF2E8353292221F300D2DE1C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8352292221F300D2DE1C /* HomeView.swift */; };
 		CF2E835B29222BCF00D2DE1C /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835A29222BCF00D2DE1C /* BaseTableViewCell.swift */; };
-		CF2E835E29222CDF00D2DE1C /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835D29222CDF00D2DE1C /* InfoTableViewCell.swift */; };
-		CF2E836029222CEE00D2DE1C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835F29222CEE00D2DE1C /* MainTableViewCell.swift */; };
+		CF2E835E29222CDF00D2DE1C /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835D29222CDF00D2DE1C /* ProfileInfoTableViewCell.swift */; };
+		CF2E836029222CEE00D2DE1C /* ProfileMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835F29222CEE00D2DE1C /* ProfileMainTableViewCell.swift */; };
+		CF2E83642922584A00D2DE1C /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E83632922584A00D2DE1C /* ProfileInfoView.swift */; };
+		CF2E83662922585C00D2DE1C /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E83652922585C00D2DE1C /* ProfileInfoViewController.swift */; };
+		CF722F8A29226AD500C8E76D /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8929226AD500C8E76D /* ProfileCardView.swift */; };
+		CF722F8C29228E4300C8E76D /* ProfileCardRollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */; };
+		CF722F8E2922991C00C8E76D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8D2922991C00C8E76D /* UIView+Extension.swift */; };
+		CF722F93292371E000C8E76D /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F92292371E000C8E76D /* CardViewController.swift */; };
+		CF722F95292375C700C8E76D /* CardTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F94292375C700C8E76D /* CardTitleTableViewCell.swift */; };
+		CF722F97292375DB00C8E76D /* CardReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F96292375DB00C8E76D /* CardReviewTableViewCell.swift */; };
+		CF722F992923765E00C8E76D /* CardTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F982923765E00C8E76D /* CardTableHeaderView.swift */; };
+		CF722F9B292387D200C8E76D /* TextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F9A292387D200C8E76D /* TextView+Extension.swift */; };
+		CF722F9D29239C9400C8E76D /* ProfileCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F9C29239C9400C8E76D /* ProfileCardCollectionViewCell.swift */; };
+		CF722F9F2923A87C00C8E76D /* ProfileSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F9E2923A87C00C8E76D /* ProfileSettingCollectionViewCell.swift */; };
+		CF722FA52923AD7900C8E76D /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = CF722FA42923AD7900C8E76D /* MultiSlider */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
@@ -126,8 +139,20 @@
 		CF2E8350292221E600D2DE1C /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		CF2E8352292221F300D2DE1C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CF2E835A29222BCF00D2DE1C /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		CF2E835D29222CDF00D2DE1C /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
-		CF2E835F29222CEE00D2DE1C /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		CF2E835D29222CDF00D2DE1C /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
+		CF2E835F29222CEE00D2DE1C /* ProfileMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainTableViewCell.swift; sourceTree = "<group>"; };
+		CF2E83632922584A00D2DE1C /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		CF2E83652922585C00D2DE1C /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
+		CF722F8929226AD500C8E76D /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
+		CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardRollableView.swift; sourceTree = "<group>"; };
+		CF722F8D2922991C00C8E76D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		CF722F92292371E000C8E76D /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		CF722F94292375C700C8E76D /* CardTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTitleTableViewCell.swift; sourceTree = "<group>"; };
+		CF722F96292375DB00C8E76D /* CardReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReviewTableViewCell.swift; sourceTree = "<group>"; };
+		CF722F982923765E00C8E76D /* CardTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableHeaderView.swift; sourceTree = "<group>"; };
+		CF722F9A292387D200C8E76D /* TextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+Extension.swift"; sourceTree = "<group>"; };
+		CF722F9C29239C9400C8E76D /* ProfileCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF722F9E2923A87C00C8E76D /* ProfileSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
@@ -180,6 +205,7 @@
 				CFDF0C2C291921E900E586A1 /* FirebaseCrashlytics in Frameworks */,
 				CFFFBED7291D503F00E4DAB4 /* RxCocoa in Frameworks */,
 				CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */,
+				CF722FA52923AD7900C8E76D /* MultiSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +357,7 @@
 		CF2E834229221BCD00D2DE1C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CF2E83612922428000D2DE1C /* ProfileInfo */,
 				CF2E83582922266B00D2DE1C /* ProfileMain */,
 			);
 			path = Profile;
@@ -346,20 +373,60 @@
 		CF2E83582922266B00D2DE1C /* ProfileMain */ = {
 			isa = PBXGroup;
 			children = (
-				CF2E835929222B4000D2DE1C /* subView */,
+				CF2E835929222B4000D2DE1C /* SubView */,
 				CF2E834929221E9400D2DE1C /* ProfileViewController.swift */,
 				CF2E834C292221BE00D2DE1C /* ProfileView.swift */,
 			);
 			path = ProfileMain;
 			sourceTree = "<group>";
 		};
-		CF2E835929222B4000D2DE1C /* subView */ = {
+		CF2E835929222B4000D2DE1C /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				CF2E835D29222CDF00D2DE1C /* InfoTableViewCell.swift */,
-				CF2E835F29222CEE00D2DE1C /* MainTableViewCell.swift */,
+				CF2E835D29222CDF00D2DE1C /* ProfileInfoTableViewCell.swift */,
+				CF2E835F29222CEE00D2DE1C /* ProfileMainTableViewCell.swift */,
 			);
-			path = subView;
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		CF2E83612922428000D2DE1C /* ProfileInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CF2E83622922582900D2DE1C /* SubView */,
+				CF2E83632922584A00D2DE1C /* ProfileInfoView.swift */,
+				CF2E83652922585C00D2DE1C /* ProfileInfoViewController.swift */,
+			);
+			path = ProfileInfo;
+			sourceTree = "<group>";
+		};
+		CF2E83622922582900D2DE1C /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				CF722F9C29239C9400C8E76D /* ProfileCardCollectionViewCell.swift */,
+				CF722F9E2923A87C00C8E76D /* ProfileSettingCollectionViewCell.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		CF722F8F29236CC400C8E76D /* ProfileCard */ = {
+			isa = PBXGroup;
+			children = (
+				CF722F9029236D2400C8E76D /* SubView */,
+				CF722F8929226AD500C8E76D /* ProfileCardView.swift */,
+				CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */,
+				CF722F92292371E000C8E76D /* CardViewController.swift */,
+			);
+			path = ProfileCard;
+			sourceTree = "<group>";
+		};
+		CF722F9029236D2400C8E76D /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				CF722F94292375C700C8E76D /* CardTitleTableViewCell.swift */,
+				CF722F96292375DB00C8E76D /* CardReviewTableViewCell.swift */,
+				CF722F982923765E00C8E76D /* CardTableHeaderView.swift */,
+			);
+			path = SubView;
 			sourceTree = "<group>";
 		};
 		CFDF0C052918C2ED00E586A1 /* IgnoreFolder */ = {
@@ -395,7 +462,7 @@
 				CFDF0C6C291CDE3A00E586A1 /* UserDefaultsCustom */,
 				CFDF0C5E291A8C0000E586A1 /* Protocols */,
 				CFDF0C42291A131700E586A1 /* Extension */,
-				CFDF0C1D2918DFB500E586A1 /* SubView */,
+				CFDF0C1D2918DFB500E586A1 /* CustomView */,
 				CFDF0C1A2918DF9500E586A1 /* Base */,
 			);
 			path = Utility;
@@ -412,14 +479,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		CFDF0C1D2918DFB500E586A1 /* SubView */ = {
+		CFDF0C1D2918DFB500E586A1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				CFDF0C162918DF8500E586A1 /* TextArea.swift */,
 				CFDF0C202918FDDC00E586A1 /* InputTextField.swift */,
 				CFDF0C37291928C500E586A1 /* MainButton.swift */,
+				CF722F8F29236CC400C8E76D /* ProfileCard */,
 			);
-			path = SubView;
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		CFDF0C2F291925B700E586A1 /* Scene */ = {
@@ -509,6 +577,8 @@
 			children = (
 				CFDF0C22291910E300E586A1 /* UILabel+Extension.swift */,
 				CFDF0C392919484700E586A1 /* UIButton+Extension.swift */,
+				CF722F8D2922991C00C8E76D /* UIView+Extension.swift */,
+				CF722F9A292387D200C8E76D /* TextView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -644,6 +714,7 @@
 				CFDF0C63291BF21300E586A1 /* Toast */,
 				CFFFBED6291D503F00E4DAB4 /* RxCocoa */,
 				CFFFBED8291D503F00E4DAB4 /* RxSwift */,
+				CF722FA42923AD7900C8E76D /* MultiSlider */,
 			);
 			productName = SeSACFriends;
 			productReference = CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */;
@@ -679,6 +750,7 @@
 				CFDF0C26291921E900E586A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CFDF0C62291BF21300E586A1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CFFFBED5291D503F00E4DAB4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CF722FA32923AD7900C8E76D /* XCRemoteSwiftPackageReference "MultiSlider" */,
 			);
 			productRefGroup = CF0467AB2918BF5800E72CC9 /* Products */;
 			projectDirPath = "";
@@ -711,13 +783,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2E831E291D74C300D2DE1C /* EmailInputViewController.swift in Sources */,
-				CF2E835E29222CDF00D2DE1C /* InfoTableViewCell.swift in Sources */,
+				CF2E835E29222CDF00D2DE1C /* ProfileInfoTableViewCell.swift in Sources */,
 				CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */,
 				CFDF0C49291A53B000E586A1 /* PhoneAuthView.swift in Sources */,
 				CF2E8331291E95F600D2DE1C /* SignUpUseCase.swift in Sources */,
 				CF2E835B29222BCF00D2DE1C /* BaseTableViewCell.swift in Sources */,
 				CF2E8333291E961300D2DE1C /* AuthUseCase.swift in Sources */,
 				CFDF0C75291D098700E586A1 /* Endpoint.swift in Sources */,
+				CF722F9D29239C9400C8E76D /* ProfileCardCollectionViewCell.swift in Sources */,
+				CF722F8E2922991C00C8E76D /* UIView+Extension.swift in Sources */,
 				CFDF0C212918FDDC00E586A1 /* InputTextField.swift in Sources */,
 				CFDF0C3A2919484700E586A1 /* UIButton+Extension.swift in Sources */,
 				CF2E833E29221AC700D2DE1C /* TabbarViewController.swift in Sources */,
@@ -737,19 +811,26 @@
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
 				CFDF0C7E291D30FC00E586A1 /* APIError.swift in Sources */,
 				CF2E8320291D74D000D2DE1C /* GenderInputView.swift in Sources */,
+				CF722F93292371E000C8E76D /* CardViewController.swift in Sources */,
 				CF2E8322291D74DC00D2DE1C /* GenderInputViewController.swift in Sources */,
 				CF2E833629200CF200D2DE1C /* StartViewController.swift in Sources */,
+				CF722F9B292387D200C8E76D /* TextView+Extension.swift in Sources */,
 				CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */,
+				CF722F8A29226AD500C8E76D /* ProfileCardView.swift in Sources */,
 				CF2E8351292221E600D2DE1C /* ShopView.swift in Sources */,
 				CFDF0C78291D0ACF00E586A1 /* HTTPHeader.swift in Sources */,
 				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,
 				CF2E834F292221D300D2DE1C /* FriendsView.swift in Sources */,
 				CFDF0C3C29194D7400E586A1 /* OnboardingViewController.swift in Sources */,
 				CFDF0C6F291CDE8900E586A1 /* CustomUserDefaults.swift in Sources */,
+				CF722F97292375DB00C8E76D /* CardReviewTableViewCell.swift in Sources */,
+				CF2E83642922584A00D2DE1C /* ProfileInfoView.swift in Sources */,
 				CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */,
 				CFDF0C41291A130900E586A1 /* ObBoardingScrollView.swift in Sources */,
+				CF722F9F2923A87C00C8E76D /* ProfileSettingCollectionViewCell.swift in Sources */,
+				CF722F8C29228E4300C8E76D /* ProfileCardRollableView.swift in Sources */,
 				CF2E8308291D69AA00D2DE1C /* SignUpUseCaseImpi.swift in Sources */,
-				CF2E836029222CEE00D2DE1C /* MainTableViewCell.swift in Sources */,
+				CF2E836029222CEE00D2DE1C /* ProfileMainTableViewCell.swift in Sources */,
 				CF2E832A291D771900D2DE1C /* GenderInputCollectionViewCell.swift in Sources */,
 				CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */,
 				CF2E8328291D751900D2DE1C /* GenderInputViewModel.swift in Sources */,
@@ -766,11 +847,14 @@
 				CFDF0C5B291A8B1600E586A1 /* PhoneAuthViewModel.swift in Sources */,
 				CF2E832E291D7BA700D2DE1C /* CheckIDToken.swift in Sources */,
 				CFDF0C60291A8C1600E586A1 /* ViewModelType.swift in Sources */,
+				CF722F992923765E00C8E76D /* CardTableHeaderView.swift in Sources */,
 				CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */,
+				CF722F95292375C700C8E76D /* CardTitleTableViewCell.swift in Sources */,
 				CFDF0C54291A72F900E586A1 /* AuthUseCaseImpi.swift in Sources */,
 				CFDF0C0D2918D0A800E586A1 /* ColorConstant.swift in Sources */,
 				CFDF0C46291A1DD500E586A1 /* OnboardingView.swift in Sources */,
 				CFDF0C0F2918D3C500E586A1 /* FontConstant.swift in Sources */,
+				CF2E83662922585C00D2DE1C /* ProfileInfoViewController.swift in Sources */,
 				CF2E830A291D69E900D2DE1C /* NickInputView.swift in Sources */,
 				CFDF0C80291D36FB00E586A1 /* UserInfo.swift in Sources */,
 				CFDF0C4B291A626F00E586A1 /* PhoneAuthViewController.swift in Sources */,
@@ -992,6 +1076,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF722FA32923AD7900C8E76D /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/MultiSlider.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.13.2;
+			};
+		};
 		CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1035,6 +1127,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF722FA42923AD7900C8E76D /* MultiSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF722FA32923AD7900C8E76D /* XCRemoteSwiftPackageReference "MultiSlider" */;
+			productName = MultiSlider;
+		};
 		CFDF0BFE2918C22200E586A1 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CFDF0BFD2918C22200E586A1 /* XCRemoteSwiftPackageReference "SnapKit" */;
