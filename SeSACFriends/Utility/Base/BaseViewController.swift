@@ -36,7 +36,7 @@ class BaseViewController: UIViewController, CheckNetworkStatus {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startMonitering()
+        stopMonitoring()
     }
     
     deinit {

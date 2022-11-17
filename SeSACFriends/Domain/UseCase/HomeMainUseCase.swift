@@ -21,9 +21,14 @@ protocol HomeMainUseCase: UseCase {
 final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     
     private var homeStatus: HomeStatus = .searching
-    private var MainAPIService: MainAPIService = MainAPIServiceImpi()
+    // TODO: 의존성 추가
+    private var respository: HomeRepository = HomeRespositoryImpi()
+    private var locationService: LocationService = LocationServiceImpi()
+    private var lat: CLLocationDegrees = 0
+    private var long: CLLocationDegrees = 0
     
-    let homeStatusOut = PublishSubject<HomeStatus>()
+    let homeStatusOut = BehaviorSubject<HomeStatus>(value: .searching)
+    let locationAuthError = PublishSubject<LocationAuthError>()
     
     deinit {
         print("🐙🐙🐙🐙🐙🐙🐙 UseCase deinit \(self) 🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙")
@@ -31,16 +36,49 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     
 }
 
-private extension HomeMainUseCaseImpi {
+extension HomeMainUseCaseImpi {
     
     func setHomeMode() {
         
     }
     
+    func mapCenterCoordinate(center: CLLocationCoordinate2D) {
+        self.lat = center.latitude
+        self.long = center.longitude
+    }
     
+    func getUserLocation() -> Single<[MapAnnotionUserDTO]> {
+        respository.fetchMainMapAnnotation(lat: lat, long: long)
+    }
+    
+    private func setCurrentLocation() {
+        locationService.requestCurrentLocation()
+    }
+        
+    func requestLocationAuth() {
+                    
+        locationService.observeUpdateLocationAuthorization()
+            .subscribe { [weak self] auth in
+                guard let locationAuth = auth.element else { return }
+                switch locationAuth {
+                case .notDetermined:
+                    self?.locationService.requestAuthorization()
+                case .denied, .restricted:
+                    self?.locationAuthError.onNext(.authNotAllowed)
+                case .authorizedWhenInUse:
+                    self?.locationService.requestCurrentLocation()
+                default:
+                    print("Default")
+                }
+            }
+            .dispose()
+    }
+    
+    func currentLocationOut() -> Observable<Result<[CLLocation], Error>> {
+        return locationService.observeCurrentLocation()
+    }
     
 }
-
 
 @frozen enum HomeStatus {
     case searching
@@ -52,11 +90,16 @@ extension HomeStatus {
     var buttonImage: ImageInfo {
         switch self {
         case .searching:
-            return Images.search
+            return Images.searchlarge
         case .matchWaiting:
             return Images.antenna
         case .matched:
             return Images.message
         }
     }
+}
+
+@frozen enum LocationAuthError: String {
+    case authNotAllowed = "위치서비스가 꺼져 있어서 위치 권한 요청을 못합니다."
+    case locationServiceOFF
 }

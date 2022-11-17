@@ -20,7 +20,16 @@ final class HomeMainView: BaseView {
     
     lazy var statusButton: UIButton = {
         let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+        button.tintColor = Colors.white
+        button.backgroundColor = Colors.black
+        button.layer.cornerRadius = button.bounds.size.width / 2
+        button.clipsToBounds = true
+        button.layer.borderWidth = 1
         
+        var config = UIButton.Configuration.plain()
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 50)
+        button.configuration = config
         return button
     }()
     
@@ -36,20 +45,30 @@ final class HomeMainView: BaseView {
     lazy var allGenderButton: MainButton = {
         let button = MainButton(frame: .zero, buttonMode: .fill, buttonSize: .h48 , hasIcon: false)
         button.setTitle("전체", for: .normal)
+        button.layer.cornerRadius = 0
         return button
     }()
     
     lazy var maleButton: MainButton = {
         let button = MainButton(frame: .zero, buttonMode: .inactive, buttonSize: .h48 , hasIcon: false)
         button.setTitle("남자", for: .normal)
+        button.layer.cornerRadius = 0
         return button
     }()
     
     lazy var femaleButton: MainButton = {
         let button = MainButton(frame: .zero, buttonMode: .inactive, buttonSize: .h48 , hasIcon: false)
         button.setTitle("여자", for: .normal)
-
+        button.layer.cornerRadius = 0
         return button
+    }()
+    
+    lazy var centerMarker: UIImageView = {
+        let imageView = UIImageView()
+        let marker = Images.mapMarker
+        imageView.image = marker.image
+        imageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: marker.imageSize)
+        return imageView
     }()
     
     lazy var setLocationButton: MainButton = {
@@ -61,8 +80,9 @@ final class HomeMainView: BaseView {
     }()
 
     override func configure() {
-        map.addSubViews(views: genderStackView, statusButton, setLocationButton)
+        map.addSubViews(views: genderStackView, statusButton, setLocationButton, centerMarker)
         addSubViews(views: map)
+        
     }
     
     override func setConstraints() {
@@ -88,6 +108,9 @@ final class HomeMainView: BaseView {
             make.leading.equalToSuperview().inset(16)
         }
         
+        centerMarker.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     
