@@ -47,7 +47,6 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
                 let response = response as! HTTPURLResponse
                 print("StatusCode Not 200, Now StatusCode:\(response.statusCode)")
                 completionHandler(.failure(APIError(rawValue: response.statusCode) ?? .serverError))
-                
                 return
             }
             
@@ -63,6 +62,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
     
     
     func postSearch(lat: Double, long: Double, completionHandler: @escaping (Result<SearchUser, Error>) -> Void) {
+//        print(#function)
         handleNetworkDisConnected = {
             completionHandler(.failure(APIError.notConnected))
         }
@@ -108,7 +108,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
             guard let result = try? jsonDecoder.decode(SearchUser.self, from: data) else {
                 completionHandler(.failure(APIError.serverError))
                 return }
-            print("✅✅✅✅✅✅ Search user Done")
+            print("✅✅✅✅✅✅ Search user Done \(Date())")
             print(result)
             completionHandler(.success(result))
             self?.stopMonitoring()

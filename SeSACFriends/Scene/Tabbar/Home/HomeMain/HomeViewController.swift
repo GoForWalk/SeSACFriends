@@ -9,6 +9,7 @@ import UIKit
 
 import RxCocoa
 import RxSwift
+import MapKit
 
 final class HomeViewController: BaseViewController {
 
@@ -20,11 +21,12 @@ final class HomeViewController: BaseViewController {
     
     override func loadView() {
         view = mainView
+//        mainView.map.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mapService.mapView = mainView.map
     }
     
     override func configure() {
@@ -34,12 +36,12 @@ final class HomeViewController: BaseViewController {
     
     override func bind() {
         let input = HomeMainViewModel.Input(
-            mapCenterLocation: mapService.getMapCenterCoordinator(),
+            mapCenterLocation: mapService.mapCenter,
             setLocationButtonTapped: mainView.setLocationButton.rx.tap
         )
         
         guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }
-        
+                
         output.buttonStatus
             .debug()
             .withUnretained(self)
@@ -80,14 +82,20 @@ final class HomeViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        
-        
+
         
     }//: bind()
     
 }
 
-private extension HomeViewController {
+// MARK: - HomeViewController Private Function
+extension HomeViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(#function)
+        
+    }
+
     
     func setNavi() {
         navigationController?.isToolbarHidden = true
@@ -111,7 +119,6 @@ private extension HomeViewController {
       
       present(requestLocationServiceAlert, animated: true, completion: nil)
     }
-
     
     func presentMainVC(status: HomeStatus?) {
         switch status {
@@ -132,4 +139,64 @@ private extension HomeViewController {
         }
     }
     
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+        print(#function)
+    }
+
 }
+
+//private extension HomeViewController {
+//
+//    func setAnnotion(locations: [MapAnnotionUserDTO]) {
+//        let annotations = locations.map { userDTO in
+//            let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
+//            let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
+//
+//            return customAnnotation
+//        }
+//        mainView.map.addAnnotations(annotations)
+//    }
+//
+//    func setMapCenter(center: CLLocationCoordinate2D, displayRange: CLLocationDistance = 5000) {
+//
+//        let location = MKCoordinateRegion(center: center, latitudinalMeters: displayRange, longitudinalMeters: displayRange)
+//        mainView.map.setRegion(location, animated: true)
+//    }
+//
+//    func getMapCenterCoordinator() -> Observable<CLLocationCoordinate2D> {
+//        return  mapCenter.asObservable()
+//    }
+//
+//}
+//
+//extension HomeViewController: MKMapViewDelegate {
+//
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//
+//        guard let annotation = annotation as? CustomAnnotation else { return nil }
+//        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.identifier) as? CustomAnnotationView else { return nil }
+//
+//        annotationView.annotation = annotation
+//        annotationView.charactorImageView.image = AnnotationType(rawValue: annotation.annotationImage)?.image
+//
+//        return annotationView
+//    }
+//
+//    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+//        print(#function, mapView.centerCoordinate)
+//    }
+//
+//    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+//        print(#function, mapView.centerCoordinate)
+//    }
+//
+//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        print(#function, mapView.centerCoordinate)
+//    }
+//
+//    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+//        print(#function, mapView.centerCoordinate)
+//    }
+//
+//
+//}

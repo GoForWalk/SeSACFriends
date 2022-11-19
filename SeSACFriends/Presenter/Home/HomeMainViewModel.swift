@@ -18,7 +18,7 @@ final class HomeMainViewModel: ViewModelType {
     var useCase = HomeMainUseCaseImpi()
     
     struct Input {
-        let mapCenterLocation: Observable<CLLocationCoordinate2D>
+        let mapCenterLocation: PublishRelay<CLLocationCoordinate2D>
         let setLocationButtonTapped: ControlEvent<Void>
     }
     
@@ -48,12 +48,11 @@ private extension HomeMainViewModel {
         
         input.mapCenterLocation
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .asObservable()
             .bind(with: self) { vm, coordinate in
                 vm.useCase.mapCenterCoordinate(center: coordinate)
             }
             .disposed(by: disposeBag)
-       
-        
         
     }//: configureInput
     
@@ -64,8 +63,8 @@ private extension HomeMainViewModel {
             .bind(to: output.buttonStatus)
             .disposed(by: disposeBag)
         
-        useCase.getUserLocation()
-            .subscribe(with: self) { vm, annotaions in
+        useCase.mapAnnotationInfo
+            .subscribe { annotaions in
                 output.mapAnnotation.onNext(annotaions)
             }
             .disposed(by: disposeBag)

@@ -17,15 +17,19 @@ protocol MapService {
 
 final class MapServiceImpi: NSObject, MapService {
     
-    var mapView: MKMapView?
-    private let mapCenter = PublishRelay<CLLocationCoordinate2D>()
+    var mapView: MKMapView? {
+        didSet {
+            mapView?.delegate = self
+        }
+    }
+    
+    let mapCenter = PublishRelay<CLLocationCoordinate2D>()
+    private let disposeBag = DisposeBag()
     
     override init() {
         super.init()
-        self.mapView?.delegate = self
         self.mapView?.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: CustomAnnotationView.identifier)
     }
-    
     
     func setAnnotion(locations: [MapAnnotionUserDTO]) {
         let annotations = locations.map { userDTO in
@@ -43,9 +47,6 @@ final class MapServiceImpi: NSObject, MapService {
         mapView?.setRegion(location, animated: true)
     }
     
-    func getMapCenterCoordinator() -> Observable<CLLocationCoordinate2D> {
-        return mapCenter.asObservable()
-    }
 }
 
 extension MapServiceImpi: MKMapViewDelegate {
@@ -62,7 +63,16 @@ extension MapServiceImpi: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        mapView.centerCoordinate
+        print(#function, mapView.centerCoordinate)
     }
     
+    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+        print(#function)
+    }
+        
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(#function, mapView.centerCoordinate)
+        self.mapCenter.accept(mapView.centerCoordinate)
+    }
+
 }

@@ -30,7 +30,7 @@ extension CheckNetworkStatus {
         
         let queue = DispatchQueue(label: "NWMonitor", qos: .default)
         monitor?.pathUpdateHandler = { [weak self] path in
-            print("👀👀👀 Monitoring NetWork Connection start: \(self)")
+//            print("👀👀👀 Monitoring NetWork Connection start: \(self)")
             self?.setNetWorkCheck(path: path, handler: self?.handleNetworkDisConnected)
         }
         monitor?.start(queue: queue)
@@ -39,7 +39,7 @@ extension CheckNetworkStatus {
     /// Network connection 모니터링 종료 함수
     func stopMonitoring() {
         if isMonitoring, let monitor {
-            print("👀👀👀 Monitoring NetWork Connection done: \(self)")
+//            print("👀👀👀 Monitoring NetWork Connection done: \(self)")
             monitor.cancel()
             self.monitor = nil
             isMonitoring = false
@@ -50,7 +50,7 @@ extension CheckNetworkStatus {
     private func setNetWorkCheck(path: NWPath, handler: (() -> Void)?) {
         
         if isConnected {
-            print("👀👀👀 Monitoring NetWork Connection: \(self)")
+//            print("👀👀👀 Monitoring NetWork Connection: \(self)")
             return
         } else {
             guard let handler else { return }

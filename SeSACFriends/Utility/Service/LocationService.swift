@@ -50,12 +50,12 @@ final class LocationServiceImpi: NSObject, LocationService {
         return currentLocation.asObservable()
     }
     
-    
 }
 
 extension LocationServiceImpi: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(#function, locations)
         currentLocation.onNext(.success(locations))
     }
     
@@ -67,15 +67,11 @@ extension LocationServiceImpi: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         
         guard let locationManager else { return }
+        
         let authorizationStatus: CLAuthorizationStatus
-        
         authorizationStatus = locationManager.authorizationStatus
-        
-        if CLLocationManager.locationServicesEnabled() {
-            self.authorizationStatus.accept(manager.authorizationStatus)
-        } else {
-            print("위치 서비스 꺼져있음")
-        }
+        self.authorizationStatus.accept(manager.authorizationStatus)
         
     }
 }
+

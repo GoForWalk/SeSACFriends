@@ -17,7 +17,7 @@ enum Endpoint {
 extension Endpoint {
     
     var url: String {
-        let testBaseURL = "http://api.sesac.co.kr:1207"
+        let testBaseURL = "http://api.sesac.co.kr:1210"
         switch self {
         case .postUser:
             return "\(testBaseURL)/v1/user"

@@ -26,11 +26,16 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     private var locationService: LocationService = LocationServiceImpi()
     private var lat: CLLocationDegrees = 0
     private var long: CLLocationDegrees = 0
+    private let coodinatorTarget = PublishSubject<CLLocationCoordinate2D>()
+    private let dispoaseBag = DisposeBag()
+    private var timerDisposable: Disposable?
     
     let homeStatusOut = BehaviorSubject<HomeStatus>(value: .searching)
     let locationAuthError = PublishSubject<LocationAuthError>()
+    let mapAnnotationInfo = PublishSubject<[MapAnnotionUserDTO]>()
     
     deinit {
+        timerDisposable?.dispose()
         print("🐙🐙🐙🐙🐙🐙🐙 UseCase deinit \(self) 🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙")
     }
     
@@ -43,12 +48,36 @@ extension HomeMainUseCaseImpi {
     }
     
     func mapCenterCoordinate(center: CLLocationCoordinate2D) {
+        
         self.lat = center.latitude
         self.long = center.longitude
-    }
-    
-    func getUserLocation() -> Single<[MapAnnotionUserDTO]> {
-        respository.fetchMainMapAnnotation(lat: lat, long: long)
+        coodinatorTarget.onNext(center)
+            
+        
+        
+        timerDisposable = coodinatorTarget
+//            .debug()
+            .flatMapLatest { coordinate in
+                return Observable<Int>.timer(.seconds(0), period: .milliseconds(10000), scheduler: MainScheduler.instance)
+                    .map { [weak self] _ -> CLLocationCoordinate2D in
+                        guard let self else { return CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0) }
+
+                        return CLLocationCoordinate2D(latitude: CLLocationDegrees(self.lat), longitude: CLLocationDegrees(self.long))
+                    }
+            }
+//            .debug()
+            .subscribe { [weak self] coordinate in
+                guard let strongSelf = self, let element = coordinate.element else { return }
+                strongSelf.timerDisposable?.dispose()
+                strongSelf.respository.fetchMainMapAnnotation(lat: element.latitude, long: element.longitude)
+//                    .debug()
+                    .subscribe { [weak self] annotationInfo in
+                        self?.mapAnnotationInfo.onNext(annotationInfo)
+                    }
+                    .disposed(by: strongSelf.dispoaseBag)
+            }
+        
+//        respository.fetchMainMapAnnotation(lat: lat, long: long)
     }
     
     private func setCurrentLocation() {
