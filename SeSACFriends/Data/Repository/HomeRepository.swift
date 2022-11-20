@@ -14,7 +14,7 @@ protocol HomeRepository {
     func fetchMainMapAnnotation(lat: Double, long: Double) -> Single<[MapAnnotionUserDTO]>
 }
 
-final class HomeRespositoryImpi: HomeRepository, CheckAndRefreshIDToken {
+final class HomeRespositoryImpi: HomeRepository {
     
     // TODO: 의존성 추가
     let mainAPIService: MainAPIService = MainAPIServiceImpi()

@@ -139,16 +139,22 @@ private extension HomeMainUseCaseImpi {
                 !self.isTimerGo
             })
             .debug()
-            .subscribe(with: self, onNext: { uc, coordination in
-                uc.timerDisposable?.dispose()
-                uc.isTimerDisposed = false
-                uc.respository.fetchMainMapAnnotation(lat: coordination.latitude, long: coordination.longitude)
+            .subscribe(onNext: { [unowned self] coordination in
+                self.timerDisposable?.dispose()
+                self.isTimerDisposed = false
+                self.respository.fetchMainMapAnnotation(lat: coordination.latitude, long: coordination.longitude)
                     .subscribe { annotationInfo in
-                        uc.mapAnnotationInfo.onNext(annotationInfo)
+                        self.mapAnnotationInfo.onNext(annotationInfo)
+                    } onFailure: { error in
+                        if let apiArror = error as? APIError {
+                            self.checkRefreshToken(errorCode: apiArror.rawValue) {
+                                self.startNetworkLoactionRequest()
+                            }
+                        }
                     }
-                    .disposed(by: uc.dispoaseBag)
-            }, onDisposed: { uc in
-                uc.isTimerDisposed = true
+                    .disposed(by: dispoaseBag)
+            }, onDisposed: { [weak self] in
+                self?.isTimerDisposed = true
             })
         
     }

@@ -59,8 +59,9 @@ extension MapServiceImpi: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(#function, mapView.centerCoordinate)
+        print(#function,"mapView centerCoordinate: ", mapView.centerCoordinate, " scale scale: \(mapView)")
         self.mapCenter.accept(mapView.centerCoordinate)
+        
     }
     
     
