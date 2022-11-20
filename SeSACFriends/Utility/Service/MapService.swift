@@ -40,7 +40,6 @@ final class MapServiceImpi: NSObject, MapService {
     func setMapCenter(center: CLLocationCoordinate2D, displayRange: CLLocationDistance = 5000) {
         
         let location = MKCoordinateRegion(center: center, latitudinalMeters: displayRange, longitudinalMeters: displayRange)
-        
         mapView?.setRegion(location, animated: true)
     }
     
@@ -53,11 +52,11 @@ extension MapServiceImpi: MKMapViewDelegate {
         guard !annotation.isKind(of: MKAnnotation.self) else { return nil }
         
         var annotationView: MKAnnotationView?
-        
+    
         if let annotation = annotation as? CustomAnnotation {
             annotationView = setupCustomAnnotationView(for: annotation, on: mapView)
         }
-        
+        annotationView?.canShowCallout = true
         return annotationView
     }
     

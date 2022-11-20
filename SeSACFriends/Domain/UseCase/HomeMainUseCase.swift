@@ -89,7 +89,8 @@ extension HomeMainUseCaseImpi {
             isTimerDisposed = false
             guard let lat, let long else {
                 requestLocation()
-                return }
+                return
+            }
             startNetworkLoactionRequest() // 여기서 재구독
             mapCenterCoordinate(center:CLLocationCoordinate2D(latitude: lat, longitude: long)
             )

@@ -66,7 +66,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
         handleNetworkDisConnected = {
             completionHandler(.failure(APIError.notConnected))
         }
-        startMonitering()
+//        startMonitering()
         let search = Endpoint.search
         let urlComponents = URLComponents(string: search.url)
         let formData: [String: String] = [
@@ -89,7 +89,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
         request.httpBody = formEncodedData
         
         let defaultSession = URLSession(configuration: .default)
-        let task = defaultSession.dataTask(with: request) {[weak self] data, response, error in
+        let task = defaultSession.dataTask(with: request) { data, response, error in
             
             guard error == nil else {
                 print("Error occur: error calling POST - \(String(describing: error))")
@@ -111,7 +111,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
             print("✅✅✅✅✅✅ Search user Done \(Date())")
             print(result)
             completionHandler(.success(result))
-            self?.stopMonitoring()
+//            self?.stopMonitoring()
         }
         task.resume()
     }

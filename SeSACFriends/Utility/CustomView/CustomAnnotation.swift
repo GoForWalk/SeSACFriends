@@ -46,12 +46,20 @@ final class CustomAnnotationView: MKAnnotationView {
 
 final class CustomAnnotation: NSObject, MKAnnotation {
     
+    let title: String?
+    let subtitle: String?
     let annotationImage: Int
     let coordinate: CLLocationCoordinate2D
     
-    init(annotationImage: Int, coordinate: CLLocationCoordinate2D) {
+    init(annotationImage: Int,
+         coordinate: CLLocationCoordinate2D,
+         subtitle: String? = nil,
+         title: String? = nil
+    ) {
         self.annotationImage = annotationImage
         self.coordinate = coordinate
+        self.subtitle = subtitle
+        self.title = title
     }
     
     func setConfigure() {
