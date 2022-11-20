@@ -20,6 +20,8 @@ final class HomeMainViewModel: ViewModelType {
     struct Input {
         let mapCenterLocation: PublishRelay<CLLocationCoordinate2D>
         let setLocationButtonTapped: ControlEvent<Void>
+        let viewWillAppear: ControlEvent<Void>
+        let viewDidDisappear: ControlEvent<Void>
     }
     
     struct Output {
@@ -42,7 +44,7 @@ private extension HomeMainViewModel {
         
         input.setLocationButtonTapped
             .bind { [weak self] in
-                self?.useCase.requestLocationAuth()
+                self?.useCase.requestLocation()
             }
             .disposed(by: disposeBag)
         
@@ -51,6 +53,20 @@ private extension HomeMainViewModel {
             .asObservable()
             .bind(with: self) { vm, coordinate in
                 vm.useCase.mapCenterCoordinate(center: coordinate)
+            }
+            .disposed(by: disposeBag)
+        
+        input.viewDidDisappear
+            .debug()
+            .subscribe(with: self) { vm, _ in
+                vm.useCase.stopResquest()
+            }
+            .disposed(by: disposeBag)
+        
+        input.viewWillAppear
+            .debug()
+            .subscribe(with: self) { vm, _ in
+                vm.useCase.restartRequest()
             }
             .disposed(by: disposeBag)
         

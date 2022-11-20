@@ -66,6 +66,7 @@
 		CF73610729260D8900ECC920 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610629260D8900ECC920 /* CustomAnnotation.swift */; };
 		CF73610929261D8000ECC920 /* SearchUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610829261D8000ECC920 /* SearchUserDTO.swift */; };
 		CF73610B29261E6D00ECC920 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610A29261E6D00ECC920 /* HomeRepository.swift */; };
+		CF73610E2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
@@ -173,6 +174,7 @@
 		CF73610629260D8900ECC920 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		CF73610829261D8000ECC920 /* SearchUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserDTO.swift; sourceTree = "<group>"; };
 		CF73610A29261E6D00ECC920 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
+		CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive_BaseViewController+Extension.swift"; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				CFDF0C392919484700E586A1 /* UIButton+Extension.swift */,
 				CF722F8D2922991C00C8E76D /* UIView+Extension.swift */,
 				CF722F9A292387D200C8E76D /* TextView+Extension.swift */,
+				CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -926,6 +929,7 @@
 				CFDF0C1F2918E9D000E586A1 /* ImageConstant.swift in Sources */,
 				CFDF0C41291A130900E586A1 /* ObBoardingScrollView.swift in Sources */,
 				CF722F9F2923A87C00C8E76D /* ProfileSettingCollectionViewCell.swift in Sources */,
+				CF73610E2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift in Sources */,
 				CF722F8C29228E4300C8E76D /* ProfileCardRollableView.swift in Sources */,
 				CF2E8308291D69AA00D2DE1C /* SignUpUseCaseImpi.swift in Sources */,
 				CF2E836029222CEE00D2DE1C /* ProfileMainTableViewCell.swift in Sources */,

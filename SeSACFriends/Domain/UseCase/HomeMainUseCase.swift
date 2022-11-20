@@ -15,7 +15,9 @@ import RxCocoa
 
 protocol HomeMainUseCase: UseCase {
     
-    
+    var homeStatusOut: BehaviorSubject<HomeStatus> { get }
+    var locationAuthError: PublishSubject<LocationAuthError> { get }
+    var mapAnnotationInfo: PublishSubject<[MapAnnotionUserDTO]> { get }
 }
 
 final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
@@ -24,11 +26,12 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     // TODO: 의존성 추가
     private var respository: HomeRepository = HomeRespositoryImpi()
     private var locationService: LocationService = LocationServiceImpi()
-    private var lat: CLLocationDegrees = 0
-    private var long: CLLocationDegrees = 0
+    private var lat: CLLocationDegrees?
+    private var long: CLLocationDegrees?
     private let coodinatorTarget = PublishSubject<CLLocationCoordinate2D>()
     private let dispoaseBag = DisposeBag()
     private var timerDisposable: Disposable?
+    private var isTimerGo = true
     
     let homeStatusOut = BehaviorSubject<HomeStatus>(value: .searching)
     let locationAuthError = PublishSubject<LocationAuthError>()
@@ -43,68 +46,98 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
 
 extension HomeMainUseCaseImpi {
     
+    /// 네트워크 통신 결과 따라서 모드 변경하는 코드
     func setHomeMode() {
         
     }
     
     func mapCenterCoordinate(center: CLLocationCoordinate2D) {
-        
+        isTimerGo = true
         self.lat = center.latitude
         self.long = center.longitude
         coodinatorTarget.onNext(center)
-            
-        
-        
-        timerDisposable = coodinatorTarget
-//            .debug()
-            .flatMapLatest { coordinate in
-                return Observable<Int>.timer(.seconds(0), period: .milliseconds(10000), scheduler: MainScheduler.instance)
-                    .map { [weak self] _ -> CLLocationCoordinate2D in
-                        guard let self else { return CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0) }
-
-                        return CLLocationCoordinate2D(latitude: CLLocationDegrees(self.lat), longitude: CLLocationDegrees(self.long))
-                    }
-            }
-//            .debug()
-            .subscribe { [weak self] coordinate in
-                guard let strongSelf = self, let element = coordinate.element else { return }
-                strongSelf.timerDisposable?.dispose()
-                strongSelf.respository.fetchMainMapAnnotation(lat: element.latitude, long: element.longitude)
-//                    .debug()
-                    .subscribe { [weak self] annotationInfo in
-                        self?.mapAnnotationInfo.onNext(annotationInfo)
-                    }
-                    .disposed(by: strongSelf.dispoaseBag)
-            }
-        
-//        respository.fetchMainMapAnnotation(lat: lat, long: long)
+        startNetworkLoactionRequest()
     }
     
-    private func setCurrentLocation() {
-        locationService.requestCurrentLocation()
-    }
-        
-    func requestLocationAuth() {
-                    
+    func requestLocation() {
         locationService.observeUpdateLocationAuthorization()
             .subscribe { [weak self] auth in
                 guard let locationAuth = auth.element else { return }
-                switch locationAuth {
-                case .notDetermined:
-                    self?.locationService.requestAuthorization()
-                case .denied, .restricted:
-                    self?.locationAuthError.onNext(.authNotAllowed)
-                case .authorizedWhenInUse:
-                    self?.locationService.requestCurrentLocation()
-                default:
-                    print("Default")
-                }
+                self?.checkLocationAuth(authStatus: locationAuth)
             }
             .dispose()
     }
     
     func currentLocationOut() -> Observable<Result<[CLLocation], Error>> {
         return locationService.observeCurrentLocation()
+    }
+    
+    func stopResquest() {
+        isTimerGo = false
+    }
+    
+    func restartRequest()  {
+        // 마지막 위치에서 지도 다시 시작!!
+        // 마지막 위치가 없으면 -> 내 위치에서 시작(위치 요청)
+        guard let lat, let long else {
+            requestLocation()
+            return }
+        startNetworkLoactionRequest() // 여기서 재구독
+        mapCenterCoordinate(center:CLLocationCoordinate2D(latitude: lat, longitude: long)
+        )
+    }
+    
+}
+
+private extension HomeMainUseCaseImpi {
+    
+    func checkLocationAuth(authStatus: CLAuthorizationStatus) {
+        switch authStatus {
+        case .notDetermined:
+            locationService.requestAuthorization()
+            requestLocation()
+        case .denied, .restricted:
+            locationAuthError.onNext(.authNotAllowed)
+        case .authorizedWhenInUse:
+            locationService.requestCurrentLocation()
+        default:
+            print("Default")
+        }
+    }
+    
+    func setCurrentLocation() {
+        locationService.requestCurrentLocation()
+    }
+    
+    func startNetworkLoactionRequest() {
+        
+        guard let lat, let long else {
+            requestLocation()
+            return }
+        
+        timerDisposable = coodinatorTarget
+            .share()
+            .flatMapLatest { coordinate in
+                return Observable<Int>.timer(.seconds(0), period: .milliseconds(10000), scheduler: MainScheduler.instance)
+                    .map { _ -> CLLocationCoordinate2D in
+                        return CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
+                    }
+            }
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .take(until: { [unowned self] _ in
+                !self.isTimerGo
+            })
+            .debug()
+            .subscribe { [weak self] coordinate in
+                guard let strongSelf = self, let element = coordinate.element else { return }
+                strongSelf.timerDisposable?.dispose()
+                strongSelf.respository.fetchMainMapAnnotation(lat: element.latitude, long: element.longitude)
+                    .subscribe { annotationInfo in
+                        self?.mapAnnotationInfo.onNext(annotationInfo)
+                    }
+                    .disposed(by: strongSelf.dispoaseBag)
+            }
+        
     }
     
 }

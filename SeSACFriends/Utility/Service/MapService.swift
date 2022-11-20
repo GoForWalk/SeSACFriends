@@ -20,16 +20,12 @@ final class MapServiceImpi: NSObject, MapService {
     var mapView: MKMapView? {
         didSet {
             mapView?.delegate = self
+            self.mapView?.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CustomAnnotationView.self))
         }
     }
-    
+//    private var oldAnnotations: [MKAnnotation]?
     let mapCenter = PublishRelay<CLLocationCoordinate2D>()
     private let disposeBag = DisposeBag()
-    
-    override init() {
-        super.init()
-        self.mapView?.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: CustomAnnotationView.identifier)
-    }
     
     func setAnnotion(locations: [MapAnnotionUserDTO]) {
         let annotations = locations.map { userDTO in
@@ -44,6 +40,7 @@ final class MapServiceImpi: NSObject, MapService {
     func setMapCenter(center: CLLocationCoordinate2D, displayRange: CLLocationDistance = 5000) {
         
         let location = MKCoordinateRegion(center: center, latitudinalMeters: displayRange, longitudinalMeters: displayRange)
+        
         mapView?.setRegion(location, animated: true)
     }
     
@@ -53,23 +50,31 @@ extension MapServiceImpi: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard let annotation = annotation as? CustomAnnotation else { return nil }
-        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.identifier) as? CustomAnnotationView else { return nil }
+        guard !annotation.isKind(of: MKAnnotation.self) else { return nil }
         
-        annotationView.annotation = annotation
-        annotationView.charactorImageView.image = AnnotationType(rawValue: annotation.annotationImage)?.image
+        var annotationView: MKAnnotationView?
+        
+        if let annotation = annotation as? CustomAnnotation {
+            annotationView = setupCustomAnnotationView(for: annotation, on: mapView)
+        }
         
         return annotationView
     }
     
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        print(#function, mapView.centerCoordinate)
+    private func setupCustomAnnotationView(for annotation: CustomAnnotation, on mapView: MKMapView) -> MKAnnotationView {
+        
+        let identifier =  NSStringFromClass(CustomAnnotationView.self)
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
+                
+        guard let image = AnnotationType(rawValue: annotation.annotationImage)?.image else { return MKAnnotationView()}
+        annotationView.image = image
+        
+        let offset = CGPoint(x: image.size.width / 2 , y: image.size.height / 2 )
+        annotationView.centerOffset = offset
+        
+        return annotationView
     }
     
-    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-        print(#function)
-    }
-        
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         print(#function, mapView.centerCoordinate)
         self.mapCenter.accept(mapView.centerCoordinate)

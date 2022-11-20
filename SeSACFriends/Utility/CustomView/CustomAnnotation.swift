@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-
 import SnapKit
 
 final class CustomAnnotationView: MKAnnotationView {
@@ -26,7 +25,7 @@ final class CustomAnnotationView: MKAnnotationView {
         configure()
         setConstraints()
     }
-    
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

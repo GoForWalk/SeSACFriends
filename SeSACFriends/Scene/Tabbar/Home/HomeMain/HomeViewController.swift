@@ -21,7 +21,6 @@ final class HomeViewController: BaseViewController {
     
     override func loadView() {
         view = mainView
-//        mainView.map.delegate = self
     }
     
     override func viewDidLoad() {
@@ -35,11 +34,14 @@ final class HomeViewController: BaseViewController {
     }
     
     override func bind() {
+                
         let input = HomeMainViewModel.Input(
             mapCenterLocation: mapService.mapCenter,
-            setLocationButtonTapped: mainView.setLocationButton.rx.tap
+            setLocationButtonTapped: mainView.setLocationButton.rx.tap,
+            viewWillAppear: self.rx.viewWillAppear,
+            viewDidDisappear: self.rx.viewDidDisappear
         )
-        
+
         guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }
                 
         output.buttonStatus
@@ -82,20 +84,13 @@ final class HomeViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-
         
     }//: bind()
     
 }
 
 // MARK: - HomeViewController Private Function
-extension HomeViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(#function)
-        
-    }
-
+extension HomeViewController {
     
     func setNavi() {
         navigationController?.isToolbarHidden = true
@@ -105,13 +100,9 @@ extension HomeViewController: MKMapViewDelegate {
       let requestLocationServiceAlert = UIAlertController(title: "위치정보 이용", message: "위치 서비스를 사용할 수 없습니다. 기기의 '설정>개인정보 보호'에서 위치 서비스를 켜주세요.", preferredStyle: .alert)
       let goSetting = UIAlertAction(title: "설정으로 이동", style: .destructive) { _ in
         
-          // 설정창으로 이동하는 코드
-          // 설정까지 이동하거나 설정 세부화면까지 이동
-          // 한 번도 설정 앱에 들어가지 않았거나, 막 다운받은 앱이거나...
           if let appSetting = URL(string: UIApplication.openSettingsURLString) {
               UIApplication.shared.open(appSetting)
           }
-          
       }
       let cancel = UIAlertAction(title: "취소", style: .default)
       requestLocationServiceAlert.addAction(cancel)
@@ -145,58 +136,3 @@ extension HomeViewController: MKMapViewDelegate {
 
 }
 
-//private extension HomeViewController {
-//
-//    func setAnnotion(locations: [MapAnnotionUserDTO]) {
-//        let annotations = locations.map { userDTO in
-//            let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
-//            let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
-//
-//            return customAnnotation
-//        }
-//        mainView.map.addAnnotations(annotations)
-//    }
-//
-//    func setMapCenter(center: CLLocationCoordinate2D, displayRange: CLLocationDistance = 5000) {
-//
-//        let location = MKCoordinateRegion(center: center, latitudinalMeters: displayRange, longitudinalMeters: displayRange)
-//        mainView.map.setRegion(location, animated: true)
-//    }
-//
-//    func getMapCenterCoordinator() -> Observable<CLLocationCoordinate2D> {
-//        return  mapCenter.asObservable()
-//    }
-//
-//}
-//
-//extension HomeViewController: MKMapViewDelegate {
-//
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//        guard let annotation = annotation as? CustomAnnotation else { return nil }
-//        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.identifier) as? CustomAnnotationView else { return nil }
-//
-//        annotationView.annotation = annotation
-//        annotationView.charactorImageView.image = AnnotationType(rawValue: annotation.annotationImage)?.image
-//
-//        return annotationView
-//    }
-//
-//    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//        print(#function, mapView.centerCoordinate)
-//    }
-//
-//    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-//        print(#function, mapView.centerCoordinate)
-//    }
-//
-//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        print(#function, mapView.centerCoordinate)
-//    }
-//
-//    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-//        print(#function, mapView.centerCoordinate)
-//    }
-//
-//
-//}

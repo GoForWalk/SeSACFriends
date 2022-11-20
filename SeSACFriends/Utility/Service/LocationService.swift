@@ -35,7 +35,10 @@ final class LocationServiceImpi: NSObject, LocationService {
     }
     
     func requestCurrentLocation() {
-        locationManager?.requestLocation()
+        locationManager?.startUpdatingLocation()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0 ) { [weak self] in
+            self?.locationManager?.stopUpdatingLocation()
+        }
     }
     
     func requestAuthorization() {
