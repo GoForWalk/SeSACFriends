@@ -32,6 +32,11 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     private let dispoaseBag = DisposeBag()
     private var timerDisposable: Disposable?
     private var isTimerGo = true
+    private var isTimerDisposed = true {
+        didSet {
+            print("isTimerDisposed: \(isTimerDisposed)")
+        }
+    }
     
     let homeStatusOut = BehaviorSubject<HomeStatus>(value: .searching)
     let locationAuthError = PublishSubject<LocationAuthError>()
@@ -79,12 +84,17 @@ extension HomeMainUseCaseImpi {
     func restartRequest()  {
         // 마지막 위치에서 지도 다시 시작!!
         // 마지막 위치가 없으면 -> 내 위치에서 시작(위치 요청)
-        guard let lat, let long else {
-            requestLocation()
-            return }
-        startNetworkLoactionRequest() // 여기서 재구독
-        mapCenterCoordinate(center:CLLocationCoordinate2D(latitude: lat, longitude: long)
-        )
+        isTimerGo = true
+        if isTimerDisposed {
+            isTimerDisposed = false
+            guard let lat, let long else {
+                requestLocation()
+                return }
+            startNetworkLoactionRequest() // 여기서 재구독
+            mapCenterCoordinate(center:CLLocationCoordinate2D(latitude: lat, longitude: long)
+            )
+
+        }
     }
     
 }
@@ -128,15 +138,17 @@ private extension HomeMainUseCaseImpi {
                 !self.isTimerGo
             })
             .debug()
-            .subscribe { [weak self] coordinate in
-                guard let strongSelf = self, let element = coordinate.element else { return }
-                strongSelf.timerDisposable?.dispose()
-                strongSelf.respository.fetchMainMapAnnotation(lat: element.latitude, long: element.longitude)
+            .subscribe(with: self, onNext: { uc, coordination in
+                uc.timerDisposable?.dispose()
+                uc.isTimerDisposed = false
+                uc.respository.fetchMainMapAnnotation(lat: coordination.latitude, long: coordination.longitude)
                     .subscribe { annotationInfo in
-                        self?.mapAnnotationInfo.onNext(annotationInfo)
+                        uc.mapAnnotationInfo.onNext(annotationInfo)
                     }
-                    .disposed(by: strongSelf.dispoaseBag)
-            }
+                    .disposed(by: uc.dispoaseBag)
+            }, onDisposed: { uc in
+                uc.isTimerDisposed = true
+            })
         
     }
     

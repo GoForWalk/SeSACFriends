@@ -54,7 +54,9 @@ final class HomeViewController: BaseViewController {
         
         output.mapCenterLocation
             .map { $0.coordinate }
-            .bind(to: mainView.map.rx.centerCoordinate)
+            .bind(with: self, onNext: { vc, coordinate in
+                vc.mapService.setMapCenter(center: coordinate)
+            })
             .disposed(by: disposeBag)
         
         output.mapAnnotation
@@ -83,7 +85,6 @@ final class HomeViewController: BaseViewController {
                 self?.presentMainVC(status: homeStatus.element)
             }
             .disposed(by: disposeBag)
-        
         
     }//: bind()
     
