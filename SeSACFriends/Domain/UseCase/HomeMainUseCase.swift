@@ -32,7 +32,7 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     private let dispoaseBag = DisposeBag()
     private var timerDisposable: Disposable?
     private var isTimerGo = true
-    private var isTimerDisposed = true {
+    private var isTimerDisposed: Bool? {
         didSet {
             print("isTimerDisposed: \(isTimerDisposed)")
         }
@@ -85,8 +85,8 @@ extension HomeMainUseCaseImpi {
         // 마지막 위치에서 지도 다시 시작!!
         // 마지막 위치가 없으면 -> 내 위치에서 시작(위치 요청)
         isTimerGo = true
-        if isTimerDisposed {
-            isTimerDisposed = false
+        if isTimerDisposed ?? true {
+            self.isTimerDisposed = false
             guard let lat, let long else {
                 requestLocation()
                 return
@@ -122,19 +122,15 @@ private extension HomeMainUseCaseImpi {
     
     func startNetworkLoactionRequest() {
         
-        guard let lat, let long else {
-            requestLocation()
-            return }
-        
         timerDisposable = coodinatorTarget
-            .share()
             .flatMapLatest { coordinate in
                 return Observable<Int>.timer(.seconds(0), period: .milliseconds(10000), scheduler: MainScheduler.instance)
-                    .map { _ -> CLLocationCoordinate2D in
-                        return CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
+                    .map { [weak self] _ -> CLLocationCoordinate2D in
+                        return CLLocationCoordinate2D(latitude: CLLocationDegrees(self?.lat ?? 0), longitude: CLLocationDegrees(self?.long ?? 0))
                     }
             }
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .share()
             .take(until: { [unowned self] _ in
                 !self.isTimerGo
             })

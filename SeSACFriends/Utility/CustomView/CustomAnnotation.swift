@@ -12,18 +12,11 @@ import SnapKit
 final class CustomAnnotationView: MKAnnotationView {
     
     static let identifier = "CustomAnnotationView"
-    
-    lazy var charactorImageView: UIImageView = {
-        let imageView = UIImageView()
         
-        return imageView
-    }()
-    
-    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        configure()
         setConstraints()
+        configure()
     }
         
     required init?(coder aDecoder: NSCoder) {
@@ -32,14 +25,11 @@ final class CustomAnnotationView: MKAnnotationView {
     
     func configure() {
         backgroundColor = .clear
-        addSubview(charactorImageView)
     }
     
     func setConstraints() {
-        charactorImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.size.equalTo(83)
-        }
+        frame = CGRect(x: 0, y: 0, width: 40, height: 50)
+        centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
     }
     
 }
@@ -60,12 +50,9 @@ final class CustomAnnotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.subtitle = subtitle
         self.title = title
+        super.init()
     }
-    
-    func setConfigure() {
         
-    }
-    
 }
 
 @frozen enum AnnotationType: Int {

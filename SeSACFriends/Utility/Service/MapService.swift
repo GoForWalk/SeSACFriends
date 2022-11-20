@@ -27,13 +27,22 @@ final class MapServiceImpi: NSObject, MapService {
     }
     
     func setAnnotion(locations: [MapAnnotionUserDTO]) {
-        let annotations = locations.map { userDTO in
-            let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
-            let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let mapView = self?.mapView else { return }
+            mapView.removeAnnotations(mapView.annotations)
             
-            return customAnnotation
+            if locations.isEmpty { return }
+            
+            let annotations = locations.map { userDTO in
+                let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
+                let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
+                
+                return customAnnotation
+            }
+            mapView.addAnnotations(annotations)
         }
-        mapView?.addAnnotations(annotations)
+        
     }
     
     func setMapCenter(center: CLLocationCoordinate2D, displayRange: CLLocationDistance = 5000) {
@@ -55,13 +64,17 @@ extension MapServiceImpi: MKMapViewDelegate {
             annotationView = setupCustomAnnotationView(for: annotation, on: mapView)
         }
         annotationView?.canShowCallout = true
+        
+        
         return annotationView
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(#function,"mapView centerCoordinate: ", mapView.centerCoordinate, " scale scale: \(mapView)")
         self.mapCenter.accept(mapView.centerCoordinate)
         
+        let zoomWidth = mapView.visibleMapRect.size.width
+        let zoomFactor = Int(log2(zoomWidth)) - 9
+        print("🫠🫠🫠🫠 REGION DID CHANGE: ZOOM FACTOR \(zoomFactor)")
     }
     
     
@@ -75,10 +88,13 @@ private extension MapServiceImpi {
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
                 
         guard let image = AnnotationType(rawValue: annotation.annotationImage)?.image else { return MKAnnotationView()}
-        annotationView.image = image
+        let size = CGSize(width: 85, height: 85)
+        UIGraphicsBeginImageContext(size)
         
-        let offset = CGPoint(x: image.size.width / 2 , y: image.size.height / 2 )
-        annotationView.centerOffset = offset
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
+        let resizeedImage = UIGraphicsGetImageFromCurrentImageContext()
+        annotationView.image = resizeedImage
         
         return annotationView
     }
