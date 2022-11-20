@@ -17,15 +17,14 @@ protocol MapService {
 
 final class MapServiceImpi: NSObject, MapService {
     
+    private let disposeBag = DisposeBag()
+    let mapCenter = PublishRelay<CLLocationCoordinate2D>()
     var mapView: MKMapView? {
         didSet {
             mapView?.delegate = self
             self.mapView?.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CustomAnnotationView.self))
         }
     }
-//    private var oldAnnotations: [MKAnnotation]?
-    let mapCenter = PublishRelay<CLLocationCoordinate2D>()
-    private let disposeBag = DisposeBag()
     
     func setAnnotion(locations: [MapAnnotionUserDTO]) {
         let annotations = locations.map { userDTO in
@@ -38,7 +37,6 @@ final class MapServiceImpi: NSObject, MapService {
     }
     
     func setMapCenter(center: CLLocationCoordinate2D, displayRange: CLLocationDistance = 5000) {
-        
         let location = MKCoordinateRegion(center: center, latitudinalMeters: displayRange, longitudinalMeters: displayRange)
         mapView?.setRegion(location, animated: true)
     }
@@ -60,7 +58,17 @@ extension MapServiceImpi: MKMapViewDelegate {
         return annotationView
     }
     
-    private func setupCustomAnnotationView(for annotation: CustomAnnotation, on mapView: MKMapView) -> MKAnnotationView {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(#function, mapView.centerCoordinate)
+        self.mapCenter.accept(mapView.centerCoordinate)
+    }
+    
+    
+}
+
+private extension MapServiceImpi {
+    
+    func setupCustomAnnotationView(for annotation: CustomAnnotation, on mapView: MKMapView) -> MKAnnotationView {
         
         let identifier =  NSStringFromClass(CustomAnnotationView.self)
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
@@ -72,11 +80,6 @@ extension MapServiceImpi: MKMapViewDelegate {
         annotationView.centerOffset = offset
         
         return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(#function, mapView.centerCoordinate)
-        self.mapCenter.accept(mapView.centerCoordinate)
     }
 
 }
