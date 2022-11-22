@@ -16,9 +16,16 @@ struct SearchUserDTO {
     let gender, type, sesac, background: Int
 }
 
+/// 지도에서 새싹을 표시하는 DTO
 struct MapAnnotionUserDTO {
     let lat, long: Double
     let gender, type, sesac: Int
+}
+
+/// 검색어를 받아오는 DTO
+struct MapSearchWordDTO {
+    let nearByWord: [String]
+    let recommandWord: [String]
 }
 
 enum SearchingType {

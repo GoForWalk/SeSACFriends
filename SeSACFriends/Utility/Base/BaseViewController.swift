@@ -44,6 +44,10 @@ class BaseViewController: UIViewController, CheckNetworkStatus {
         print("❌❌❌❌❌❌❌❌❌ \(self.description) ❌❌❌❌❌❌❌❌❌")
     }
     
+    override func didReceiveMemoryWarning() {
+        print("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ MEMORY OVER USED WARNING: \(self.description) ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️")
+    }
+    
 }
 
 extension BaseViewController {

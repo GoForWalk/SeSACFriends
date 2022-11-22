@@ -45,6 +45,13 @@
 		CF2E836029222CEE00D2DE1C /* ProfileMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E835F29222CEE00D2DE1C /* ProfileMainTableViewCell.swift */; };
 		CF2E83642922584A00D2DE1C /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E83632922584A00D2DE1C /* ProfileInfoView.swift */; };
 		CF2E83662922585C00D2DE1C /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E83652922585C00D2DE1C /* ProfileInfoViewController.swift */; };
+		CF416A0F292B57D6003EB279 /* HomeWordSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF416A0E292B57D6003EB279 /* HomeWordSearchView.swift */; };
+		CF416A11292B57E8003EB279 /* HomeWordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF416A10292B57E8003EB279 /* HomeWordSearchViewController.swift */; };
+		CF416A13292B5806003EB279 /* HomeSearchWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF416A12292B5806003EB279 /* HomeSearchWordViewModel.swift */; };
+		CF416A16292B72A8003EB279 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF416A15292B72A8003EB279 /* TagCollectionViewCell.swift */; };
+		CF416A18292BDCB9003EB279 /* TagHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF416A17292BDCB9003EB279 /* TagHeaderView.swift */; };
+		CF416A1B292BEE5A003EB279 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = CF416A1A292BEE5A003EB279 /* Differentiator */; };
+		CF416A1D292BEE5A003EB279 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CF416A1C292BEE5A003EB279 /* RxDataSources */; };
 		CF722F8A29226AD500C8E76D /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8929226AD500C8E76D /* ProfileCardView.swift */; };
 		CF722F8C29228E4300C8E76D /* ProfileCardRollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */; };
 		CF722F8E2922991C00C8E76D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8D2922991C00C8E76D /* UIView+Extension.swift */; };
@@ -108,8 +115,6 @@
 		CFDF0C7A291D0AFE00E586A1 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C79291D0AFE00E586A1 /* HTTPMethod.swift */; };
 		CFDF0C7E291D30FC00E586A1 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C7D291D30FC00E586A1 /* APIError.swift */; };
 		CFDF0C80291D36FB00E586A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDF0C7F291D36FA00E586A1 /* UserInfo.swift */; };
-		CFFFBED7291D503F00E4DAB4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CFFFBED6291D503F00E4DAB4 /* RxCocoa */; };
-		CFFFBED9291D503F00E4DAB4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CFFFBED8291D503F00E4DAB4 /* RxSwift */; };
 		CFFFBEDB291D533100E4DAB4 /* UserAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBEDA291D533100E4DAB4 /* UserAPIService.swift */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +159,11 @@
 		CF2E835F29222CEE00D2DE1C /* ProfileMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainTableViewCell.swift; sourceTree = "<group>"; };
 		CF2E83632922584A00D2DE1C /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		CF2E83652922585C00D2DE1C /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
+		CF416A0E292B57D6003EB279 /* HomeWordSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordSearchView.swift; sourceTree = "<group>"; };
+		CF416A10292B57E8003EB279 /* HomeWordSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordSearchViewController.swift; sourceTree = "<group>"; };
+		CF416A12292B5806003EB279 /* HomeSearchWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchWordViewModel.swift; sourceTree = "<group>"; };
+		CF416A15292B72A8003EB279 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF416A17292BDCB9003EB279 /* TagHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeaderView.swift; sourceTree = "<group>"; };
 		CF722F8929226AD500C8E76D /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardRollableView.swift; sourceTree = "<group>"; };
 		CF722F8D2922991C00C8E76D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -218,15 +228,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFFFBED9291D503F00E4DAB4 /* RxSwift in Frameworks */,
 				CFDF0C2E291921E900E586A1 /* FirebaseMessaging in Frameworks */,
 				CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */,
 				CFDF0C2A291921E900E586A1 /* FirebaseAuth in Frameworks */,
+				CF416A1D292BEE5A003EB279 /* RxDataSources in Frameworks */,
 				CFDF0C64291BF21300E586A1 /* Toast in Frameworks */,
 				CFDF0C28291921E900E586A1 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				CFDF0C2C291921E900E586A1 /* FirebaseCrashlytics in Frameworks */,
-				CFFFBED7291D503F00E4DAB4 /* RxCocoa in Frameworks */,
 				CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */,
+				CF416A1B292BEE5A003EB279 /* Differentiator in Frameworks */,
 				CF722FA52923AD7900C8E76D /* MultiSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +443,15 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
+		CF416A14292B7166003EB279 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				CF416A15292B72A8003EB279 /* TagCollectionViewCell.swift */,
+				CF416A17292BDCB9003EB279 /* TagHeaderView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		CF722F8F29236CC400C8E76D /* ProfileCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				CF7360F0292512E800ECC920 /* HomeMainViewModel.swift */,
+				CF416A12292B5806003EB279 /* HomeSearchWordViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -474,6 +494,9 @@
 		CF7360F72925208000ECC920 /* HomeWordSearch */ = {
 			isa = PBXGroup;
 			children = (
+				CF416A14292B7166003EB279 /* SubViews */,
+				CF416A0E292B57D6003EB279 /* HomeWordSearchView.swift */,
+				CF416A10292B57E8003EB279 /* HomeWordSearchViewController.swift */,
 			);
 			path = HomeWordSearch;
 			sourceTree = "<group>";
@@ -809,9 +832,9 @@
 				CFDF0C2B291921E900E586A1 /* FirebaseCrashlytics */,
 				CFDF0C2D291921E900E586A1 /* FirebaseMessaging */,
 				CFDF0C63291BF21300E586A1 /* Toast */,
-				CFFFBED6291D503F00E4DAB4 /* RxCocoa */,
-				CFFFBED8291D503F00E4DAB4 /* RxSwift */,
 				CF722FA42923AD7900C8E76D /* MultiSlider */,
+				CF416A1A292BEE5A003EB279 /* Differentiator */,
+				CF416A1C292BEE5A003EB279 /* RxDataSources */,
 			);
 			productName = SeSACFriends;
 			productReference = CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */;
@@ -846,8 +869,8 @@
 				CFDF0C002918C29900E586A1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				CFDF0C26291921E900E586A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CFDF0C62291BF21300E586A1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
-				CFFFBED5291D503F00E4DAB4 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CF722FA32923AD7900C8E76D /* XCRemoteSwiftPackageReference "MultiSlider" */,
+				CF416A19292BEE5A003EB279 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = CF0467AB2918BF5800E72CC9 /* Products */;
 			projectDirPath = "";
@@ -908,6 +931,7 @@
 				CF2E834829221D5A00D2DE1C /* FriendsViewController.swift in Sources */,
 				CFDF0C5D291A8BE800E586A1 /* UserDefaultsConstant.swift in Sources */,
 				CF0467AE2918BF5800E72CC9 /* AppDelegate.swift in Sources */,
+				CF416A16292B72A8003EB279 /* TagCollectionViewCell.swift in Sources */,
 				CFDF0C7E291D30FC00E586A1 /* APIError.swift in Sources */,
 				CF2E8320291D74D000D2DE1C /* GenderInputView.swift in Sources */,
 				CF722F93292371E000C8E76D /* CardViewController.swift in Sources */,
@@ -935,9 +959,13 @@
 				CF2E836029222CEE00D2DE1C /* ProfileMainTableViewCell.swift in Sources */,
 				CF73610729260D8900ECC920 /* CustomAnnotation.swift in Sources */,
 				CF2E832A291D771900D2DE1C /* GenderInputCollectionViewCell.swift in Sources */,
+				CF416A18292BDCB9003EB279 /* TagHeaderView.swift in Sources */,
 				CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */,
+				CF416A11292B57E8003EB279 /* HomeWordSearchViewController.swift in Sources */,
 				CF2E8328291D751900D2DE1C /* GenderInputViewModel.swift in Sources */,
 				CF2E8310291D6EC100D2DE1C /* NickInputViewModel.swift in Sources */,
+				CF416A13292B5806003EB279 /* HomeSearchWordViewModel.swift in Sources */,
+				CF416A0F292B57D6003EB279 /* HomeWordSearchView.swift in Sources */,
 				CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */,
 				CF2E8324291D74F600D2DE1C /* BirthInputViewModel.swift in Sources */,
 				CF2E8317291D73D300D2DE1C /* BirthInputViewController.swift in Sources */,
@@ -1184,6 +1212,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF416A19292BEE5A003EB279 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		CF722FA32923AD7900C8E76D /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yonat/MultiSlider.git";
@@ -1224,17 +1260,19 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		CFFFBED5291D503F00E4DAB4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = exactVersion;
-				version = 6.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF416A1A292BEE5A003EB279 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF416A19292BEE5A003EB279 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		CF416A1C292BEE5A003EB279 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF416A19292BEE5A003EB279 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
 		CF722FA42923AD7900C8E76D /* MultiSlider */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF722FA32923AD7900C8E76D /* XCRemoteSwiftPackageReference "MultiSlider" */;
@@ -1274,16 +1312,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CFDF0C62291BF21300E586A1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
-		};
-		CFFFBED6291D503F00E4DAB4 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFFFBED5291D503F00E4DAB4 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		CFFFBED8291D503F00E4DAB4 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFFFBED5291D503F00E4DAB4 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

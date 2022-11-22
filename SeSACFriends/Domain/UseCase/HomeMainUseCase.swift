@@ -18,6 +18,8 @@ protocol HomeMainUseCase: UseCase {
     var homeStatusOut: BehaviorSubject<HomeStatus> { get }
     var locationAuthError: PublishSubject<LocationAuthError> { get }
     var mapAnnotationInfo: PublishSubject<[MapAnnotionUserDTO]> { get }
+    var searchWordResult: PublishSubject<MapSearchWordDTO> { get }
+
 }
 
 final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
@@ -32,15 +34,13 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     private let dispoaseBag = DisposeBag()
     private var timerDisposable: Disposable?
     private var isTimerGo = true
-    private var isTimerDisposed: Bool? {
-        didSet {
-            print("isTimerDisposed: \(isTimerDisposed)")
-        }
-    }
+    private var isTimerDisposed: Bool?
+    private var defaultLocation: (lat: CLLocationDegrees, long: CLLocationDegrees) = (37.517821, 126.886284)
     
     let homeStatusOut = BehaviorSubject<HomeStatus>(value: .searching)
     let locationAuthError = PublishSubject<LocationAuthError>()
     let mapAnnotationInfo = PublishSubject<[MapAnnotionUserDTO]>()
+    let searchWordResult = PublishSubject<MapSearchWordDTO>()
     
     deinit {
         timerDisposable?.dispose()
@@ -53,6 +53,24 @@ extension HomeMainUseCaseImpi {
     
     /// 네트워크 통신 결과 따라서 모드 변경하는 코드
     func setHomeMode() {
+        
+    }
+    
+    func getSearchWord() {
+        let temp = respository.fetchMainMapSearchWord(lat: lat ?? defaultLocation.lat, long: long ?? defaultLocation.long)
+        
+        temp.subscribe { [weak self] mapSearchWordDTO in
+            self?.searchWordResult.onNext(mapSearchWordDTO)
+        } onFailure: { [weak self] error in
+            
+            let error = error as? APIError
+            
+            self?.checkRefreshToken(errorCode: error?.rawValue ?? 500) {
+                self?.getSearchWord()
+            }
+            
+        }
+        .disposed(by: dispoaseBag)
         
     }
     
@@ -125,11 +143,11 @@ private extension HomeMainUseCaseImpi {
         timerDisposable = coodinatorTarget
             .flatMapLatest { coordinate in
                 return Observable<Int>.timer(.seconds(0), period: .milliseconds(10000), scheduler: MainScheduler.instance)
-                    .map { [weak self] _ -> CLLocationCoordinate2D in
-                        return CLLocationCoordinate2D(latitude: CLLocationDegrees(self?.lat ?? 0), longitude: CLLocationDegrees(self?.long ?? 0))
+                    .map { [unowned self] _ -> CLLocationCoordinate2D in
+                        return CLLocationCoordinate2D(latitude: CLLocationDegrees(self.lat ?? self.defaultLocation.lat), longitude: CLLocationDegrees(self.long ?? self.defaultLocation.long))
                     }
             }
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .share()
             .take(until: { [unowned self] _ in
                 !self.isTimerGo

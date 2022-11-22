@@ -28,9 +28,15 @@ final class HomeViewController: BaseViewController {
         mapService.mapView = mainView.map
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavi()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startMonitering()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -40,7 +46,6 @@ final class HomeViewController: BaseViewController {
     
     override func configure() {
         super.configure()
-        setNavi()
     }
     
     override func bind() {

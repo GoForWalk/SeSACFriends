@@ -16,6 +16,7 @@ final class TabbarController: UITabBarController {
         self.tabBar.unselectedItemTintColor = Colors.gray6
     }
     
+    
     private func setupTabbarItem() {
         
         let profileVC = ProfileViewController()
