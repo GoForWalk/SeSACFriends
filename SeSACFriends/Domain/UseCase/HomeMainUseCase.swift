@@ -18,7 +18,7 @@ protocol HomeMainUseCase: UseCase {
     var homeStatusOut: BehaviorSubject<HomeStatus> { get }
     var locationAuthError: PublishSubject<LocationAuthError> { get }
     var mapAnnotationInfo: PublishSubject<[MapAnnotionUserDTO]> { get }
-    var searchWordResult: PublishSubject<MapSearchWordDTO> { get }
+    var searchWordResult: BehaviorSubject<MapSearchWordDTO> { get }
 
 }
 
@@ -40,7 +40,7 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     let homeStatusOut = BehaviorSubject<HomeStatus>(value: .searching)
     let locationAuthError = PublishSubject<LocationAuthError>()
     let mapAnnotationInfo = PublishSubject<[MapAnnotionUserDTO]>()
-    let searchWordResult = PublishSubject<MapSearchWordDTO>()
+    let searchWordResult = BehaviorSubject(value: MapSearchWordDTO(nearByWord: [], recommandWord: []))
     
     deinit {
         timerDisposable?.dispose()
@@ -139,20 +139,20 @@ private extension HomeMainUseCaseImpi {
     }
     
     func startNetworkLoactionRequest() {
-        
+                
         timerDisposable = coodinatorTarget
+            .debug()
+            .share()
             .flatMapLatest { coordinate in
                 return Observable<Int>.timer(.seconds(0), period: .milliseconds(10000), scheduler: MainScheduler.instance)
                     .map { [unowned self] _ -> CLLocationCoordinate2D in
                         return CLLocationCoordinate2D(latitude: CLLocationDegrees(self.lat ?? self.defaultLocation.lat), longitude: CLLocationDegrees(self.long ?? self.defaultLocation.long))
                     }
             }
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .share()
             .take(until: { [unowned self] _ in
                 !self.isTimerGo
             })
-            .debug()
+//            .debug()
             .subscribe(onNext: { [unowned self] coordination in
                 self.timerDisposable?.dispose()
                 self.isTimerDisposed = false

@@ -22,6 +22,7 @@ final class HomeMainViewModel: ViewModelType {
         let setLocationButtonTapped: ControlEvent<Void>
         let viewWillAppear: ControlEvent<Void>
         let viewDidDisappear: ControlEvent<Void>
+        let statusButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
@@ -49,7 +50,7 @@ private extension HomeMainViewModel {
             .disposed(by: disposeBag)
         
         input.mapCenterLocation
-            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .asObservable()
             .bind(with: self) { vm, coordinate in
                 vm.useCase.mapCenterCoordinate(center: coordinate)
@@ -67,6 +68,12 @@ private extension HomeMainViewModel {
             .debug()
             .subscribe(with: self) { vm, _ in
                 vm.useCase.restartRequest()
+            }
+            .disposed(by: disposeBag)
+        
+        input.statusButtonTapped
+            .subscribe(with: self) { vm, _ in
+                vm.useCase.getSearchWord()
             }
             .disposed(by: disposeBag)
         

@@ -109,7 +109,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
                 completionHandler(.failure(APIError.serverError))
                 return }
             print("✅✅✅✅✅✅ Search user Done \(Date())")
-            print(result)
+            print(result.fromQueueDB.count)
             completionHandler(.success(result))
 //            self?.stopMonitoring()
         }

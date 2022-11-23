@@ -12,12 +12,14 @@ import RxSwift
 
 final class HomeSearchWordViewModel: ViewModelType {
     
+    let useCase: HomeMainUseCase
+    
     struct Input {
         
     }
     
     struct Output {
-        
+        let nearByWord = BehaviorSubject<MapSearchWordDTO>(value: MapSearchWordDTO(nearByWord: [], recommandWord: []))
     }
     
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
@@ -25,6 +27,9 @@ final class HomeSearchWordViewModel: ViewModelType {
         return createOutput(input: input, disposeBag: disposeBag)
     }
     
+    init(useCase: HomeMainUseCase) {
+        self.useCase = useCase
+    }
 }
 
 private extension HomeSearchWordViewModel {

@@ -28,18 +28,22 @@ final class MapServiceImpi: NSObject, MapService {
     
     func setAnnotion(locations: [MapAnnotionUserDTO]) {
         
+        
+        if locations.isEmpty { return }
+        
+        
+        let annotations = locations.sorted(by: {
+            $0.sesac > $1.sesac
+        }).map { userDTO in
+            let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
+            let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
+            
+            return customAnnotation
+        }
+        
         DispatchQueue.main.async { [weak self] in
             guard let mapView = self?.mapView else { return }
-            mapView.removeAnnotations(mapView.annotations)
-            
-            if locations.isEmpty { return }
-            
-            let annotations = locations.map { userDTO in
-                let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
-                let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
-                
-                return customAnnotation
-            }
+            mapView.removeAnnotations(annotations)
             mapView.addAnnotations(annotations)
         }
         
@@ -63,8 +67,7 @@ extension MapServiceImpi: MKMapViewDelegate {
         if let annotation = annotation as? CustomAnnotation {
             annotationView = setupCustomAnnotationView(for: annotation, on: mapView)
         }
-        annotationView?.canShowCallout = true
-        
+//        annotationView?.canShowCallout = true
         
         return annotationView
     }

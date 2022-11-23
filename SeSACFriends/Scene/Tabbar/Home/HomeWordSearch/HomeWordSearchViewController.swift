@@ -46,7 +46,11 @@ final class HomeWordSearchViewController: BaseViewController {
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
+    }
     
     override func configure() {
         super.configure()
@@ -63,7 +67,15 @@ final class HomeWordSearchViewController: BaseViewController {
         
         guard let output = ViewModel?.transform(input: input, disposeBag: disposeBag) else { return }
         
+        mainView.searchBar.rx.text
         
+        mainView.collectionView.rx
+        
+        mainView.backButton.rx.tap
+            .subscribe(with: self) { vc, _ in
+                vc.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
 }
@@ -106,13 +118,18 @@ private extension HomeWordSearchViewController {
         section.interGroupSpacing = 12
         section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(100.0))
+        
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [header]
+        
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .vertical
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         layout.configuration = config
-        
-        
         
         // UICollectionViewCompositional Layout
         return layout
