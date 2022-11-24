@@ -31,6 +31,7 @@ final class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavi()
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -131,8 +132,9 @@ extension HomeViewController {
     func presentMainVC(status: HomeStatus?) {
         switch status {
         case .searching:
-            presentVC(presentType: .push) {
-                return UIViewController()
+            presentVC(presentType: .push) { [weak self] in
+                guard let useCase = self?.viewModel?.useCase else { return UIViewController() }
+                return HomeWordSearchViewController(viewModel: HomeSearchWordViewModel(useCase: useCase))
             }
         case .matchWaiting:
             presentVC(presentType: .push) {

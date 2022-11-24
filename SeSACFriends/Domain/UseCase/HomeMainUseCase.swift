@@ -18,8 +18,15 @@ protocol HomeMainUseCase: UseCase {
     var homeStatusOut: BehaviorSubject<HomeStatus> { get }
     var locationAuthError: PublishSubject<LocationAuthError> { get }
     var mapAnnotationInfo: PublishSubject<[MapAnnotionUserDTO]> { get }
-    var searchWordResult: BehaviorSubject<MapSearchWordDTO> { get }
-
+    var searchWordResult: BehaviorSubject<[CustomData]> { get }
+    var myTagOutput: PublishSubject<Result<[CustomData], Error>> { get }
+    var postStudySearch: PublishSubject<QueueSuccessType> { get }
+    
+    func addTagFromNearByTags(index: Int)
+    func formattingTag(myTag: String)
+    func removeMyTag(index: Int)
+    func postStudyList()
+    func getSearchWord()
 }
 
 final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
@@ -36,11 +43,15 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     private var isTimerGo = true
     private var isTimerDisposed: Bool?
     private var defaultLocation: (lat: CLLocationDegrees, long: CLLocationDegrees) = (37.517821, 126.886284)
+    private var myTags = [String]()
+    private var nearByTags = [CustomData]()
     
     let homeStatusOut = BehaviorSubject<HomeStatus>(value: .searching)
     let locationAuthError = PublishSubject<LocationAuthError>()
     let mapAnnotationInfo = PublishSubject<[MapAnnotionUserDTO]>()
-    let searchWordResult = BehaviorSubject(value: MapSearchWordDTO(nearByWord: [], recommandWord: []))
+    let searchWordResult = BehaviorSubject<[CustomData]>(value: [])
+    let myTagOutput = PublishSubject<Result<[CustomData], Error>>()
+    let postStudySearch = PublishSubject<QueueSuccessType>()
     
     deinit {
         timerDisposable?.dispose()
@@ -56,19 +67,90 @@ extension HomeMainUseCaseImpi {
         
     }
     
+    /// postStudyListButtonTapped
+    func postStudyList() {
+        
+        if myTags.isEmpty {
+            myTags.append("anything")
+        }
+        
+        let temp = respository.postQueueStudy(lat: lat ?? defaultLocation.lat, long: long ?? defaultLocation.long, studyList: myTags.description)
+        
+        temp.subscribe(with: self, onSuccess: { uc, queueSuccessType in
+            uc.postStudySearch.onNext(queueSuccessType)
+        }, onFailure: { uc, error in
+            let apiError = error as? APIError
+            uc.checkRefreshToken(errorCode: apiError?.rawValue ?? 500) {
+                uc.postStudyList()
+            }
+        })
+        .disposed(by: dispoaseBag)
+    }
+    
+
+    func formattingTag(myTag: String) {
+        
+        var validation = true
+        let temp = myTag.components(separatedBy: "")
+        temp.forEach { [weak self] word in
+            if word.count > 9 {
+                validation = false
+                self?.myTagOutput.onNext(.failure(TagValidation.validationError))
+                return
+            }
+        }
+        
+        if temp.count > 9 {
+            myTagOutput.onNext(.failure(TagValidation.moreThanMaxTagNum))
+            return
+        }
+        
+        if validation == false { return }
+        
+        myTags.append(contentsOf: temp)
+        let result = myTags.map { word in
+            
+            return CustomData(text: word, buttonStyle: .myTag)
+        }
+        myTagOutput.onNext(.success(result))
+    }
+    
+    func addTagFromNearByTags(index: Int) {
+        let tagTitle = nearByTags[index].text
+        formattingTag(myTag: tagTitle)
+    }
+    
+    func removeMyTag(index: Int) {
+        myTags.remove(at: index)
+        let temp = myTags.map { word in
+            return CustomData(text: word, buttonStyle: .myTag)
+        }
+        myTagOutput.onNext(.success(temp) )
+    }
+    
+    /// 네트워크 통신으로 태그를 받아오는 과정
     func getSearchWord() {
         let temp = respository.fetchMainMapSearchWord(lat: lat ?? defaultLocation.lat, long: long ?? defaultLocation.long)
         
         temp.subscribe { [weak self] mapSearchWordDTO in
-            self?.searchWordResult.onNext(mapSearchWordDTO)
+            
+            var result = [CustomData]()
+            result.append(contentsOf: mapSearchWordDTO.recommandWord.map({ word in
+                CustomData(text: word, buttonStyle: .recommand)
+            }))
+            result.append(contentsOf: mapSearchWordDTO.nearByWord.map({ word in
+                CustomData(text: word, buttonStyle: .nearUser)
+            }))
+            
+            self?.nearByTags = result
+            print("📱📱📱📱 \(#function) searchWordResult에 dataSource 추가")
+            self?.searchWordResult.onNext(result)
+            
         } onFailure: { [weak self] error in
-            
             let error = error as? APIError
-            
             self?.checkRefreshToken(errorCode: error?.rawValue ?? 500) {
                 self?.getSearchWord()
             }
-            
         }
         .disposed(by: dispoaseBag)
         
@@ -120,6 +202,13 @@ extension HomeMainUseCaseImpi {
 
 private extension HomeMainUseCaseImpi {
     
+    func checkTagTitleValidation() -> Bool {
+        
+        let result = false
+        
+        return true
+    }
+    
     func checkLocationAuth(authStatus: CLAuthorizationStatus) {
         switch authStatus {
         case .notDetermined:
@@ -152,7 +241,6 @@ private extension HomeMainUseCaseImpi {
             .take(until: { [unowned self] _ in
                 !self.isTimerGo
             })
-//            .debug()
             .subscribe(onNext: { [unowned self] coordination in
                 self.timerDisposable?.dispose()
                 self.isTimerDisposed = false
@@ -197,4 +285,9 @@ extension HomeStatus {
 @frozen enum LocationAuthError: String {
     case authNotAllowed = "위치서비스가 꺼져 있어서 위치 권한 요청을 못합니다."
     case locationServiceOFF
+}
+
+@frozen enum TagValidation: String, Error {
+    case validationError = "최소 한 자 이상, 최대 8글자까지 작성 가능합니다."
+    case moreThanMaxTagNum = "스터디를 더 이상 추가할 수 없습니다."
 }

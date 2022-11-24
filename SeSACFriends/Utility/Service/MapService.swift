@@ -67,7 +67,6 @@ extension MapServiceImpi: MKMapViewDelegate {
         if let annotation = annotation as? CustomAnnotation {
             annotationView = setupCustomAnnotationView(for: annotation, on: mapView)
         }
-//        annotationView?.canShowCallout = true
         
         return annotationView
     }
@@ -77,6 +76,7 @@ extension MapServiceImpi: MKMapViewDelegate {
         
         let zoomWidth = mapView.visibleMapRect.size.width
         let zoomFactor = Int(log2(zoomWidth)) - 9
+        print(mapView.region.span)
         print("🫠🫠🫠🫠 REGION DID CHANGE: ZOOM FACTOR \(zoomFactor)")
     }
     

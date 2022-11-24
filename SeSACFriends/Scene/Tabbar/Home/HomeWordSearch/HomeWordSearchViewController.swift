@@ -12,14 +12,14 @@ import RxCocoa
 import RxDataSources
 import Differentiator
 
-final class HomeWordSearchViewController: BaseViewController {
+final class HomeWordSearchViewController: BaseViewController, UICollectionViewDelegate {
     
     private let mainView = HomeWordSearchView()
     private let disposeBag = DisposeBag()
     // TODO: 의존성 주입
-    var ViewModel: HomeSearchWordViewModel?
+    var viewModel: HomeSearchWordViewModel
     
-    let dataSource = RxCollectionViewSectionedAnimatedDataSource<SectionCustomData> { dataSource, collectionView, indexPath, item in
+    let dataSource = RxCollectionViewSectionedAnimatedDataSource<CustomDataSection> { dataSource, collectionView, indexPath, item in
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(TagCollectionViewCell.self), for: indexPath) as? TagCollectionViewCell else { return UICollectionViewCell() }
         cell.configureButton(buttonTitle: item.text, sectionType: item.buttonStyle)
         return cell
@@ -37,13 +37,17 @@ final class HomeWordSearchViewController: BaseViewController {
         }
     }
     
+    init(viewModel: HomeSearchWordViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     override func loadView() {
         view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,14 +66,47 @@ final class HomeWordSearchViewController: BaseViewController {
     }
     
     override func bind() {
+        let input = HomeSearchWordViewModel.Input(
+            searchTextInput: mainView.searchBar.rx.text,
+            collectionCellTapped: mainView.collectionView.rx.itemSelected,
+            searchButtonTapped: mainView.searchBar.rx.searchButtonClicked,
+            postStudyListButtonTapped: mainView.searchButton.rx.tap,
+            viewDidAppear: self.rx.viewDidAppear
+        )
         
-        let input = HomeSearchWordViewModel.Input()
+        let output = viewModel.transform(input: input, disposeBag: disposeBag)
         
-        guard let output = ViewModel?.transform(input: input, disposeBag: disposeBag) else { return }
+        output.tagTitleError
+            .map { $0.rawValue }
+            .asDriver(onErrorJustReturn: "")
+            .drive(with: self) { vc, errorMessage in
+                vc.presentToast(message: errorMessage)
+            }
+            .disposed(by: disposeBag)
         
-        mainView.searchBar.rx.text
+        output.dataSourceOutput
+            .debug()
+            .bind(to: mainView.collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
-        mainView.collectionView.rx
+        output.postStudyListResult
+            .subscribe(with: self) { vc, queueSuccessType in
+                switch queueSuccessType {
+                case .studyRequestSuccess:
+                    // TODO: MapStatus load 해야함... HomeMainViewController 에서 작업!!
+                    vc.dismiss(animated: true)
+                default:
+                    vc.presentToast(message: queueSuccessType.successDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.searchBar.rx.searchButtonClicked
+            .asDriver(onErrorJustReturn: ())
+            .drive(with: self) { vc, _ in
+                vc.mainView.searchBar.text = ""
+            }
+            .disposed(by: disposeBag)
         
         mainView.backButton.rx.tap
             .subscribe(with: self) { vc, _ in
@@ -78,19 +115,6 @@ final class HomeWordSearchViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-}
-
-// MARK: - Rx Binding
-private extension HomeWordSearchViewController {
-    
-    
-    
-}
-
-// MARK: - UICollection Delegate
-extension HomeWordSearchViewController: UICollectionViewDelegate {
-   
-
 }
 
 //MARK: - CompositionalLayout Setting
@@ -106,7 +130,7 @@ private extension HomeWordSearchViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(55))
+            heightDimension: .estimated(55))
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -115,12 +139,12 @@ private extension HomeWordSearchViewController {
         group.interItemSpacing = .fixed(8)
         
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 12
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0)
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(100.0))
+            heightDimension: .absolute(50.0))
         
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [header]
@@ -134,15 +158,6 @@ private extension HomeWordSearchViewController {
         // UICollectionViewCompositional Layout
         return layout
     }
-    
-    func recommandAndNearby() {
-        
-    }
-    
-    func myWord() {
-        
-    }
-
 }
 
 @frozen enum TagSectionType: Int, CaseIterable {
@@ -172,21 +187,23 @@ extension CustomData: IdentifiableType, Equatable {
     }
 }
 
-struct SectionCustomData {
+struct CustomDataSection {
     var header: String
     var items: [Item]
 }
 
-extension SectionCustomData: AnimatableSectionModelType {
+extension CustomDataSection: AnimatableSectionModelType {
     typealias Item = CustomData
     
     var identity: String {
         return header
     }
 
-    init(original: SectionCustomData, items: [Item]) {
+    init(original: CustomDataSection, items: [Item]) {
         self = original
         self.items = items
     }
     
 }
+
+typealias CustomDataSource = [CustomDataSection]

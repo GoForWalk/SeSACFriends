@@ -12,6 +12,7 @@ enum Endpoint {
     case postUser
     case getUser
     case search
+    case queue
 }
 
 extension Endpoint {
@@ -25,6 +26,8 @@ extension Endpoint {
             return "\(testBaseURL)/v1/user"
         case .search:
             return "\(testBaseURL)/v1/queue/search"
+        case .queue:
+            return "\(testBaseURL)/v1/queue"
         }
     }
     

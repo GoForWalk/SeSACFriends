@@ -12,7 +12,8 @@ import SnapKit
 final class TagCollectionViewCell: BaseCollectionViewCell {
     
     lazy var textButton: MainButton = {
-        let button = MainButton(frame: .zero, buttonMode: .outline, buttonSize: .h32, hasIcon: true)
+        let button = MainButton(frame: .zero, buttonMode: .outline, buttonSize: .h32, hasIcon: false, imageColor: nil)
+        button.isUserInteractionEnabled = false
         return button
     }()
     
@@ -29,13 +30,14 @@ final class TagCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configureButton(buttonTitle: String, sectionType: ButtonSectionStyle) {
-        
+        textButton.setImage(nil, for: .normal)
         let config = sectionType.buttonConfig
         textButton.setTitle(buttonTitle, for: .normal)
         textButton.tintColor = config.buttonColor
+        textButton.setTitleColor(config.buttonColor, for: .normal)
         textButton.layer.borderColor = config.buttonBoaderColor
-        textButton.iconButton.isHidden = config.buttonMark
-        textButton.titleEdgeInsets = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
+        textButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
+        textButton.setButtonIcon(hasIcon: config.buttonMark, imageColor: config.buttonColor)
     }
     
 }
@@ -53,19 +55,19 @@ extension ButtonSectionStyle {
             return TagButtonConfig(
                 buttonColor: Colors.error,
                 buttonBoaderColor: Colors.error.cgColor,
-                buttonMark: true)
+                buttonMark: false)
             
         case .nearUser:
             return TagButtonConfig(
                 buttonColor: Colors.black,
                 buttonBoaderColor: Colors.gray4.cgColor,
-                buttonMark: true)
+                buttonMark: false)
 
         case .myTag:
             return TagButtonConfig(
                 buttonColor: Colors.green,
                 buttonBoaderColor: Colors.green.cgColor,
-                buttonMark: false)
+                buttonMark: true)
         }
     }
 }

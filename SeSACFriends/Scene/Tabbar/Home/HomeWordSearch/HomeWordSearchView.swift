@@ -15,6 +15,7 @@ final class HomeWordSearchView: BaseView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.allowsSelection = true
         return collectionView
     }()
     
@@ -40,13 +41,13 @@ final class HomeWordSearchView: BaseView {
     
     lazy var searchButton: MainButton = {
         let button = MainButton(frame: .zero, buttonMode: .fill, buttonSize: .h48, hasIcon: false)
-        
+        button.setTitle("새싹 찾기", for: .normal)
         return button
     }()
     
     override func configure() {
         super.configure()
-        addSubViews(views: collectionView, stackView, searchBar, backButton, searchButton)
+        addSubViews(views: collectionView, stackView, searchButton)
     }
     
     override func setConstraints() {
@@ -68,6 +69,12 @@ final class HomeWordSearchView: BaseView {
         
         searchButton.snp.makeConstraints { make in
             make.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(self).inset(16)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(16)
+            make.bottom.greaterThanOrEqualTo(searchButton.snp.top).offset(-16)
             make.horizontalEdges.equalTo(self).inset(16)
         }
         

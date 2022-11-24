@@ -11,6 +11,7 @@
 		CF0467B02918BF5800E72CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0467AF2918BF5800E72CC9 /* SceneDelegate.swift */; };
 		CF0467B72918BF5900E72CC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B62918BF5900E72CC9 /* Assets.xcassets */; };
 		CF0467BA2918BF5900E72CC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */; };
+		CF1C101E292FD8F900C402F9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C101D292FD8F900C402F9 /* UIImage+Extension.swift */; };
 		CF2E8308291D69AA00D2DE1C /* SignUpUseCaseImpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8307291D69AA00D2DE1C /* SignUpUseCaseImpi.swift */; };
 		CF2E830A291D69E900D2DE1C /* NickInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8309291D69E900D2DE1C /* NickInputView.swift */; };
 		CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E830D291D6ABE00D2DE1C /* NickInputViewController.swift */; };
@@ -125,6 +126,7 @@
 		CF0467B62918BF5900E72CC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF0467B92918BF5900E72CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF0467BB2918BF5900E72CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF1C101D292FD8F900C402F9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CF2E8307291D69AA00D2DE1C /* SignUpUseCaseImpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCaseImpi.swift; sourceTree = "<group>"; };
 		CF2E8309291D69E900D2DE1C /* NickInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickInputView.swift; sourceTree = "<group>"; };
 		CF2E830D291D6ABE00D2DE1C /* NickInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickInputViewController.swift; sourceTree = "<group>"; };
@@ -593,10 +595,10 @@
 		CFDF0C1D2918DFB500E586A1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				CF722F8F29236CC400C8E76D /* ProfileCard */,
 				CFDF0C162918DF8500E586A1 /* TextArea.swift */,
 				CFDF0C202918FDDC00E586A1 /* InputTextField.swift */,
 				CFDF0C37291928C500E586A1 /* MainButton.swift */,
-				CF722F8F29236CC400C8E76D /* ProfileCard */,
 				CF73610629260D8900ECC920 /* CustomAnnotation.swift */,
 			);
 			path = CustomView;
@@ -694,6 +696,7 @@
 				CF722F8D2922991C00C8E76D /* UIView+Extension.swift */,
 				CF722F9A292387D200C8E76D /* TextView+Extension.swift */,
 				CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */,
+				CF1C101D292FD8F900C402F9 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				CFDF0C4F291A65DC00E586A1 /* MessageAuthView.swift in Sources */,
 				CFDF0C59291A8B0900E586A1 /* MessageAuthViewModel.swift in Sources */,
 				CF2E834629221D4100D2DE1C /* ShopViewController.swift in Sources */,
+				CF1C101E292FD8F900C402F9 /* UIImage+Extension.swift in Sources */,
 				CFDF0C51291A6F0700E586A1 /* MessageAuthViewController.swift in Sources */,
 				CF2E8326291D750900D2DE1C /* EmailInputViewModel.swift in Sources */,
 				CF2E833C2920C63900D2DE1C /* UseCase.swift in Sources */,

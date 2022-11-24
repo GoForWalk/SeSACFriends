@@ -19,12 +19,12 @@ final class MainButton: UIButton {
         }
     }
     
-    lazy var iconButton: UIButton = {
-        let button = UIButton()
-        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: Images.closeSmall.imageSize), forImageIn: .normal)
-        button.setImage(Images.closeSmall.image, for: .normal)
-        return button
-    }()
+//    lazy var iconButton: UIButton = {
+//        let button = UIButton()
+//        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: Images.closeSmall.imageSize), forImageIn: .normal)
+//        button.setImage(Images.closeSmall.image, for: .normal)
+//        return button
+//    }()
     
     private override init(frame: CGRect) {
         buttonSize = .h48
@@ -32,13 +32,13 @@ final class MainButton: UIButton {
         super.init(frame: frame)
     }
     
-    init(frame: CGRect, buttonMode: MainButtonMode, buttonSize: MainButtonSize, hasIcon: Bool) {
+    init(frame: CGRect, buttonMode: MainButtonMode, buttonSize: MainButtonSize, hasIcon: Bool, imageColor: UIColor? = nil) {
         self.buttonSize = buttonSize
         self.buttonMode = buttonMode
         super.init(frame: frame)
         
         constraints()
-        setButtonIcon(hasIcon: hasIcon)
+        setButtonIcon(hasIcon: hasIcon, imageColor: imageColor)
         buttonConfigure(mainbuttonConfig: buttonMode.buttonConfig)
     }
         
@@ -46,6 +46,14 @@ final class MainButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setButtonIcon(hasIcon: Bool, imageColor: UIColor?) {
+        
+        if hasIcon {
+            let temp = Images.closeSmall.image
+            setImage(temp.maskWithColor(color: imageColor ?? .black), for: .normal)
+        }
+    }
+
 }
 
 private extension MainButton {
@@ -53,6 +61,7 @@ private extension MainButton {
         layer.masksToBounds = true
         layer.cornerRadius = 8
         titleLabel?.font = Fonts.body3R14.0
+        semanticContentAttribute = .forceRightToLeft
         
         self.snp.makeConstraints { make in
             make.height.equalTo(buttonSize.rawValue)
@@ -66,21 +75,6 @@ private extension MainButton {
         setTitleColor(mainbuttonConfig.titleColor, for: .normal)
     }
     
-    func setButtonIcon(hasIcon: Bool) {
-        
-        if hasIcon {
-            self.addSubview(iconButton)
-            
-            guard let titleLabel = self.titleLabel else { return }
-            
-            iconButton.snp.makeConstraints { make in
-                make.centerY.equalTo(self)
-                make.left.equalTo(titleLabel.snp.right).offset(4)
-                make.height.width.equalTo(16)
-            }
-            
-        }
-    }
 }
 
 @frozen enum MainButtonMode {

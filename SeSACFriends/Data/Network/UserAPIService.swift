@@ -49,7 +49,6 @@ final class UserAPIServiceImpi: UserAPIService, CheckNetworkStatus {
                 let response = response as! HTTPURLResponse
                 print("StatusCode Not 200, Now StatusCode:\(response.statusCode)")
                 completionHandler(.failure(APIError(rawValue: response.statusCode) ?? .serverError))
-                
                 return
             }
             

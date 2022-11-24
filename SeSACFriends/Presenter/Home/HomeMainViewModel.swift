@@ -71,11 +71,11 @@ private extension HomeMainViewModel {
             }
             .disposed(by: disposeBag)
         
-        input.statusButtonTapped
-            .subscribe(with: self) { vm, _ in
-                vm.useCase.getSearchWord()
-            }
-            .disposed(by: disposeBag)
+//        input.statusButtonTapped
+//            .subscribe(with: self) { vm, _ in
+//                vm.useCase.getSearchWord()
+//            }
+//            .disposed(by: disposeBag)
         
     }//: configureInput
     
