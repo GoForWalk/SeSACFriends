@@ -90,26 +90,27 @@ extension HomeMainUseCaseImpi {
 
     func formattingTag(myTag: String) {
         
-        var validation = true
-        let temp = myTag.components(separatedBy: "")
+        var temp = myTag.components(separatedBy: " ")
+                
         temp.forEach { [weak self] word in
-            if word.count > 9 {
-                validation = false
+            if word.count > 8 {
                 self?.myTagOutput.onNext(.failure(TagValidation.validationError))
+                temp = temp.filter({ word in
+                    word.count < 9
+                })
                 return
             }
         }
         
-        if temp.count > 9 {
+        myTags.append(contentsOf: temp)
+        myTags = unique(source: myTags)
+        
+        if myTags.count >= 9 {
             myTagOutput.onNext(.failure(TagValidation.moreThanMaxTagNum))
             return
         }
         
-        if validation == false { return }
-        
-        myTags.append(contentsOf: temp)
         let result = myTags.map { word in
-            
             return CustomData(text: word, buttonStyle: .myTag)
         }
         myTagOutput.onNext(.success(result))
@@ -202,11 +203,16 @@ extension HomeMainUseCaseImpi {
 
 private extension HomeMainUseCaseImpi {
     
-    func checkTagTitleValidation() -> Bool {
-        
-        let result = false
-        
-        return true
+    func unique<S : Sequence, T : Hashable>(source: S) -> [T] where S.Iterator.Element == T {
+        var buffer = [T]()
+        var added = Set<T>()
+        for elem in source {
+            if !added.contains(elem) {
+                buffer.append(elem)
+                added.insert(elem)
+            }
+        }
+        return buffer
     }
     
     func checkLocationAuth(authStatus: CLAuthorizationStatus) {

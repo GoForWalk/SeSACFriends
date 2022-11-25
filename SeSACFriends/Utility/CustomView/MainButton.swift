@@ -19,13 +19,6 @@ final class MainButton: UIButton {
         }
     }
     
-//    lazy var iconButton: UIButton = {
-//        let button = UIButton()
-//        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: Images.closeSmall.imageSize), forImageIn: .normal)
-//        button.setImage(Images.closeSmall.image, for: .normal)
-//        return button
-//    }()
-    
     private override init(frame: CGRect) {
         buttonSize = .h48
         buttonMode = .inactive
