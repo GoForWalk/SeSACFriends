@@ -12,7 +12,7 @@ import RxCocoa
 import RxDataSources
 import Differentiator
 
-final class HomeWordSearchViewController: BaseViewController, UICollectionViewDelegate {
+final class HomeWordSearchViewController: KeyboardViewController, UICollectionViewDelegate {
     
     private let mainView = HomeWordSearchView()
     private let disposeBag = DisposeBag()
@@ -62,7 +62,16 @@ final class HomeWordSearchViewController: BaseViewController, UICollectionViewDe
         mainView.collectionView.collectionViewLayout = setCollectionViewLayout()
         mainView.collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(TagCollectionViewCell.self) )
         mainView.collectionView.register(TagHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NSStringFromClass(TagHeaderView.self))
-        
+    }
+    
+    override func keyboardShowUpdate(keyboardHeight: CGFloat) {
+        super.keyboardShowUpdate(keyboardHeight: keyboardHeight)
+        mainView.keyboardShowUpdateButtonConstraint(keyboardHeight: keyboardHeight)
+    }
+    
+    override func keyboardHideUpdate(keyboardHeight: CGFloat) {
+        super.keyboardHideUpdate(keyboardHeight: keyboardHeight)
+        mainView.keyboardHideUpdateButtonConstraint(keyboardHeight: keyboardHeight)
     }
     
     override func bind() {
@@ -94,7 +103,10 @@ final class HomeWordSearchViewController: BaseViewController, UICollectionViewDe
                 switch queueSuccessType {
                 case .studyRequestSuccess:
                     // TODO: MapStatus load 해야함... HomeMainViewController 에서 작업!!
-                    vc.dismiss(animated: true)
+                    DispatchQueue.main.async {
+                        vc.dismiss(animated: true)
+                    }
+                    
                 default:
                     vc.presentToast(message: queueSuccessType.successDescription)
                 }

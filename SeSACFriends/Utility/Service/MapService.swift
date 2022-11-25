@@ -28,22 +28,21 @@ final class MapServiceImpi: NSObject, MapService {
     
     func setAnnotion(locations: [MapAnnotionUserDTO]) {
         
-        
-        if locations.isEmpty { return }
-        
-        
-        let annotations = locations.sorted(by: {
-            $0.sesac > $1.sesac
-        }).map { userDTO in
-            let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
-            let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
-            
-            return customAnnotation
-        }
-        
         DispatchQueue.main.async { [weak self] in
             guard let mapView = self?.mapView else { return }
-            mapView.removeAnnotations(annotations)
+
+            let annotations = locations.sorted(by: {
+                $0.sesac > $1.sesac
+            }).map { userDTO in
+                let coordinate = CLLocationCoordinate2D(latitude: userDTO.lat, longitude: userDTO.long)
+                let customAnnotation = CustomAnnotation(annotationImage: userDTO.sesac, coordinate: coordinate)
+                
+                return customAnnotation
+            }
+            
+            UIView.animate(withDuration: 0.8) {
+                mapView.removeAnnotations(mapView.annotations)
+            }
             mapView.addAnnotations(annotations)
         }
         

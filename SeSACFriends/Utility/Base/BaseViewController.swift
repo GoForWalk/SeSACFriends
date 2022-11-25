@@ -10,7 +10,6 @@ import Toast
 import Network
 
 class BaseViewController: UIViewController, CheckNetworkStatus {
-//class BaseViewController: UIViewController {
     
     var monitor: NWPathMonitor?
     var isMonitoring: Bool = false

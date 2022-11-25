@@ -14,7 +14,6 @@ import RxCocoa
 
 
 protocol HomeMainUseCase: UseCase {
-    
     var homeStatusOut: BehaviorSubject<HomeStatus> { get }
     var locationAuthError: PublishSubject<LocationAuthError> { get }
     var mapAnnotationInfo: PublishSubject<[MapAnnotionUserDTO]> { get }
@@ -27,6 +26,7 @@ protocol HomeMainUseCase: UseCase {
     func removeMyTag(index: Int)
     func postStudyList()
     func getSearchWord()
+    func setHomeMode()
 }
 
 final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
@@ -42,7 +42,7 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     private var timerDisposable: Disposable?
     private var isTimerGo = true
     private var isTimerDisposed: Bool?
-    private var defaultLocation: (lat: CLLocationDegrees, long: CLLocationDegrees) = (37.517821, 126.886284)
+    private var defaultLocation: (lat: CLLocationDegrees, long: CLLocationDegrees) = (37.517819364682694, 126.88647317074734)
     private var myTags = [String]()
     private var nearByTags = [CustomData]()
     
@@ -64,7 +64,16 @@ extension HomeMainUseCaseImpi {
     
     /// 네트워크 통신 결과 따라서 모드 변경하는 코드
     func setHomeMode() {
-        
+        respository.fetchMyQueueStatus()
+            .subscribe(with: self) { uc, homeStatus in
+                uc.homeStatusOut.onNext(homeStatus)
+            } onFailure: { uc, error in
+                let apiError = error as? APIError
+                uc.checkRefreshToken(errorCode: apiError?.rawValue ?? 500) {
+                    uc.setHomeMode()
+                }
+            }
+            .disposed(by: dispoaseBag)
     }
     
     /// postStudyListButtonTapped
@@ -270,9 +279,12 @@ private extension HomeMainUseCaseImpi {
 }
 
 @frozen enum HomeStatus {
+    /// statusCode = 201
     case searching
+    /// statusCode = 200 ,matched = 0
     case matchWaiting
-    case matched
+    /// statusCode = 200 ,matched = 1
+    case matched(nick: String, uid: String)
 }
 
 extension HomeStatus {

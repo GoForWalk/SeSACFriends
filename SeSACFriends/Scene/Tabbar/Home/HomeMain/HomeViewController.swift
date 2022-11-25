@@ -56,7 +56,8 @@ final class HomeViewController: BaseViewController {
             setLocationButtonTapped: mainView.setLocationButton.rx.tap,
             viewWillAppear: self.rx.viewWillAppear,
             viewDidDisappear: self.rx.viewDidDisappear,
-            statusButtonTapped: mainView.statusButton.rx.tap
+            statusButtonTapped: mainView.statusButton.rx.tap,
+            viewDidAppear: self.rx.viewDidAppear
         )
 
         guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }

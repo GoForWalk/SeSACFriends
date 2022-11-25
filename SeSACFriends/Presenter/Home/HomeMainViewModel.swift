@@ -23,6 +23,7 @@ final class HomeMainViewModel: ViewModelType {
         let viewWillAppear: ControlEvent<Void>
         let viewDidDisappear: ControlEvent<Void>
         let statusButtonTapped: ControlEvent<Void>
+        let viewDidAppear: ControlEvent<Void>
     }
     
     struct Output {
@@ -71,11 +72,11 @@ private extension HomeMainViewModel {
             }
             .disposed(by: disposeBag)
         
-//        input.statusButtonTapped
-//            .subscribe(with: self) { vm, _ in
-//                vm.useCase.getSearchWord()
-//            }
-//            .disposed(by: disposeBag)
+        input.viewDidAppear
+            .subscribe(with: self) { vm, _ in
+                vm.useCase.setHomeMode()
+            }
+            .disposed(by: disposeBag)
         
     }//: configureInput
     

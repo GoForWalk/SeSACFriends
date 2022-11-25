@@ -12,7 +12,6 @@ import RxSwift
 
 final class HomeSearchWordViewModel: ViewModelType {
     
-    // TODO: 의존성 주입 처리
     let useCase: HomeMainUseCase
     
     struct Input {
@@ -95,12 +94,9 @@ private extension HomeSearchWordViewModel {
     }
     
     func createDataSource(output: Output, disposeBag: DisposeBag) {
-        
-        let nearBy = useCase.searchWordResult
-            .asObservable()
+        let nearBy = useCase.searchWordResult.asObservable()
         
         let myTag = BehaviorSubject<[CustomData]>(value: [])
-        
         useCase.myTagOutput
             .subscribe(with: self) { vm, result in
                 switch result {

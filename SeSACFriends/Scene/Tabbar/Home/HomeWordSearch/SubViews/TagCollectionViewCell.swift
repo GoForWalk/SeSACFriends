@@ -25,7 +25,6 @@ final class TagCollectionViewCell: BaseCollectionViewCell {
     override func setConstraints() {
         textButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.horizontalEdges.lessThanOrEqualTo(UIScreen.main.bounds.width - 32)
         }
     }
     

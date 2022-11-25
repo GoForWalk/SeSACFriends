@@ -12,6 +12,7 @@ protocol MainAPIService: AnyObject {
     func postSearch(lat: Double, long: Double, completionHandler: @escaping (Result<SearchUser, Error>) -> Void)
     func studyRequest(lat: Double, long: Double, studyList: String, completionHandler: @escaping (Result<QueueSuccessType, Error>) -> Void)
     func deleteStudyRequest( completionHandler: @escaping (Result<DeleteQueueSuccessType, Error>) -> Void)
+    func getMyQueueState(completionHandler: @escaping (Result<MyQueueStateSendable, Error>) -> Void)
 
 }
 
@@ -153,6 +154,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
         task.resume()
     }//: DeleteStudyRequest()
 
+    
     func postSearch(lat: Double, long: Double, completionHandler: @escaping (Result<SearchUser, Error>) -> Void) {
 //        print(#function)
         handleNetworkDisConnected = {
@@ -208,5 +210,61 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
         task.resume()
     }
     
+    ///
+    func getMyQueueState(completionHandler: @escaping (Result<MyQueueStateSendable, Error>) -> Void) {
+//        print(#function)
+        handleNetworkDisConnected = {
+            completionHandler(.failure(APIError.notConnected))
+        }
+        startMonitering()
+        let search = Endpoint.myQueueState
+        let urlComponents = URLComponents(string: search.url)
+        
+        guard let url = urlComponents?.url ,let idToken = UserDefaults.idToken else { return }
+        print(url)
+        var request = URLRequest(url: url)
+        request.addValue(HTTPHeader.encodedURL.value, forHTTPHeaderField: HTTPHeader.forHTTPHeaderField)
+        request.addValue(idToken, forHTTPHeaderField: HTTPHeader.idToken)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        let defaultSession = URLSession(configuration: .default)
+        let task = defaultSession.dataTask(with: request) { [weak self] data, response, error in
+            
+            guard error == nil else {
+                print("Error occur: error calling POST - \(String(describing: error))")
+                completionHandler(.failure(APIError.serverError))
+                return
+            }
+            
+            guard let data, let response = response as? HTTPURLResponse, (200...300).contains(response.statusCode) else {
+                let response = response as! HTTPURLResponse
+                print("StatusCode Not 200, Now StatusCode:\(response.statusCode)")
+                completionHandler(.failure(APIError(rawValue: response.statusCode) ?? .serverError))
+                return
+            }
+            
+            if response.statusCode == 201 {
+                let temp = MyQueueStateSendable(myQueueState: nil, statusCode: 201)
+                completionHandler(.success(temp))
+                return
+            }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let result = try? jsonDecoder.decode(MyQueueState.self, from: data) else {
+                completionHandler(.failure(APIError.serverError))
+                return }
+            print("✅✅✅✅✅✅ getMyQueueState Done \(Date())")
+            
+            completionHandler(.success(MyQueueStateSendable(myQueueState: result, statusCode: 200)))
+            self?.stopMonitoring()
+        }
+        task.resume()
+    }
 }
 
+@frozen enum MyMatchingStatus: Int {
+    /// 매칭 상태 확인 성공 -> MyQueueState 보내기
+    case matchingSuccess = 200
+    /// 새싹스터디 찾기를 요청하지 않는 일반상태
+    case normalStatus = 201
+}

@@ -15,6 +15,7 @@ protocol HomeRepository {
     func fetchMainMapSearchWord(lat: Double, long: Double) -> Single<MapSearchWordDTO>
     func postQueueStudy(lat: Double, long: Double, studyList: String) -> Single<QueueSuccessType>
     func deleteQueueStudy() -> Single<DeleteQueueSuccessType>
+    func fetchMyQueueStatus() -> Single<HomeStatus>
 
 }
 
@@ -106,9 +107,9 @@ final class HomeRespositoryImpi: HomeRepository {
     
     func deleteQueueStudy() -> Single<DeleteQueueSuccessType> {
         
-        return Single<DeleteQueueSuccessType>.create { emitter in
+        return Single<DeleteQueueSuccessType>.create { [weak self] emitter in
             
-            self.mainAPIService.deleteStudyRequest { result in
+            self?.mainAPIService.deleteStudyRequest { result in
                 switch result {
                 case .success(let deleteSuccessType):
                     emitter(.success(deleteSuccessType))
@@ -125,4 +126,36 @@ final class HomeRespositoryImpi: HomeRepository {
         
     }//: deleteQueueStudy
     
+    func fetchMyQueueStatus() -> Single<HomeStatus>{
+        return Single<HomeStatus>.create { [weak self] emitter in
+            self?.mainAPIService.getMyQueueState(completionHandler: { result in
+                switch result {
+                case .failure(let error as APIError):
+                    emitter(.failure(error))
+                case .success(let myQueueStateSendable):
+                    if myQueueStateSendable.statusCode == 201 {
+                        emitter(.success(.searching))
+                        return
+                    }
+                    
+                    guard let state = myQueueStateSendable.myQueueState?.matched, let queueState = myQueueStateSendable.myQueueState else { return }
+                    
+                    switch state {
+                    case 0:
+                        emitter(.success(.matchWaiting))
+                        return
+                    case 1:
+                        emitter(.success(.matched(nick: queueState.matchedNick, uid: queueState.matchedUid)))
+                        return
+                    default:
+                        return
+                    }
+                    
+                default:
+                    return
+                }
+            })
+            return Disposables.create()
+        }
+    }//: fetchMyQueueStatus
 }

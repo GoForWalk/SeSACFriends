@@ -16,6 +16,7 @@ final class HomeWordSearchView: BaseView {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsSelection = true
+        collectionView.keyboardDismissMode = .interactive
         return collectionView
     }()
     
@@ -79,5 +80,21 @@ final class HomeWordSearchView: BaseView {
         }
         
     }
-        
+    
+    func keyboardShowUpdateButtonConstraint(keyboardHeight: CGFloat) {
+        searchButton.layer.cornerRadius = 0
+        searchButton.snp.makeConstraints { make in
+            make.bottom.equalTo(self).inset(keyboardHeight)
+            make.horizontalEdges.equalTo(self)
+        }
+    }
+    
+    func keyboardHideUpdateButtonConstraint(keyboardHeight: CGFloat) {
+        searchButton.layer.cornerRadius = 8
+        print(self.layer.bounds.height)
+        searchButton.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(self).inset(16)
+            make.bottom.equalTo(self).offset(-keyboardHeight)
+        }
+    }
 }
