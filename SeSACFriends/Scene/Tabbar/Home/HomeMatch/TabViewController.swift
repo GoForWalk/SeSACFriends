@@ -75,7 +75,7 @@ extension TabViewController: PageboyViewControllerDataSource, TMBarDataSource {
     }
     
     func barItem(for bar: Tabman.TMBar, at index: Int) -> Tabman.TMBarItemable {
-        let title = TabSection.allCases[index]
+        let title = TabSection.allCases[index].tabTitle
         return TMBarItem(title: title)
     }
     
