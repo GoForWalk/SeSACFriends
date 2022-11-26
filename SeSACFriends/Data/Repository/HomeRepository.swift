@@ -16,6 +16,7 @@ protocol HomeRepository {
     func postQueueStudy(lat: Double, long: Double, studyList: String) -> Single<QueueSuccessType>
     func deleteQueueStudy() -> Single<DeleteQueueSuccessType>
     func fetchMyQueueStatus() -> Single<HomeStatus>
+    func fetchCardData(lat: Double, long: Double) -> Single<SearchCardDatasDTO>
 
 }
 

@@ -49,7 +49,6 @@ final class NickInputViewController: BaseViewController {
         mainView.authButton.rx.tap
             .map { true }
             .withLatestFrom(output.nickValidation)
-            .debug()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe { [weak self] element in
                 guard let element = element.element, let self else { return }

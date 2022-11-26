@@ -12,11 +12,15 @@ import RxCocoa
 
 final class HomeEmptyCardViewController: BaseViewController {
     
-    let mainView = HomeEmptyCardView()
-    let viewModel: HomeEmptyCardViewModel
+    private let mainView = HomeEmptyCardView()
+    private let viewModel: HomeEmptyCardViewModel
+    private var tabSection: TabSection
+    private let disposeBag = DisposeBag()
     
-    init(viewModel: HomeEmptyCardViewModel) {
+    init(viewModel: HomeEmptyCardViewModel, tabSection: TabSection) {
         self.viewModel = viewModel
+        self.tabSection = tabSection
+        super.init(nibName: nil, bundle: nil)
     }
     
     override func loadView() {
@@ -33,6 +37,10 @@ final class HomeEmptyCardViewController: BaseViewController {
     }
     
     override func bind() {
+        
+        let input = HomeEmptyCardViewModel.Input()
+        
+        let output = viewModel.transform(input: input, disposeBag: disposeBag)
         
     }
     

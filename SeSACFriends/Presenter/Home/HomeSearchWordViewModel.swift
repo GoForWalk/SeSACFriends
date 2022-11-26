@@ -52,7 +52,6 @@ private extension HomeSearchWordViewModel {
             .disposed(by: disposeBag)
         
         input.collectionCellTapped
-            .debug()
             .subscribe(with: self) { vm, indexPath in
                 switch indexPath.section {
                 case TagSectionType.recommandAndNearby.rawValue:

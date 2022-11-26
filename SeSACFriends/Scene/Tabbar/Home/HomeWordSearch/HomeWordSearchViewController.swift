@@ -94,7 +94,6 @@ final class HomeWordSearchViewController: KeyboardViewController, UICollectionVi
             .disposed(by: disposeBag)
         
         output.dataSourceOutput
-            .debug()
             .bind(to: mainView.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         

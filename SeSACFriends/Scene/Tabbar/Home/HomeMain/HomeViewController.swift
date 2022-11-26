@@ -63,7 +63,6 @@ final class HomeViewController: BaseViewController {
         guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }
                 
         output.buttonStatus
-            .debug()
             .withUnretained(self)
             .bind(onNext: {
                 $0.mainView.statusButton.setImage($1.buttonImage.image, for: .normal)
@@ -98,7 +97,6 @@ final class HomeViewController: BaseViewController {
             .map { true }
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(output.buttonStatus)
-            .debug()
             .subscribe { [weak self] homeStatus in
                 self?.presentMainVC(status: homeStatus.element)
             }
@@ -109,7 +107,7 @@ final class HomeViewController: BaseViewController {
 }
 
 // MARK: - HomeViewController Private Function
-extension HomeViewController {
+private extension HomeViewController {
     
     func setNavi() {
         navigationController?.isToolbarHidden = true

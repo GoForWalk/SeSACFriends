@@ -20,6 +20,8 @@ protocol HomeMainUseCase: UseCase {
     var searchWordResult: BehaviorSubject<[CustomData]> { get }
     var myTagOutput: PublishSubject<Result<[CustomData], Error>> { get }
     var postStudySearch: PublishSubject<QueueSuccessType> { get }
+    var cardListData: PublishSubject<SearchCardDatasDTO> { get }
+    var deleteQueueSuccessType: PublishSubject<DeleteQueueSuccessType> { get }
     
     func addTagFromNearByTags(index: Int)
     func formattingTag(myTag: String)
@@ -27,6 +29,8 @@ protocol HomeMainUseCase: UseCase {
     func postStudyList()
     func getSearchWord()
     func setHomeMode()
+    func getCardData()
+    func stopSearchingUser()
 }
 
 final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
@@ -52,6 +56,8 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
     let searchWordResult = BehaviorSubject<[CustomData]>(value: [])
     let myTagOutput = PublishSubject<Result<[CustomData], Error>>()
     let postStudySearch = PublishSubject<QueueSuccessType>()
+    let cardListData = PublishSubject<SearchCardDatasDTO>()
+    let deleteQueueSuccessType = PublishSubject<DeleteQueueSuccessType>()
     
     deinit {
         timerDisposable?.dispose()
@@ -61,6 +67,32 @@ final class HomeMainUseCaseImpi: HomeMainUseCase, CheckAndRefreshIDToken {
 }
 
 extension HomeMainUseCaseImpi {
+    
+    func stopSearchingUser() {
+        respository.deleteQueueStudy()
+            .subscribe(with: self) { uc, deleteQueueSuccessType in
+                uc.deleteQueueSuccessType.onNext(deleteQueueSuccessType)
+            } onFailure: { uc, error in
+                let apiError = error as? APIError
+                uc.checkRefreshToken(errorCode: apiError?.rawValue ?? 500) {
+                    uc.stopSearchingUser()
+                }
+            }
+            .disposed(by: dispoaseBag)
+    }
+    
+    func getCardData() {
+        respository.fetchCardData(lat: lat ?? defaultLocation.lat, long: long ?? defaultLocation.long )
+            .subscribe(with: self) { uc, data in
+                uc.cardListData.onNext(data)
+            } onFailure: { uc, error in
+                let apiError = error as? APIError
+                uc.checkRefreshToken(errorCode: apiError?.rawValue ?? 500) {
+                    uc.getCardData()
+                }
+            }
+            .disposed(by: dispoaseBag)
+    }
     
     /// 네트워크 통신 결과 따라서 모드 변경하는 코드
     func setHomeMode() {
@@ -82,7 +114,6 @@ extension HomeMainUseCaseImpi {
         if myTags.isEmpty {
             myTags.append("anything")
         }
-        
         let temp = respository.postQueueStudy(lat: lat ?? defaultLocation.lat, long: long ?? defaultLocation.long, studyList: myTags.description)
         
         temp.subscribe(with: self, onSuccess: { uc, queueSuccessType in
@@ -96,11 +127,9 @@ extension HomeMainUseCaseImpi {
         .disposed(by: dispoaseBag)
     }
     
-
     func formattingTag(myTag: String) {
         
         var temp = myTag.components(separatedBy: " ")
-                
         temp.forEach { [weak self] word in
             if word.count > 8 {
                 self?.myTagOutput.onNext(.failure(TagValidation.validationError))
@@ -244,7 +273,6 @@ private extension HomeMainUseCaseImpi {
     func startNetworkLoactionRequest() {
                 
         timerDisposable = coodinatorTarget
-            .debug()
             .share()
             .flatMapLatest { coordinate in
                 return Observable<Int>.timer(.seconds(0), period: .milliseconds(10000), scheduler: MainScheduler.instance)

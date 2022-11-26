@@ -58,7 +58,6 @@ final class GenderInputViewController: BaseViewController {
             .map { 0 }
             .debounce(.seconds(3), scheduler: MainScheduler.instance)
             .withLatestFrom(output.signUpResult)
-            .debug()
             .subscribe { [weak self] resultCode in
                 if resultCode.element == 200 {
                     self?.presentVC(presentType: .makeNewView, initViewController: {

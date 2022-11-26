@@ -59,14 +59,12 @@ private extension HomeMainViewModel {
             .disposed(by: disposeBag)
         
         input.viewDidDisappear
-            .debug()
             .subscribe(with: self) { vm, _ in
                 vm.useCase.stopResquest()
             }
             .disposed(by: disposeBag)
         
         input.viewWillAppear
-            .debug()
             .subscribe(with: self) { vm, _ in
                 vm.useCase.restartRequest()
             }

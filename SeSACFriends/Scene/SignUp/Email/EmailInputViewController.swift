@@ -51,7 +51,6 @@ final class EmailInputViewController: BaseViewController {
         tap
             .map { true }
             .withLatestFrom(emailValidation)
-            .debug()
             .subscribe { [weak self] element in
                 if element {
                     self?.presentNextView()

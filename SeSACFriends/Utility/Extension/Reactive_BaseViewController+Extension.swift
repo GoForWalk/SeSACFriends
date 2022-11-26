@@ -5,12 +5,12 @@
 //  Created by sae hun chung on 2022/11/20.
 //
 
-import Foundation
+import UIKit
 
 import RxCocoa
 import RxSwift
 
-extension Reactive where Base: BaseViewController {
+extension Reactive where Base: UIViewController {
     
     var viewDidLoad: ControlEvent<Void> {
         let source = self.methodInvoked(#selector(Base.viewDidAppear)).map { _ in }

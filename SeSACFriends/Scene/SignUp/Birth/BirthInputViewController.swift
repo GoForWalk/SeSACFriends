@@ -65,7 +65,6 @@ final class BirthInputViewController: BaseViewController {
         mainView.authButton.rx.tap
             .map { true }
             .withLatestFrom(output.availableAge)
-            .debug()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe { [weak self] element in
                 if element {
