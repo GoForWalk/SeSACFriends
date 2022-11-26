@@ -28,6 +28,21 @@ struct MapSearchWordDTO {
     let recommandWord: [String]
 }
 
+/// Card 구성하는 DTO
+struct SearchCardDataDTO {
+    let nick: String
+    let reputation: [Int]
+    let studyList: [String]
+    let reviews: [String]
+    let sesac, background: Int
+}
+
+/// NearUser&& requestedUser Card DTO
+struct SearchCardDatasDTO {
+    let nearByUserCards: [SearchCardDataDTO]
+    let requestUserCards: [SearchCardDataDTO]
+}
+
 enum SearchingType {
     /// 내가 요청 보내기
     case request

@@ -131,6 +131,7 @@ final class HomeRespositoryImpi: HomeRepository {
             self?.mainAPIService.getMyQueueState(completionHandler: { result in
                 switch result {
                 case .failure(let error as APIError):
+                    print("😡😡😡😡 fetchMyQueueStatus Error \( error.errorDescription)")
                     emitter(.failure(error))
                 case .success(let myQueueStateSendable):
                     if myQueueStateSendable.statusCode == 201 {
@@ -158,4 +159,35 @@ final class HomeRespositoryImpi: HomeRepository {
             return Disposables.create()
         }
     }//: fetchMyQueueStatus
+    
+    func fetchCardData(lat: Double, long: Double) -> Single<SearchCardDatasDTO>{
+        return Single<SearchCardDatasDTO>.create { [weak self] emitter in
+            
+            self?.mainAPIService.postSearch(lat: lat, long: long, completionHandler: { result in
+                
+                // TODO: - 여기서부터 내일하기: 카드뷰 통신 만들기
+                switch result {
+                case .success(let searchUser):
+                    let nearByCards = searchUser.fromQueueDB.map {
+                        return SearchCardDataDTO(nick: $0.nick, reputation: $0.reputation, studyList: $0.studylist, reviews: $0.reviews, sesac: $0.sesac, background: $0.background)
+                    }
+                    let requestCards = searchUser.fromQueueDBRequested.map {
+                        return SearchCardDataDTO(nick: $0.nick, reputation: $0.reputation, studyList: $0.studylist, reviews: $0.reviews, sesac: $0.sesac, background: $0.background)
+                    }
+                    emitter(.success(SearchCardDatasDTO(nearByUserCards: nearByCards, requestUserCards: requestCards)))
+                    return
+                    
+                case .failure(let error as APIError):
+                    print("😡😡😡😡 fetchMyQueueStatus Error \( error.errorDescription)")
+                    emitter(.failure(error))
+                    return
+                    
+                default:
+                    return
+                }
+            })
+            
+            return Disposables.create()
+        }
+    }
 }

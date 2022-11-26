@@ -10,7 +10,7 @@ import MapKit
 import CoreLocation
 
 import RxSwift
-import RxCocoa
+import RxRelay
 
 
 protocol HomeMainUseCase: UseCase {
@@ -204,7 +204,6 @@ extension HomeMainUseCaseImpi {
             startNetworkLoactionRequest() // 여기서 재구독
             mapCenterCoordinate(center:CLLocationCoordinate2D(latitude: lat, longitude: long)
             )
-
         }
     }
     

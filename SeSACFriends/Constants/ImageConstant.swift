@@ -67,6 +67,7 @@ typealias ImageInfo = (image: UIImage, imageSize: CGFloat)
     static let siren: ImageInfo = (UIImage(named: "siren")!, 40)
     static let woman: ImageInfo = (UIImage(named: "woman")!, 64)
     static let write: ImageInfo = (UIImage(named: "write")!, 24)
+    static let reset: ImageInfo = (UIImage(named: "clarity_refresh-line")!, 24)
     
     // sesac Face
     static let sesacFace1: ImageInfo = (UIImage(named: "sesac_face_1")!, 160)

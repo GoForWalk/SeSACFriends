@@ -102,7 +102,6 @@ final class HomeWordSearchViewController: KeyboardViewController, UICollectionVi
             .subscribe(with: self) { vc, queueSuccessType in
                 switch queueSuccessType {
                 case .studyRequestSuccess:
-                    // TODO: MapStatus load 해야함... HomeMainViewController 에서 작업!!
                     DispatchQueue.main.async {
                         vc.dismiss(animated: true)
                     }
@@ -123,6 +122,12 @@ final class HomeWordSearchViewController: KeyboardViewController, UICollectionVi
         mainView.backButton.rx.tap
             .subscribe(with: self) { vc, _ in
                 vc.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.collectionView.rx.didScroll
+            .subscribe(with: self) { vc, _ in
+                vc.mainView.searchBar.resignFirstResponder()
             }
             .disposed(by: disposeBag)
     }
