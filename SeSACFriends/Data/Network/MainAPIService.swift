@@ -7,6 +7,7 @@
 
 import Foundation
 import Network
+import RxSwift
 
 protocol MainAPIService: AnyObject {
     func postSearch(lat: Double, long: Double, completionHandler: @escaping (Result<SearchUser, Error>) -> Void)
@@ -221,7 +222,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
         let urlComponents = URLComponents(string: search.url)
         
         guard let url = urlComponents?.url ,let idToken = UserDefaults.idToken else { return }
-        print(url)
+//        print(url)
         var request = URLRequest(url: url)
         request.addValue(HTTPHeader.encodedURL.value, forHTTPHeaderField: HTTPHeader.forHTTPHeaderField)
         request.addValue(idToken, forHTTPHeaderField: HTTPHeader.idToken)
@@ -260,6 +261,7 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
         }
         task.resume()
     }
+    
 }
 
 @frozen enum MyMatchingStatus: Int {
@@ -268,3 +270,55 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
     /// 새싹스터디 찾기를 요청하지 않는 일반상태
     case normalStatus = 201
 }
+
+struct NetworkRequestFrom {
+    let urlStr: String
+    /// idToken과 encode 방식에 대한 내용은 이미 들어가있다.
+    let httpHeaders: [String: String]?
+    let requestMethod: HTTPMethod
+    let requestBody: [String: String]?
+}
+
+//class NetworkRequest: CheckNetworkStatus, CheckAndRefreshIDToken {
+//
+//    var monitor: NWPathMonitor?
+//    var isMonitoring: Bool = false
+//    var handleNetworkDisConnected: (() -> Void)?
+//
+//    func setRequest(router: NetworkRequestFrom) {
+//
+//        guard let url = URL(string: router.urlStr), let idToken = UserDefaults.idToken else { return }
+//        var request = URLRequest(url: url)
+//
+//        if let headers = router.httpHeaders {
+//            headers.forEach { key, value in
+//                request.addValue(value, forHTTPHeaderField: key)
+//            }
+//        }
+//        request.addValue(HTTPHeader.encodedURL.value, forHTTPHeaderField: HTTPHeader.forHTTPHeaderField)
+//        request.addValue(idToken, forHTTPHeaderField: HTTPHeader.idToken)
+//        request.httpMethod = router.requestMethod.rawValue
+//
+//        if let body = router.requestBody {
+//            let formDataString = (body.compactMap({ (key, value) -> String in
+//                return "\(key)=\(value)"
+//            }) as Array).joined(separator: "&")
+//
+//            request.httpBody = formDataString.data(using: .utf8)
+//        }
+//
+//    }//: setRequest
+//
+//    func encode<T>(isNetworkMonitoring: Bool = true, completionHandler: @escaping(Result<T, Error>) -> Void){
+//        handleNetworkDisConnected = {
+//            completionHandler(.failure(APIError.notConnected))
+//        }
+//        if isNetworkMonitoring {
+//            startMonitering()
+//        }
+//
+//        let defaultSession = URLSession(configuration: .default)
+//        let task = defaultSession.dataTask(with: <#T##URLRequest#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
+//    }
+//
+//}

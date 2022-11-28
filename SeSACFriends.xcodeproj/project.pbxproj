@@ -26,7 +26,7 @@
 		CF1C103B29320D7C00C402F9 /* ChattingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C103A29320D7C00C402F9 /* ChattingUseCase.swift */; };
 		CF1C103D29320D9D00C402F9 /* ChattingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C103C29320D9D00C402F9 /* ChattingRepository.swift */; };
 		CF1C1040293212EF00C402F9 /* HomeMatchCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C103F293212EF00C402F9 /* HomeMatchCardListView.swift */; };
-		CF1C10432932169100C402F9 /* HomeMatchCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C10422932169100C402F9 /* HomeMatchCardListCell.swift */; };
+		CF1C10482932BAC100C402F9 /* MoreReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C10472932BAC100C402F9 /* MoreReViewController.swift */; };
 		CF2E8308291D69AA00D2DE1C /* SignUpUseCaseImpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8307291D69AA00D2DE1C /* SignUpUseCaseImpi.swift */; };
 		CF2E830A291D69E900D2DE1C /* NickInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E8309291D69E900D2DE1C /* NickInputView.swift */; };
 		CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E830D291D6ABE00D2DE1C /* NickInputViewController.swift */; };
@@ -68,6 +68,8 @@
 		CF416A18292BDCB9003EB279 /* TagHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF416A17292BDCB9003EB279 /* TagHeaderView.swift */; };
 		CF416A1B292BEE5A003EB279 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = CF416A1A292BEE5A003EB279 /* Differentiator */; };
 		CF416A1D292BEE5A003EB279 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CF416A1C292BEE5A003EB279 /* RxDataSources */; };
+		CF48EF28293325D200C1D024 /* SeSACFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48EF27293325D200C1D024 /* SeSACFriendsTests.swift */; };
+		CF48EF2F2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48EF2E2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift */; };
 		CF722F8A29226AD500C8E76D /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8929226AD500C8E76D /* ProfileCardView.swift */; };
 		CF722F8C29228E4300C8E76D /* ProfileCardRollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */; };
 		CF722F8E2922991C00C8E76D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8D2922991C00C8E76D /* UIView+Extension.swift */; };
@@ -90,6 +92,8 @@
 		CF73610929261D8000ECC920 /* SearchUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610829261D8000ECC920 /* SearchUserDTO.swift */; };
 		CF73610B29261E6D00ECC920 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610A29261E6D00ECC920 /* HomeRepository.swift */; };
 		CF73610E2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */; };
+		CFD643AE29351FD100CCF7F9 /* BackGroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD643AD29351FD100CCF7F9 /* BackGroundImage.swift */; };
+		CFD643B02935228B00CCF7F9 /* SeSACCharactorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD643AF2935228B00CCF7F9 /* SeSACCharactorImage.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
 		CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0C012918C29900E586A1 /* TextFieldEffects */; };
 		CFDF0C0A2918CD8800E586A1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CFDF0C092918CD8800E586A1 /* .gitignore */; };
@@ -134,6 +138,16 @@
 		CFFFBEDB291D533100E4DAB4 /* UserAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBEDA291D533100E4DAB4 /* UserAPIService.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CF48EF29293325D200C1D024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF0467A22918BF5800E72CC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF0467A92918BF5800E72CC9;
+			remoteInfo = SeSACFriends;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0467AD2918BF5800E72CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,7 +168,7 @@
 		CF1C103A29320D7C00C402F9 /* ChattingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingUseCase.swift; sourceTree = "<group>"; };
 		CF1C103C29320D9D00C402F9 /* ChattingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRepository.swift; sourceTree = "<group>"; };
 		CF1C103F293212EF00C402F9 /* HomeMatchCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatchCardListView.swift; sourceTree = "<group>"; };
-		CF1C10422932169100C402F9 /* HomeMatchCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatchCardListCell.swift; sourceTree = "<group>"; };
+		CF1C10472932BAC100C402F9 /* MoreReViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreReViewController.swift; sourceTree = "<group>"; };
 		CF2E8307291D69AA00D2DE1C /* SignUpUseCaseImpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCaseImpi.swift; sourceTree = "<group>"; };
 		CF2E8309291D69E900D2DE1C /* NickInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickInputView.swift; sourceTree = "<group>"; };
 		CF2E830D291D6ABE00D2DE1C /* NickInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickInputViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +208,9 @@
 		CF416A12292B5806003EB279 /* HomeSearchWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchWordViewModel.swift; sourceTree = "<group>"; };
 		CF416A15292B72A8003EB279 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF416A17292BDCB9003EB279 /* TagHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeaderView.swift; sourceTree = "<group>"; };
+		CF48EF25293325D200C1D024 /* SeSACFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeSACFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF48EF27293325D200C1D024 /* SeSACFriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsTests.swift; sourceTree = "<group>"; };
+		CF48EF2E2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatchCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF722F8929226AD500C8E76D /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardRollableView.swift; sourceTree = "<group>"; };
 		CF722F8D2922991C00C8E76D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -215,6 +232,8 @@
 		CF73610829261D8000ECC920 /* SearchUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserDTO.swift; sourceTree = "<group>"; };
 		CF73610A29261E6D00ECC920 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive_BaseViewController+Extension.swift"; sourceTree = "<group>"; };
+		CFD643AD29351FD100CCF7F9 /* BackGroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundImage.swift; sourceTree = "<group>"; };
+		CFD643AF2935228B00CCF7F9 /* SeSACCharactorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCharactorImage.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CFDF0C092918CD8800E586A1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
@@ -273,6 +292,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF48EF22293325D200C1D024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -282,6 +308,7 @@
 				CFDF0C092918CD8800E586A1 /* .gitignore */,
 				CFDF0C062918C35100E586A1 /* README.md */,
 				CF0467AC2918BF5800E72CC9 /* SeSACFriends */,
+				CF48EF26293325D200C1D024 /* SeSACFriendsTests */,
 				CF0467AB2918BF5800E72CC9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -290,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */,
+				CF48EF25293325D200C1D024 /* SeSACFriendsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -343,9 +371,9 @@
 		CF1C10462932172E00C402F9 /* MatchCardList */ = {
 			isa = PBXGroup;
 			children = (
-				CF1C10422932169100C402F9 /* HomeMatchCardListCell.swift */,
 				CF1C102F2931F4A400C402F9 /* HomeMatchCardListViewController.swift */,
 				CF1C103F293212EF00C402F9 /* HomeMatchCardListView.swift */,
+				CF48EF2E2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift */,
 			);
 			path = MatchCardList;
 			sourceTree = "<group>";
@@ -520,13 +548,22 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		CF48EF26293325D200C1D024 /* SeSACFriendsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF48EF27293325D200C1D024 /* SeSACFriendsTests.swift */,
+			);
+			path = SeSACFriendsTests;
+			sourceTree = "<group>";
+		};
 		CF722F8F29236CC400C8E76D /* ProfileCard */ = {
 			isa = PBXGroup;
 			children = (
-				CF722F9029236D2400C8E76D /* SubView */,
+				CF1C10472932BAC100C402F9 /* MoreReViewController.swift */,
 				CF722F8929226AD500C8E76D /* ProfileCardView.swift */,
 				CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */,
 				CF722F92292371E000C8E76D /* CardViewController.swift */,
+				CF722F9029236D2400C8E76D /* SubView */,
 			);
 			path = ProfileCard;
 			sourceTree = "<group>";
@@ -625,6 +662,8 @@
 				CFDF0C0C2918D0A800E586A1 /* ColorConstant.swift */,
 				CFDF0C0E2918D3C500E586A1 /* FontConstant.swift */,
 				CFDF0C1E2918E9D000E586A1 /* ImageConstant.swift */,
+				CFD643AD29351FD100CCF7F9 /* BackGroundImage.swift */,
+				CFD643AF2935228B00CCF7F9 /* SeSACCharactorImage.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -920,6 +959,24 @@
 			productReference = CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CF48EF24293325D200C1D024 /* SeSACFriendsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF48EF2D293325D200C1D024 /* Build configuration list for PBXNativeTarget "SeSACFriendsTests" */;
+			buildPhases = (
+				CF48EF21293325D200C1D024 /* Sources */,
+				CF48EF22293325D200C1D024 /* Frameworks */,
+				CF48EF23293325D200C1D024 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF48EF2A293325D200C1D024 /* PBXTargetDependency */,
+			);
+			name = SeSACFriendsTests;
+			productName = SeSACFriendsTests;
+			productReference = CF48EF25293325D200C1D024 /* SeSACFriendsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -932,6 +989,10 @@
 				TargetAttributes = {
 					CF0467A92918BF5800E72CC9 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					CF48EF24293325D200C1D024 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = CF0467A92918BF5800E72CC9;
 					};
 				};
 			};
@@ -959,6 +1020,7 @@
 			projectRoot = "";
 			targets = (
 				CF0467A92918BF5800E72CC9 /* SeSACFriends */,
+				CF48EF24293325D200C1D024 /* SeSACFriendsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -977,6 +1039,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF48EF23293325D200C1D024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -985,7 +1054,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF1C103D29320D9D00C402F9 /* ChattingRepository.swift in Sources */,
-				CF1C10432932169100C402F9 /* HomeMatchCardListCell.swift in Sources */,
 				CF2E831E291D74C300D2DE1C /* EmailInputViewController.swift in Sources */,
 				CF2E835E29222CDF00D2DE1C /* ProfileInfoTableViewCell.swift in Sources */,
 				CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */,
@@ -1013,6 +1081,7 @@
 				CF2E834D292221BE00D2DE1C /* ProfileView.swift in Sources */,
 				CF2E8314291D73BB00D2DE1C /* BirthInputView.swift in Sources */,
 				CF2E831B291D74AA00D2DE1C /* EmailInputView.swift in Sources */,
+				CF48EF2F2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift in Sources */,
 				CFDF0C71291CFC4C00E586A1 /* UserDefaults+Extension.swift in Sources */,
 				CF2E834829221D5A00D2DE1C /* FriendsViewController.swift in Sources */,
 				CFDF0C5D291A8BE800E586A1 /* UserDefaultsConstant.swift in Sources */,
@@ -1037,6 +1106,7 @@
 				CF2E834F292221D300D2DE1C /* FriendsView.swift in Sources */,
 				CFDF0C3C29194D7400E586A1 /* OnboardingViewController.swift in Sources */,
 				CF1C10302931F4A400C402F9 /* HomeMatchCardListViewController.swift in Sources */,
+				CFD643B02935228B00CCF7F9 /* SeSACCharactorImage.swift in Sources */,
 				CF1C102C2931EAA500C402F9 /* HomeTabViewModel.swift in Sources */,
 				CF1C103B29320D7C00C402F9 /* ChattingUseCase.swift in Sources */,
 				CFDF0C6F291CDE8900E586A1 /* CustomUserDefaults.swift in Sources */,
@@ -1058,6 +1128,7 @@
 				CF416A11292B57E8003EB279 /* HomeWordSearchViewController.swift in Sources */,
 				CF2E8328291D751900D2DE1C /* GenderInputViewModel.swift in Sources */,
 				CF2E8310291D6EC100D2DE1C /* NickInputViewModel.swift in Sources */,
+				CF1C10482932BAC100C402F9 /* MoreReViewController.swift in Sources */,
 				CF416A13292B5806003EB279 /* HomeSearchWordViewModel.swift in Sources */,
 				CF416A0F292B57D6003EB279 /* HomeWordSearchView.swift in Sources */,
 				CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */,
@@ -1071,6 +1142,7 @@
 				CF2E834429221BF400D2DE1C /* HomeViewController.swift in Sources */,
 				CF2E8353292221F300D2DE1C /* HomeView.swift in Sources */,
 				CFDF0C23291910E300E586A1 /* UILabel+Extension.swift in Sources */,
+				CFD643AE29351FD100CCF7F9 /* BackGroundImage.swift in Sources */,
 				CFDF0C38291928C500E586A1 /* MainButton.swift in Sources */,
 				CFDF0C5B291A8B1600E586A1 /* PhoneAuthViewModel.swift in Sources */,
 				CF2E832E291D7BA700D2DE1C /* CheckIDToken.swift in Sources */,
@@ -1094,7 +1166,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF48EF21293325D200C1D024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF48EF28293325D200C1D024 /* SeSACFriendsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF48EF2A293325D200C1D024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF0467A92918BF5800E72CC9 /* SeSACFriends */;
+			targetProxy = CF48EF29293325D200C1D024 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CF0467B82918BF5900E72CC9 /* LaunchScreen.storyboard */ = {
@@ -1284,6 +1372,42 @@
 			};
 			name = Release;
 		};
+		CF48EF2B293325D200C1D024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V39QSCSL6T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lec.sesac.SeSACFriendsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeSACFriends.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SeSACFriends";
+			};
+			name = Debug;
+		};
+		CF48EF2C293325D200C1D024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V39QSCSL6T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lec.sesac.SeSACFriendsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeSACFriends.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SeSACFriends";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1301,6 +1425,15 @@
 			buildConfigurations = (
 				CF0467BF2918BF5900E72CC9 /* Debug */,
 				CF0467C02918BF5900E72CC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF48EF2D293325D200C1D024 /* Build configuration list for PBXNativeTarget "SeSACFriendsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF48EF2B293325D200C1D024 /* Debug */,
+				CF48EF2C293325D200C1D024 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -106,7 +106,6 @@ final class ProfileCardRollableView: BaseView {
             make.bottom.equalTo(stackView)
             let temp = make.height.equalTo(0)
             self.tableHeight = temp
-            
             // updateConstraints
         }
         

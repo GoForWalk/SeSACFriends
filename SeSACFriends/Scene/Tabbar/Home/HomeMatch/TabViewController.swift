@@ -70,11 +70,11 @@ private extension TabViewController {
         viewControllers = []
         let nearBy = data.nearByUserCards.isEmpty ?
         HomeEmptyCardViewController(viewModel: HomeEmptyCardViewModel(), tabSection: .nearBySeSac)
-        : HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .nearBySeSac)
+        : HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .nearBySeSac, cardData: data.nearByUserCards)
          
         let requested = data.requestUserCards.isEmpty ?
         HomeEmptyCardViewController(viewModel: HomeEmptyCardViewModel(), tabSection: .requested) :
-        HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .requested)
+        HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .requested, cardData: data.requestUserCards)
         viewControllers.append(contentsOf: [nearBy, requested])
     }
     

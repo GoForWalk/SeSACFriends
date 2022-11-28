@@ -87,8 +87,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            presentVC(presentType: .push) {
-                return ProfileInfoViewController()
+            presentVC(presentType: .push) { [weak self] in
+                return ProfileInfoViewController(cardViewTable: self?.mainView.tableView, cardMode: .myProfile)
             }
         }
     }

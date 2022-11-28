@@ -15,6 +15,7 @@ final class ProfileInfoViewController: CardViewController {
 
     let mainView = ProfileInfoView()
     var tableStackView: UIStackView?
+    var cardViewTable: UITableView?
     
     override func loadView() {
         view = mainView

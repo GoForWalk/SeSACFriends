@@ -86,18 +86,14 @@ final class CardTitleTableCell: BaseTableViewCell {
             make.leading.equalTo(contentView).inset(16)
             make.top.equalTo(titleMannerButton.snp.bottom).offset(8)
             make.width.equalTo(titleMannerButton)
-
         }
-        
         
         titleKindButton.snp.makeConstraints { make in
             make.trailing.equalTo(contentView).inset(16)
             make.top.equalTo(titleRightTimeButton.snp.bottom).offset(8)
             make.leading.equalTo(titleQuickResponseButton.snp.trailing).offset(8)
             make.width.equalTo(titleMannerButton)
-
         }
-        
         
         titleSkilfulButton.snp.makeConstraints { make in
             make.leading.equalTo(contentView).inset(16)
@@ -105,7 +101,6 @@ final class CardTitleTableCell: BaseTableViewCell {
             make.width.equalTo(titleMannerButton)
             make.bottom.equalTo(contentView)
         }
-        
         
         titleGoodTimeButton.snp.makeConstraints { make in
             make.trailing.equalTo(contentView).inset(16)
@@ -116,7 +111,18 @@ final class CardTitleTableCell: BaseTableViewCell {
         }
     }
     
-    func getButtonList() -> [MainButton] {
+    private func getButtonList() -> [MainButton] {
         return [titleMannerButton, titleRightTimeButton, titleQuickResponseButton, titleKindButton, titleSkilfulButton, titleGoodTimeButton]
+    }
+    
+    func updateButtonStatus(dataList: [Int]) {
+        let boolList = dataList.map {
+            $0 > 0
+        }
+        getButtonList().enumerated().forEach { (index, button) in
+            if boolList[index] {
+                button.buttonMode = .fill
+            }
+        }
     }
 }

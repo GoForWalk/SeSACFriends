@@ -33,13 +33,20 @@ final class ProfileCardView: BaseView {
         
         return view
     }()
+    
+    let requestButton: MainButton = {
+        let button = MainButton(frame: .zero, buttonMode: .fill, buttonSize: .h40, hasIcon: false)
+        
+        return button
+    }()
         
     override func configure() {
+        
+        backgroundImageView.addSubview(requestButton)
         
         [profileView, backgroundImageView, charactorImageView].forEach {
             self.addSubview($0)
         }
-        
     }
     
     override func setConstraints() {
@@ -62,7 +69,11 @@ final class ProfileCardView: BaseView {
             make.horizontalEdges.equalTo(self)
             make.bottom.equalTo(self)
         }
+        
+        requestButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(12)
+            make.trailing.equalToSuperview().inset(12)
+        }
     }
-    
     
 }
