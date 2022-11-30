@@ -17,12 +17,10 @@
 		CF1C10282931DF0400C402F9 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = CF1C10272931DF0400C402F9 /* Tabman */; };
 		CF1C102A2931E05E00C402F9 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C10292931E05E00C402F9 /* TabViewController.swift */; };
 		CF1C102C2931EAA500C402F9 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C102B2931EAA500C402F9 /* HomeTabViewModel.swift */; };
-		CF1C102E2931F48100C402F9 /* HomeEmptyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C102D2931F48100C402F9 /* HomeEmptyCardViewController.swift */; };
 		CF1C10302931F4A400C402F9 /* HomeMatchCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C102F2931F4A400C402F9 /* HomeMatchCardListViewController.swift */; };
 		CF1C10332931F89C00C402F9 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CF1C10322931F89C00C402F9 /* Then */; };
 		CF1C10352931FEAC00C402F9 /* HomeEmptyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C10342931FEAC00C402F9 /* HomeEmptyCardViewModel.swift */; };
 		CF1C10372931FEC200C402F9 /* HomeMatchCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C10362931FEC200C402F9 /* HomeMatchCardListViewModel.swift */; };
-		CF1C1039293201B400C402F9 /* HomeEmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C1038293201B400C402F9 /* HomeEmptyCardView.swift */; };
 		CF1C103B29320D7C00C402F9 /* ChattingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C103A29320D7C00C402F9 /* ChattingUseCase.swift */; };
 		CF1C103D29320D9D00C402F9 /* ChattingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C103C29320D9D00C402F9 /* ChattingRepository.swift */; };
 		CF1C1040293212EF00C402F9 /* HomeMatchCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1C103F293212EF00C402F9 /* HomeMatchCardListView.swift */; };
@@ -160,11 +158,9 @@
 		CF1C102129312CD400C402F9 /* MyQueueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueueState.swift; sourceTree = "<group>"; };
 		CF1C10292931E05E00C402F9 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		CF1C102B2931EAA500C402F9 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
-		CF1C102D2931F48100C402F9 /* HomeEmptyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyCardViewController.swift; sourceTree = "<group>"; };
 		CF1C102F2931F4A400C402F9 /* HomeMatchCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatchCardListViewController.swift; sourceTree = "<group>"; };
 		CF1C10342931FEAC00C402F9 /* HomeEmptyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyCardViewModel.swift; sourceTree = "<group>"; };
 		CF1C10362931FEC200C402F9 /* HomeMatchCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatchCardListViewModel.swift; sourceTree = "<group>"; };
-		CF1C1038293201B400C402F9 /* HomeEmptyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyCardView.swift; sourceTree = "<group>"; };
 		CF1C103A29320D7C00C402F9 /* ChattingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingUseCase.swift; sourceTree = "<group>"; };
 		CF1C103C29320D9D00C402F9 /* ChattingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRepository.swift; sourceTree = "<group>"; };
 		CF1C103F293212EF00C402F9 /* HomeMatchCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatchCardListView.swift; sourceTree = "<group>"; };
@@ -347,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				CF1C10462932172E00C402F9 /* MatchCardList */,
-				CF1C10442932171A00C402F9 /* EmptyCard */,
 			);
 			path = TabmanView;
 			sourceTree = "<group>";
@@ -357,15 +352,6 @@
 			children = (
 			);
 			path = AlertView;
-			sourceTree = "<group>";
-		};
-		CF1C10442932171A00C402F9 /* EmptyCard */ = {
-			isa = PBXGroup;
-			children = (
-				CF1C102D2931F48100C402F9 /* HomeEmptyCardViewController.swift */,
-				CF1C1038293201B400C402F9 /* HomeEmptyCardView.swift */,
-			);
-			path = EmptyCard;
 			sourceTree = "<group>";
 		};
 		CF1C10462932172E00C402F9 /* MatchCardList */ = {
@@ -1069,7 +1055,6 @@
 				CFDF0C3A2919484700E586A1 /* UIButton+Extension.swift in Sources */,
 				CF2E833E29221AC700D2DE1C /* TabbarViewController.swift in Sources */,
 				CFFFBEDB291D533100E4DAB4 /* UserAPIService.swift in Sources */,
-				CF1C102E2931F48100C402F9 /* HomeEmptyCardViewController.swift in Sources */,
 				CF7360F32925165C00ECC920 /* SampleViewModel.swift in Sources */,
 				CFDF0C4F291A65DC00E586A1 /* MessageAuthView.swift in Sources */,
 				CFDF0C59291A8B0900E586A1 /* MessageAuthViewModel.swift in Sources */,
@@ -1137,7 +1122,6 @@
 				CF7361002925481900ECC920 /* LocationService.swift in Sources */,
 				CFDF0C7A291D0AFE00E586A1 /* HTTPMethod.swift in Sources */,
 				CF2E834A29221E9400D2DE1C /* ProfileViewController.swift in Sources */,
-				CF1C1039293201B400C402F9 /* HomeEmptyCardView.swift in Sources */,
 				CF736103292565B400ECC920 /* MapService.swift in Sources */,
 				CF2E834429221BF400D2DE1C /* HomeViewController.swift in Sources */,
 				CF2E8353292221F300D2DE1C /* HomeView.swift in Sources */,

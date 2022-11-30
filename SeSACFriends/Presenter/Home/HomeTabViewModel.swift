@@ -19,7 +19,7 @@ final class HomeTabViewModel: ViewModelType {
     }
     
     struct Input {
-        let viewWillAppear: ControlEvent<Void>
+//        let viewWillAppear: ControlEvent<Void>
         let searchStopButton: ControlEvent<()>
     }
     
@@ -39,12 +39,12 @@ private extension HomeTabViewModel {
         
     func configureInput(input: Input, disposeBag: DisposeBag) {
         
-        input.viewWillAppear
-            .subscribe(with: self) { vm, _ in
-                vm.useCase.getCardData()
-            }
-            .disposed(by: disposeBag)
-        
+//        input.viewWillAppear
+//            .subscribe(with: self) { vm, _ in
+//                vm.useCase.getCardData()
+//            }
+//            .disposed(by: disposeBag)
+//        
         input.searchStopButton
             .subscribe(with: self) { vm, _ in
                 vm.useCase.stopSearchingUser()

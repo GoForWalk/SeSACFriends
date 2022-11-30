@@ -15,10 +15,12 @@ import Toast
 
 final class TabViewController: TabmanViewController {
     
-    private var viewControllers: [BaseViewController] = []
+    private var viewControllers: [BaseViewController] = [
+        HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .nearBySeSac, cardData: []),
+        HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .requested, cardData: [])
+    ]
     private let viewModel: HomeTabViewModel
     private let disposeBag = DisposeBag()
-    private let searchStopButton = UIBarButtonItem(title: "찾기중단", style: .plain, target: TabViewController.self, action: nil)
     
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, viewModel: HomeTabViewModel) {
         self.viewModel = viewModel
@@ -32,10 +34,14 @@ final class TabViewController: TabmanViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        bind()
-        setNavi()
         setTMBar()
-        
+        setNavi()
+        bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
 }
 
@@ -45,8 +51,7 @@ private extension TabViewController {
     func bind() {
         
         let input = HomeTabViewModel.Input(
-            viewWillAppear: self.rx.viewWillAppear,
-            searchStopButton: searchStopButton.rx.tap
+            searchStopButton: (navigationItem.leftBarButtonItem?.rx.tap)!
         )
                 
         let output = viewModel.transform(input: input, disposeBag: disposeBag)
@@ -63,25 +68,16 @@ private extension TabViewController {
                 vc.deletePresentView(deleteStatus: deleteQueueSuccessType)
             }
             .disposed(by: disposeBag)
-        
     }
     
     func setTab(data: SearchCardDatasDTO) {
-        viewControllers = []
-        let nearBy = data.nearByUserCards.isEmpty ?
-        HomeEmptyCardViewController(viewModel: HomeEmptyCardViewModel(), tabSection: .nearBySeSac)
-        : HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .nearBySeSac, cardData: data.nearByUserCards)
-         
-        let requested = data.requestUserCards.isEmpty ?
-        HomeEmptyCardViewController(viewModel: HomeEmptyCardViewModel(), tabSection: .requested) :
-        HomeMatchCardListViewController(viewModel: HomeMatchCardListViewModel(), tabSection: .requested, cardData: data.requestUserCards)
-        viewControllers.append(contentsOf: [nearBy, requested])
+        
     }
     
     func setNavi() {
         title = "새싹 찾기"
-        
-        
+        let searchStopButton = UIBarButtonItem(title: "찾기중단", style: .plain, target: TabViewController.self, action: nil)
+        navigationController?.navigationItem.leftBarButtonItem = searchStopButton
     }
     
     func setTMBar() {
@@ -90,8 +86,8 @@ private extension TabViewController {
         bar.layout.transitionStyle = .snap
         bar.scrollMode = .swipe
         bar.tintColor = Colors.green
-        bar.layout.contentMode = .fit
-        bar.layout.alignment = .center
+        bar.layout.contentMode = .intrinsic
+        bar.layout.alignment = .centerDistributed
         
         // Add to View
         addBar(bar, dataSource: self, at: .top)
@@ -116,7 +112,8 @@ private extension TabViewController {
 extension TabViewController: PageboyViewControllerDataSource, TMBarDataSource {
     
     func numberOfViewControllers(in pageboyViewController: Pageboy.PageboyViewController) -> Int {
-        return TabSection.allCases.count
+//        return TabSection.allCases.count
+        return viewControllers.count
     }
     
     func viewController(for pageboyViewController: Pageboy.PageboyViewController, at index: Pageboy.PageboyViewController.PageIndex) -> UIViewController? {

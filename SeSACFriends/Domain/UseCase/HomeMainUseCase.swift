@@ -114,7 +114,9 @@ extension HomeMainUseCaseImpi {
         if myTags.isEmpty {
             myTags.append("anything")
         }
-        let temp = respository.postQueueStudy(lat: lat ?? defaultLocation.lat, long: long ?? defaultLocation.long, studyList: myTags.description)
+        
+        
+        let temp = respository.postQueueStudy(lat: lat ?? defaultLocation.lat, long: long ?? defaultLocation.long, studyList: myTags)
         
         temp.subscribe(with: self, onSuccess: { uc, queueSuccessType in
             uc.postStudySearch.onNext(queueSuccessType)
@@ -311,7 +313,7 @@ private extension HomeMainUseCaseImpi {
     /// statusCode = 200 ,matched = 0
     case matchWaiting
     /// statusCode = 200 ,matched = 1
-    case matched(nick: String, uid: String)
+    case matched(nick: String?, uid: String?)
 }
 
 extension HomeStatus {

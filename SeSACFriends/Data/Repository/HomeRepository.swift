@@ -13,7 +13,7 @@ import RxSwift
 protocol HomeRepository {
     func fetchMainMapAnnotation(lat: Double, long: Double) -> Single<[MapAnnotionUserDTO]>
     func fetchMainMapSearchWord(lat: Double, long: Double) -> Single<MapSearchWordDTO>
-    func postQueueStudy(lat: Double, long: Double, studyList: String) -> Single<QueueSuccessType>
+    func postQueueStudy(lat: Double, long: Double, studyList: [String]) -> Single<QueueSuccessType>
     func deleteQueueStudy() -> Single<DeleteQueueSuccessType>
     func fetchMyQueueStatus() -> Single<HomeStatus>
     func fetchCardData(lat: Double, long: Double) -> Single<SearchCardDatasDTO>
@@ -84,7 +84,7 @@ final class HomeRespositoryImpi: HomeRepository {
         }
     } //: fetchMainMapSearchWord
     
-    func postQueueStudy(lat: Double, long: Double, studyList: String) -> Single<QueueSuccessType> {
+    func postQueueStudy(lat: Double, long: Double, studyList: [String]) -> Single<QueueSuccessType> {
         print(#function)
         return Single<QueueSuccessType>.create { [weak self] emitter in
             
@@ -179,7 +179,7 @@ final class HomeRespositoryImpi: HomeRepository {
                     return
                     
                 case .failure(let error as APIError):
-                    print("😡😡😡😡 fetchMyQueueStatus Error \( error.errorDescription)")
+                    print("😡😡😡😡 fetchCardData Error \( error.errorDescription)")
                     emitter(.failure(error))
                     return
                     

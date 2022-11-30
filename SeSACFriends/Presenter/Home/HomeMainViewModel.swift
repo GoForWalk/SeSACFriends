@@ -76,6 +76,11 @@ private extension HomeMainViewModel {
             }
             .disposed(by: disposeBag)
         
+        input.statusButtonTapped
+            .subscribe(with: self) { vm, _ in
+                vm.useCase.getCardData()
+            }.disposed(by: disposeBag)
+        
     }//: configureInput
     
     func createOutput(input: Input, disposeBag: DisposeBag) -> Output {

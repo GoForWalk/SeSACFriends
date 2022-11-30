@@ -14,8 +14,13 @@ final class HomeMatchCardListViewController: BaseViewController {
     private let mainView = HomeMatchCardListView()
     private let viewModel: HomeMatchCardListViewModel
     private var tabSection: TabSection
-    private var cardData: [SearchCardDataDTO]
+    private var cardData: [SearchCardDataDTO] {
+        didSet {
+            updateView(isDataEmpty: cardData.isEmpty)
+        }
+    }
     private let disposeBag = DisposeBag()
+    private let requestButtonTabbed = PublishRelay<Int>()
     
     init(viewModel: HomeMatchCardListViewModel, tabSection: TabSection, cardData: [SearchCardDataDTO]) {
         self.viewModel = viewModel
@@ -34,11 +39,25 @@ final class HomeMatchCardListViewController: BaseViewController {
     }
     
     override func configure() {
+        super.configure()
         setCollectionView()
+        setView()
     }
     
     override func bind() {
+        
+        let requestButton = ControlEvent(events: requestButtonTabbed)
+        
         let input = HomeMatchCardListViewModel.Input()
+        
+        self.rx.viewWillAppear
+        
+        mainView.reloadButton.rx.tap
+        
+        mainView.studyChangebutton.rx.tap
+        
+        requestButton
+        
         
         let output = viewModel.transform(input: input, disposeBag: disposeBag)
     
@@ -46,6 +65,19 @@ final class HomeMatchCardListViewController: BaseViewController {
 }
 
 private extension HomeMatchCardListViewController {
+    
+    func setView() {
+        mainView.emptySubtitleText(text: tabSection.emptyTitle)
+    }
+        
+    func updateView(isDataEmpty: Bool) {
+        switch isDataEmpty {
+        case true:
+            mainView.setViewMode(viewMode: .empty)
+        case false:
+            mainView.setViewMode(viewMode: .cardList)
+        }
+    }
     
     func setCollectionView() {
         mainView.collcectionView.register(HomeMatchCardCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(HomeMatchCardCollectionViewCell.self))
@@ -91,11 +123,18 @@ extension HomeMatchCardListViewController: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(HomeMatchCardCollectionViewCell.self), for: indexPath) as? HomeMatchCardCollectionViewCell else { return UICollectionViewCell() }
         
+        guard let view = cell.viewController.view as? ProfileCardView else { return UICollectionViewCell() }
+        
+        view.requestButton.rx.tap
+            .map { _ in
+                indexPath.item
+            }
+            .bind(with: self) { vc, item in
+                vc.requestButtonTabbed.accept(item)
+            }
+            .disposed(by: cell.dispoaseBag)
         
         return cell
     }
-    
-    
-    
     
 }

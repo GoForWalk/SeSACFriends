@@ -11,7 +11,7 @@ import RxSwift
 
 protocol MainAPIService: AnyObject {
     func postSearch(lat: Double, long: Double, completionHandler: @escaping (Result<SearchUser, Error>) -> Void)
-    func studyRequest(lat: Double, long: Double, studyList: String, completionHandler: @escaping (Result<QueueSuccessType, Error>) -> Void)
+    func studyRequest(lat: Double, long: Double, studyList: [String], completionHandler: @escaping (Result<QueueSuccessType, Error>) -> Void)
     func deleteStudyRequest( completionHandler: @escaping (Result<DeleteQueueSuccessType, Error>) -> Void)
     func getMyQueueState(completionHandler: @escaping (Result<MyQueueStateSendable, Error>) -> Void)
 
@@ -66,25 +66,25 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
     var handleNetworkDisConnected: (() -> Void)?
     
     /// 스터디 입력 화면에서 스터디 조건 설정 후, ‘새싹 찾기’ 버튼 클릭시 호출
-    func studyRequest(lat: Double, long: Double, studyList: String, completionHandler: @escaping (Result<QueueSuccessType, Error>) -> Void) {
+    func studyRequest(lat: Double, long: Double, studyList: [String], completionHandler: @escaping (Result<QueueSuccessType, Error>) -> Void) {
         handleNetworkDisConnected = {
             completionHandler(.failure(APIError.notConnected))
         }
         startMonitering()
-        
+        print(studyList)
         let queue = Endpoint.queue
         let urlComponents = URLComponents(string: queue.url)
         let formData: [String: String] = [
             "lat":"\(lat)",
             "long":"\(long)",
-            "studylist": "\"\(studyList)\""
+//            "studylist": studyList
         ]
         
         let formDataString = (formData.compactMap({ key, value in
             return "\(key)=\(value)"
-        }) as Array).joined(separator: "&")
+        }) as Array).joined(separator: "&").appending(changeListToSendableString(key: "studylist", strings: studyList))
         
-        let formEncodedData = formDataString.data(using: .utf8)
+        let formEncodedData = formDataString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.data(using: .utf8)
         
         guard let url = urlComponents?.url, let idToken = UserDefaults.idToken else { return }
         
@@ -243,18 +243,20 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
                 completionHandler(.failure(APIError(rawValue: response.statusCode) ?? .serverError))
                 return
             }
-            
+            print("🐶🐶🐶🐶", data.description, response.statusCode)
             if response.statusCode == 201 {
                 let temp = MyQueueStateSendable(myQueueState: nil, statusCode: 201)
                 completionHandler(.success(temp))
+                print("✅✅✅✅✅✅ getMyQueueState Done \(Date())")
                 return
             }
             
             let jsonDecoder = JSONDecoder()
             guard let result = try? jsonDecoder.decode(MyQueueState.self, from: data) else {
+                print("decoding Error \(#function) 🦊🦊🦊🦊🦊")
                 completionHandler(.failure(APIError.serverError))
                 return }
-            print("✅✅✅✅✅✅ getMyQueueState Done \(Date())")
+            print("✅✅✅✅✅✅ getMyQueueState Done \(Date()), \(result)")
             
             completionHandler(.success(MyQueueStateSendable(myQueueState: result, statusCode: 200)))
             self?.stopMonitoring()
@@ -262,6 +264,17 @@ final class MainAPIServiceImpi: MainAPIService, CheckNetworkStatus {
         task.resume()
     }
     
+}
+
+private extension MainAPIServiceImpi {
+    
+    func changeListToSendableString(key: String, strings: [String]) -> String {
+        
+        let result = strings.reduce("") { partialResult, string in
+            return "\(partialResult)&\(key)=\(string)"
+        }
+        return result
+    }
 }
 
 @frozen enum MyMatchingStatus: Int {

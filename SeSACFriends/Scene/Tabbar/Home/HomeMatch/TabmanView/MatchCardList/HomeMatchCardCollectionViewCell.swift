@@ -8,27 +8,20 @@
 import UIKit
 
 import SnapKit
+import RxSwift
 
 final class HomeMatchCardCollectionViewCell: BaseCollectionViewCell {
     
-    private let data: SearchCardDataDTO
-    private let cellType: CardViewDisplayView
+    var data: SearchCardDataDTO?
+    var cellType: CardViewDisplayView?
+    let dispoaseBag = DisposeBag()
     
     lazy var viewController: CardViewController = {
+        guard let data, let cellType else { return } // 이거 맞음??
         let viewController = CardViewController(searchCardData: data, cardMode: cellType)
         
         return viewController
     }()
-    
-    init(data: SearchCardDataDTO, cellType: CardViewDisplayView) {
-        self.data = data
-        self.cellType = cellType
-        super.init()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func configure() {
         super.configure()

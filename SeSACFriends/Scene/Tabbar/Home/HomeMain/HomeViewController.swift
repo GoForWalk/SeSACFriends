@@ -63,9 +63,10 @@ final class HomeViewController: BaseViewController {
         guard let output = viewModel?.transform(input: input, disposeBag: disposeBag) else { return }
                 
         output.buttonStatus
-            .withUnretained(self)
-            .bind(onNext: {
-                $0.mainView.statusButton.setImage($1.buttonImage.image, for: .normal)
+            .bind(onNext: { [weak self] homeStatus in
+                DispatchQueue.main.async {
+                    self?.mainView.statusButton.setImage(homeStatus.buttonImage.image, for: .normal)
+                }
             })
             .disposed(by: disposeBag)
         
@@ -136,8 +137,9 @@ private extension HomeViewController {
                 return HomeWordSearchViewController(viewModel: HomeSearchWordViewModel(useCase: useCase))
             }
         case .matchWaiting:
-            presentVC(presentType: .push) {
-                return UIViewController()
+            presentVC(presentType: .push) { [weak self] in
+                guard let useCase = self?.viewModel?.useCase else { return UIViewController() }
+                return TabViewController(nibName: nil, bundle: nil, viewModel: HomeTabViewModel(useCase: useCase))
             }
         case .matched:
             presentVC(presentType: .push) {
@@ -148,9 +150,5 @@ private extension HomeViewController {
         }
     }
     
-    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-        print(#function)
-    }
-
 }
 
