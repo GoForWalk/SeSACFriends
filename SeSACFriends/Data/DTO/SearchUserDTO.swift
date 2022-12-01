@@ -30,6 +30,7 @@ struct MapSearchWordDTO {
 
 /// Card 구성하는 DTO
 struct SearchCardDataDTO {
+    let uid: String
     let nick: String
     let reputation: [Int]
     let studyList: [String]

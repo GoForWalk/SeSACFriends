@@ -108,8 +108,8 @@ private extension SignInUseCaseImpi {
     
     func changeStorableDateStr(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = DateFormat.format
+        formatter.locale = Locale(identifier: DateFormat.locateIdentifier)
         return formatter.string(from: date)
     }
 }

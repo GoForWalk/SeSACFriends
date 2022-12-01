@@ -20,7 +20,7 @@ final class HomeMatchCardListViewController: BaseViewController {
         }
     }
     private let disposeBag = DisposeBag()
-    private let requestButtonTabbed = PublishRelay<Int>()
+    private let requestButtonTabbed = PublishRelay<String>()
     
     init(viewModel: HomeMatchCardListViewModel, tabSection: TabSection, cardData: [SearchCardDataDTO]) {
         self.viewModel = viewModel
@@ -45,22 +45,15 @@ final class HomeMatchCardListViewController: BaseViewController {
     }
     
     override func bind() {
-        
-        let requestButton = ControlEvent(events: requestButtonTabbed)
-        
-        let input = HomeMatchCardListViewModel.Input()
-        
-        self.rx.viewWillAppear
-        
-        mainView.reloadButton.rx.tap
-        
-        mainView.studyChangebutton.rx.tap
-        
-        requestButton
-        
-        
+            
+        let input = HomeMatchCardListViewModel.Input(
+            viewWillAppear: self.rx.viewWillAppear,
+            reloadButtonTapped: mainView.reloadButton.rx.tap,
+            studyChangeButtonTapped: mainView.studyChangebutton.rx.tap,
+            requestButtonTapped: ControlEvent(events: requestButtonTabbed)
+        )
+                
         let output = viewModel.transform(input: input, disposeBag: disposeBag)
-    
     }
 }
 
@@ -123,18 +116,29 @@ extension HomeMatchCardListViewController: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(HomeMatchCardCollectionViewCell.self), for: indexPath) as? HomeMatchCardCollectionViewCell else { return UICollectionViewCell() }
         
-        guard let view = cell.viewController.view as? ProfileCardView else { return UICollectionViewCell() }
+        setCellType(item: indexPath.item, cell: cell)
+        
+        guard let view = cell.viewController.view as? ProfileCardView else { return cell }
         
         view.requestButton.rx.tap
             .map { _ in
                 indexPath.item
             }
             .bind(with: self) { vc, item in
-                vc.requestButtonTabbed.accept(item)
+                vc.requestButtonTabbed.accept(vc.cardData[item].uid)
             }
             .disposed(by: cell.dispoaseBag)
-        
         return cell
+    }
+    
+    func setCellType(item: Int, cell: HomeMatchCardCollectionViewCell) {
+        cell.data = cardData[item]
+        switch tabSection {
+        case .requested:
+            cell.cellType = .mainMatchingRequested
+        case .nearBySeSac:
+            cell.cellType = .mainMatchingRequesting
+        }
     }
     
 }

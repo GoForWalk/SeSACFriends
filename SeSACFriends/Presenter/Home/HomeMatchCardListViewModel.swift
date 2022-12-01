@@ -13,7 +13,10 @@ import RxSwift
 final class HomeMatchCardListViewModel: ViewModelType {
     
     struct Input {
-        
+        let viewWillAppear: ControlEvent<Void>
+        let reloadButtonTapped: ControlEvent<Void>
+        let studyChangeButtonTapped: ControlEvent<Void>
+        let requestButtonTapped: ControlEvent<String>
     }
     
     struct Output {

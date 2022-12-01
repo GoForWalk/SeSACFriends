@@ -6,14 +6,7 @@
 //
 
 import Foundation
-
-import RxSwift
 import Network
-
-protocol UserAPIService: AnyObject {
-    func getUser(completionHandler: @escaping (Result<UserInfo, Error>) -> Void)
-    func postUser(nick: String, birth: String, email: String, gender: Int, completionHandler: @escaping (Result<Int, Error>) -> Void)
-}
 
 final class UserAPIServiceImpi: UserAPIService, CheckNetworkStatus {
     
@@ -26,7 +19,7 @@ final class UserAPIServiceImpi: UserAPIService, CheckNetworkStatus {
             completionHandler(.failure(APIError.notConnected))
         }
         startMonitering()
-        let getUser = Endpoint.getUser
+        let getUser = UserEndpoint.getUser
         let urlComponents = URLComponents(string: getUser.url)
         
         guard let url = urlComponents?.url, let idToken = UserDefaults.idToken else { return }
@@ -70,7 +63,7 @@ final class UserAPIServiceImpi: UserAPIService, CheckNetworkStatus {
         }
         startMonitering()
         
-        let postUser = Endpoint.postUser
+        let postUser = UserEndpoint.postUser
         let urlComponents = URLComponents(string: postUser.url)
         
         guard

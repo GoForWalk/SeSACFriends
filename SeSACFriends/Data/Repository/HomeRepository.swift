@@ -170,10 +170,10 @@ final class HomeRespositoryImpi: HomeRepository {
                 switch result {
                 case .success(let searchUser):
                     let nearByCards = searchUser.fromQueueDB.map {
-                        return SearchCardDataDTO(nick: $0.nick, reputation: $0.reputation, studyList: $0.studylist, reviews: $0.reviews, sesac: $0.sesac, background: $0.background)
+                        return SearchCardDataDTO(uid: $0.uid, nick: $0.nick, reputation: $0.reputation, studyList: $0.studylist, reviews: $0.reviews, sesac: $0.sesac, background: $0.background)
                     }
                     let requestCards = searchUser.fromQueueDBRequested.map {
-                        return SearchCardDataDTO(nick: $0.nick, reputation: $0.reputation, studyList: $0.studylist, reviews: $0.reviews, sesac: $0.sesac, background: $0.background)
+                        return SearchCardDataDTO(uid: $0.uid, nick: $0.nick, reputation: $0.reputation, studyList: $0.studylist, reviews: $0.reviews, sesac: $0.sesac, background: $0.background)
                     }
                     emitter(.success(SearchCardDatasDTO(nearByUserCards: nearByCards, requestUserCards: requestCards)))
                     return
