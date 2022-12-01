@@ -11,7 +11,8 @@ import RealmSwift
 import RxSwift
 
 protocol ChattingRepository: AnyObject {
-    
+    func getChattingList(otherID: String) -> Single<[ChatDTO]>
+    func postMyChat(text: String, otherID: String) -> Single<ChatDTO>
 }
 
 final class ChattingRepositoryImpi: ChattingRepository {
@@ -20,8 +21,56 @@ final class ChattingRepositoryImpi: ChattingRepository {
     // TODO: 의존성 추가
     private let chatAPIService: ChatAPIService = ChatAPIServiceImpi()
     
+    /// 채팅 처음 실행할때 목록 받아오기
+    func getChattingList(otherID: String) -> Single<[ChatDTO]> {
+        
+        var localData = fetchLastChat(to: otherID)
+        guard let lastDate = localData.last?.createdAt.dateToString(format: DateFormat.format) else { return .error(APIError.serverError)}
+        if !localData.isEmpty {
+            localData.removeLast()
+        }
+        
+        return Single<[ChatDTO]>.create { [weak self] emitter in
+            self?.chatAPIService.getNewChatList(otherID: otherID, lastChatDate: lastDate, completionHandler: { result in
+                
+                switch result {
+                case .success(let chatting):
+                    let temp = chatting.payload.map { data in
+                        return ChatDTO(id: data.id, to: data.to, from: data.from, chat: data.chat, createdAt: data.createdAt.stringToDate(format: DateFormat.format) ?? Date())
+                    }
+                    self?.postMyChatToLocalRealm(chat: temp)
+                    localData.append(contentsOf: temp)
+                    emitter(.success(localData))
+                    
+                case .failure(let error as APIError):
+                    emitter(.failure(error))
+                default:
+                    return
+                }
+            })
+            return Disposables.create()
+        }
+    }//: getChattingList
     
-    
+    /// 내가 보내는 채팅 서버에 올리기, 결과 돌아오면 화면에 업데이트 해주기!!
+    func postMyChat(text: String, otherID: String) -> Single<ChatDTO> {
+        return Single<ChatDTO>.create {[weak self] emitter in
+            
+            self?.chatAPIService.postMyChat(otherID: otherID, chatText: text, completionHandler: { result in
+                switch result {
+                case .success(let chatData):
+                    let chatDTO = ChatDTO(id: chatData.id, to: chatData.to, from: chatData.from, chat: chatData.chat, createdAt: chatData.createdAt.stringToDate(format: DateFormat.format) ?? Date())
+                    self?.postMyChatToLocalRealm(chat: [chatDTO])
+                    emitter(.success(chatDTO))
+                case .failure(let error as APIError):
+                    emitter(.failure(error))
+                default:
+                    return
+                }
+            })
+            return Disposables.create()
+        }
+    }//: postMyChat
     
 }
 
@@ -42,26 +91,17 @@ private extension ChattingRepositoryImpi {
         return temp
     }
     
-}
-
-private extension ChattingRepositoryImpi {
-    
-    func fetchServerChatData(otherID: String, lastChatDate: String) -> Single<ChatDTO> {
-        
-        return Single<ChatDTO>.create { [weak self] emitter in
-            self?.chatAPIService.getNewChatList(otherID: otherID, lastChatDate: lastChatDate, completionHandler: { result in
-                
-//                switch result {
-//                case .success(let chatting):
-//                    
-//                case .failure(let error as APIError):
-//                    
-//                }
-//            })
-//            
-            
-            return Disposables.create()
+    func postMyChatToLocalRealm(chat: [ChatDTO]) {
+        do {
+            try localChatListRealm.write {
+                chat.forEach { chat in
+                    localChatListRealm.add(ChattingRealm(id: chat.id, to: chat.to, from: chat.from, chat: chat.chat, createdAt: chat.createdAt))
+                }
+            }
+        } catch {
+            print("🐨🐨🐨🐨 Realm save Failure")
         }
     }
     
 }
+

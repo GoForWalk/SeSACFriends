@@ -88,6 +88,8 @@
 		CF73610929261D8000ECC920 /* SearchUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610829261D8000ECC920 /* SearchUserDTO.swift */; };
 		CF73610B29261E6D00ECC920 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610A29261E6D00ECC920 /* HomeRepository.swift */; };
 		CF73610E2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */; };
+		CF935DB729392A9E00A8473D /* WebSocketControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF935DB629392A9E00A8473D /* WebSocketControlService.swift */; };
+		CF935DB929392F0800A8473D /* HomeChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF935DB829392F0700A8473D /* HomeChattingViewModel.swift */; };
 		CFD643AE29351FD100CCF7F9 /* BackGroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD643AD29351FD100CCF7F9 /* BackGroundImage.swift */; };
 		CFD643B02935228B00CCF7F9 /* SeSACCharactorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD643AF2935228B00CCF7F9 /* SeSACCharactorImage.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
@@ -246,6 +248,8 @@
 		CF73610829261D8000ECC920 /* SearchUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserDTO.swift; sourceTree = "<group>"; };
 		CF73610A29261E6D00ECC920 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive_BaseViewController+Extension.swift"; sourceTree = "<group>"; };
+		CF935DB629392A9E00A8473D /* WebSocketControlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketControlService.swift; sourceTree = "<group>"; };
+		CF935DB829392F0700A8473D /* HomeChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChattingViewModel.swift; sourceTree = "<group>"; };
 		CFD643AD29351FD100CCF7F9 /* BackGroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundImage.swift; sourceTree = "<group>"; };
 		CFD643AF2935228B00CCF7F9 /* SeSACCharactorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCharactorImage.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -603,6 +607,7 @@
 				CF416A12292B5806003EB279 /* HomeSearchWordViewModel.swift */,
 				CF1C102B2931EAA500C402F9 /* HomeTabViewModel.swift */,
 				CF1C10342931FEAC00C402F9 /* HomeEmptyCardViewModel.swift */,
+				CF935DB829392F0700A8473D /* HomeChattingViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -950,6 +955,7 @@
 				CFDF0C79291D0AFE00E586A1 /* HTTPMethod.swift */,
 				CF2E832B291D7B3D00D2DE1C /* CheckNetworkStatus.swift */,
 				CF2E832D291D7BA700D2DE1C /* CheckIDToken.swift */,
+				CF935DB629392A9E00A8473D /* WebSocketControlService.swift */,
 			);
 			path = NetWorkSupport;
 			sourceTree = "<group>";
@@ -1193,6 +1199,7 @@
 				CFDF0C172918DF8500E586A1 /* TextArea.swift in Sources */,
 				CFDF0C3C29194D7400E586A1 /* OnboardingViewController.swift in Sources */,
 				CF1C10302931F4A400C402F9 /* HomeMatchCardListViewController.swift in Sources */,
+				CF935DB929392F0800A8473D /* HomeChattingViewModel.swift in Sources */,
 				CFD643B02935228B00CCF7F9 /* SeSACCharactorImage.swift in Sources */,
 				CFEEC9DD2937D723005B9A27 /* ChattingEndPoint.swift in Sources */,
 				CF1C102C2931EAA500C402F9 /* HomeTabViewModel.swift in Sources */,
@@ -1226,6 +1233,7 @@
 				CFEEC9F32938D471005B9A27 /* DateFormat.swift in Sources */,
 				CF2E8324291D74F600D2DE1C /* BirthInputViewModel.swift in Sources */,
 				CFEEC9F92938DB25005B9A27 /* HomeChattingView.swift in Sources */,
+				CF935DB729392A9E00A8473D /* WebSocketControlService.swift in Sources */,
 				CF2E8317291D73D300D2DE1C /* BirthInputViewController.swift in Sources */,
 				CF7361002925481900ECC920 /* LocationService.swift in Sources */,
 				CFDF0C7A291D0AFE00E586A1 /* HTTPMethod.swift in Sources */,
