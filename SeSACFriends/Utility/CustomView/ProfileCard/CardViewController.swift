@@ -33,7 +33,7 @@ class CardViewController: BaseViewController, CardTableViewDelegateAndDataSource
     }
     
     convenience init(cardViewTable: UITableView?, cardMode: CardViewDisplayView) {
-        self.init(searchCardData: SearchCardDataDTO(nick: "샘플새싹", reputation: [0,0,0,0,0,0], studyList: ["Swift"], reviews: [], sesac: 0, background: 0), cardMode: .mainMatchingRequesting)
+        self.init(searchCardData: SearchCardDataDTO(uid: "", nick: "샘플새싹", reputation: [0,0,0,0,0,0], studyList: ["Swift"], reviews: [], sesac: 0, background: 0), cardMode: .mainMatchingRequesting)
         self.cardMode = cardMode
     }
         

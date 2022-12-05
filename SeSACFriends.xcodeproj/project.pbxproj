@@ -66,6 +66,9 @@
 		CF416A1D292BEE5A003EB279 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CF416A1C292BEE5A003EB279 /* RxDataSources */; };
 		CF48EF28293325D200C1D024 /* SeSACFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48EF27293325D200C1D024 /* SeSACFriendsTests.swift */; };
 		CF48EF2F2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48EF2E2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift */; };
+		CF575D702939DB7C006310B6 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = CF575D6F2939DB7C006310B6 /* SocketIO */; };
+		CF575D722939E31B006310B6 /* YourChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF575D712939E31B006310B6 /* YourChatTableViewCell.swift */; };
+		CF575D742939E344006310B6 /* ChatTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF575D732939E344006310B6 /* ChatTableHeaderView.swift */; };
 		CF722F8A29226AD500C8E76D /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8929226AD500C8E76D /* ProfileCardView.swift */; };
 		CF722F8C29228E4300C8E76D /* ProfileCardRollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */; };
 		CF722F8E2922991C00C8E76D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF722F8D2922991C00C8E76D /* UIView+Extension.swift */; };
@@ -154,7 +157,7 @@
 		CFEEC9F72938D696005B9A27 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEC9F62938D696005B9A27 /* String+Extension.swift */; };
 		CFEEC9F92938DB25005B9A27 /* HomeChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEC9F82938DB25005B9A27 /* HomeChattingView.swift */; };
 		CFEEC9FB2938DB32005B9A27 /* HomeChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEC9FA2938DB32005B9A27 /* HomeChattingViewController.swift */; };
-		CFEEC9FD2938DB56005B9A27 /* HomeChattingCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEC9FC2938DB56005B9A27 /* HomeChattingCollectionCell.swift */; };
+		CFEEC9FD2938DB56005B9A27 /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEC9FC2938DB56005B9A27 /* MyChatTableViewCell.swift */; };
 		CFFFBEDB291D533100E4DAB4 /* UserAPIServiceImpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBEDA291D533100E4DAB4 /* UserAPIServiceImpi.swift */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +230,8 @@
 		CF48EF25293325D200C1D024 /* SeSACFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeSACFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF48EF27293325D200C1D024 /* SeSACFriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsTests.swift; sourceTree = "<group>"; };
 		CF48EF2E2934D70600C1D024 /* HomeMatchCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMatchCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF575D712939E31B006310B6 /* YourChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatTableViewCell.swift; sourceTree = "<group>"; };
+		CF575D732939E344006310B6 /* ChatTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableHeaderView.swift; sourceTree = "<group>"; };
 		CF722F8929226AD500C8E76D /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		CF722F8B29228E4300C8E76D /* ProfileCardRollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardRollableView.swift; sourceTree = "<group>"; };
 		CF722F8D2922991C00C8E76D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -306,7 +311,7 @@
 		CFEEC9F62938D696005B9A27 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CFEEC9F82938DB25005B9A27 /* HomeChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChattingView.swift; sourceTree = "<group>"; };
 		CFEEC9FA2938DB32005B9A27 /* HomeChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChattingViewController.swift; sourceTree = "<group>"; };
-		CFEEC9FC2938DB56005B9A27 /* HomeChattingCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChattingCollectionCell.swift; sourceTree = "<group>"; };
+		CFEEC9FC2938DB56005B9A27 /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 		CFFFBEDA291D533100E4DAB4 /* UserAPIServiceImpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIServiceImpi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -323,6 +328,7 @@
 				CFDF0C64291BF21300E586A1 /* Toast in Frameworks */,
 				CFDF0C28291921E900E586A1 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				CFDF0C2C291921E900E586A1 /* FirebaseCrashlytics in Frameworks */,
+				CF575D702939DB7C006310B6 /* SocketIO in Frameworks */,
 				CF1C10332931F89C00C402F9 /* Then in Frameworks */,
 				CF1C10282931DF0400C402F9 /* Tabman in Frameworks */,
 				CFDF0C022918C29900E586A1 /* TextFieldEffects in Frameworks */,
@@ -577,6 +583,16 @@
 			path = SeSACFriendsTests;
 			sourceTree = "<group>";
 		};
+		CF575D752939E34B006310B6 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				CFEEC9FC2938DB56005B9A27 /* MyChatTableViewCell.swift */,
+				CF575D712939E31B006310B6 /* YourChatTableViewCell.swift */,
+				CF575D732939E344006310B6 /* ChatTableHeaderView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		CF722F8F29236CC400C8E76D /* ProfileCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,9 +659,9 @@
 		CF7360F92925224400ECC920 /* HomeChatting */ = {
 			isa = PBXGroup;
 			children = (
+				CF575D752939E34B006310B6 /* SubView */,
 				CFEEC9F82938DB25005B9A27 /* HomeChattingView.swift */,
 				CFEEC9FA2938DB32005B9A27 /* HomeChattingViewController.swift */,
-				CFEEC9FC2938DB56005B9A27 /* HomeChattingCollectionCell.swift */,
 			);
 			path = HomeChatting;
 			sourceTree = "<group>";
@@ -1038,6 +1054,7 @@
 				CF1C10322931F89C00C402F9 /* Then */,
 				CFEEC9E62937E985005B9A27 /* Realm */,
 				CFEEC9E82937E985005B9A27 /* RealmSwift */,
+				CF575D6F2939DB7C006310B6 /* SocketIO */,
 			);
 			productName = SeSACFriends;
 			productReference = CF0467AA2918BF5800E72CC9 /* SeSACFriends.app */;
@@ -1099,6 +1116,7 @@
 				CF1C10262931DF0400C402F9 /* XCRemoteSwiftPackageReference "Tabman" */,
 				CF1C10312931F89C00C402F9 /* XCRemoteSwiftPackageReference "Then" */,
 				CFEEC9E52937E985005B9A27 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				CF575D6E2939DB7B006310B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = CF0467AB2918BF5800E72CC9 /* Products */;
 			projectDirPath = "";
@@ -1139,6 +1157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF1C103D29320D9D00C402F9 /* ChattingRepository.swift in Sources */,
+				CF575D722939E31B006310B6 /* YourChatTableViewCell.swift in Sources */,
 				CF2E831E291D74C300D2DE1C /* EmailInputViewController.swift in Sources */,
 				CF2E835E29222CDF00D2DE1C /* ProfileInfoTableViewCell.swift in Sources */,
 				CF2E830E291D6ABE00D2DE1C /* NickInputViewController.swift in Sources */,
@@ -1223,7 +1242,7 @@
 				CF416A18292BDCB9003EB279 /* TagHeaderView.swift in Sources */,
 				CFDF0C44291A133900E586A1 /* BaseCollectionViewCell.swift in Sources */,
 				CF416A11292B57E8003EB279 /* HomeWordSearchViewController.swift in Sources */,
-				CFEEC9FD2938DB56005B9A27 /* HomeChattingCollectionCell.swift in Sources */,
+				CFEEC9FD2938DB56005B9A27 /* MyChatTableViewCell.swift in Sources */,
 				CF2E8328291D751900D2DE1C /* GenderInputViewModel.swift in Sources */,
 				CF2E8310291D6EC100D2DE1C /* NickInputViewModel.swift in Sources */,
 				CF1C10482932BAC100C402F9 /* MoreReViewController.swift in Sources */,
@@ -1253,6 +1272,7 @@
 				CF722F992923765E00C8E76D /* CardTableHeaderView.swift in Sources */,
 				CF7360F1292512E800ECC920 /* HomeMainViewModel.swift in Sources */,
 				CFDF0C1C2918DFA700E586A1 /* BaseViewController.swift in Sources */,
+				CF575D742939E344006310B6 /* ChatTableHeaderView.swift in Sources */,
 				CF1C10352931FEAC00C402F9 /* HomeEmptyCardViewModel.swift in Sources */,
 				CF73610929261D8000ECC920 /* SearchUserDTO.swift in Sources */,
 				CF722F95292375C700C8E76D /* CardTitleTableViewCell.swift in Sources */,
@@ -1568,6 +1588,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		CF575D6E2939DB7B006310B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.0.1;
+			};
+		};
 		CF722FA32923AD7900C8E76D /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yonat/MultiSlider.git";
@@ -1638,6 +1666,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF416A19292BEE5A003EB279 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		CF575D6F2939DB7C006310B6 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF575D6E2939DB7B006310B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 		CF722FA42923AD7900C8E76D /* MultiSlider */ = {
 			isa = XCSwiftPackageProductDependency;

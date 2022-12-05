@@ -17,4 +17,7 @@ extension UserDefaults {
     
     @CustomUserDefault(key: UserDefaultConstant.phoneNum, defaultValue: nil)
     static var phoneNum: String?
+    
+    @CustomUserDefault(key: UserDefaultConstant.myChatID, defaultValue: "")
+    static var myChatID: String
 }

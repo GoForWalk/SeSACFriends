@@ -25,7 +25,7 @@ final class ChattingRepositoryImpi: ChattingRepository {
     func getChattingList(otherID: String) -> Single<[ChatDTO]> {
         
         var localData = fetchLastChat(to: otherID)
-        guard let lastDate = localData.last?.createdAt.dateToString(format: DateFormat.format) else { return .error(APIError.serverError)}
+        let lastDate = localData.last?.createdAt.dateToString(format: DateFormat.format) ?? "2000-01-01T00:00:00.000Z"
         if !localData.isEmpty {
             localData.removeLast()
         }

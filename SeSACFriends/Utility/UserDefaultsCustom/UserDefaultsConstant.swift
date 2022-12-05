@@ -16,4 +16,7 @@ import Foundation
     
     /// PhoneNum: String
     static let phoneNum = "phoneNum"
+    
+    /// MyChatID: String
+    static let myChatID = "myChatID"
 }
