@@ -8,16 +8,20 @@
 import Foundation
 
 import SocketIO
+import RxSwift
+import RxRelay
 
 final class SocketIOManager {
     
     static let shared = SocketIOManager()
     
     /// 서버와 메세지를 주고받기 위한 클래스
-    var manager: SocketManager!
+    private var manager: SocketManager!
     
     /// 소켓 링크
-    var socket: SocketIOClient!
+    private var socket: SocketIOClient!
+    
+    var eventListen = PublishSubject<ChatDTO>()
     
     private init() {
         // SocketManager 초기화
@@ -37,10 +41,18 @@ final class SocketIOManager {
         }
         
         // 이벤트 수신
-        socket.on("sesac") { dataArray, ack in
+        socket.on("sesac") { [weak self] dataArray, ack in
+            print("SESAC RECEIVED", dataArray, ack)
             
+            guard let data = dataArray.first as? NSDictionary,
+                  let id = data["_id"] as? String,
+                  let chat = data["chat"] as? String,
+                  let from = data["from"] as? String,
+                  let to = data["to"] as? String,
+                  let date = data["createdAt"] as? String,
+                  let createdAt = date.stringToDate(format: DateFormat.format) else { return }
             
-            
+            self?.eventListen.onNext(ChatDTO(id: id, to: to, from: from, chat: chat, createdAt: createdAt))
         }
     }
     

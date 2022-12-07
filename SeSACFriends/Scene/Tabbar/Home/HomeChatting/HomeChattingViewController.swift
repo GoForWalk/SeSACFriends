@@ -29,4 +29,7 @@ final class HomeChattingViewController: BaseViewController {
     override func bind() {
         
     }
+    
 }
+
+

@@ -46,6 +46,11 @@ final class HomeChattingView: BaseView {
     }
     
     func changeTextButton(isTexton: Bool) {
+        if isTexton {
+            button.setImage(Images.sendActive, for: .normal)
+        } else {
+            button.setImage(Images.sendInactive, for: .normal)
+        }
         
     }
     
