@@ -19,7 +19,6 @@ final class HomeChattingView: BaseView {
     
     let textField: UITextView = {
        let textView = UITextView()
-        textView.layer.cornerRadius = 8
         textView.backgroundColor = Colors.gray1
         textView.layer.cornerRadius = 8
         textView.setLineHeight(fontInfo: Fonts.body3R14)
@@ -29,20 +28,31 @@ final class HomeChattingView: BaseView {
     let button: UIButton = {
        let button = UIButton()
         button.setImage(Images.sendInactive, for: .normal)
-        
         return button
+    }()
+    
+    let messageView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Colors.gray1
+        view.layer.cornerRadius = 8
+        return view
     }()
     
     override func configure() {
         super.configure()
-        
+        messageView.addSubViews(views: button, textField)
         addSubview(chatTableView)
     }
     
     override func setConstraints() {
         chatTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.top.equalTo(self.safeAreaLayoutGuide)
         }
+        
+        
+        
+        
     }
     
     func changeTextButton(isTexton: Bool) {

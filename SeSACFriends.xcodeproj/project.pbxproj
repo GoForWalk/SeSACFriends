@@ -94,6 +94,7 @@
 		CF73610E2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */; };
 		CF935DB729392A9E00A8473D /* WebSocketControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF935DB629392A9E00A8473D /* WebSocketControlService.swift */; };
 		CF935DB929392F0800A8473D /* HomeChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF935DB829392F0700A8473D /* HomeChattingViewModel.swift */; };
+		CFA489042941AF640099D73D /* BasePaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA489032941AF640099D73D /* BasePaddingLabel.swift */; };
 		CFD643AE29351FD100CCF7F9 /* BackGroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD643AD29351FD100CCF7F9 /* BackGroundImage.swift */; };
 		CFD643B02935228B00CCF7F9 /* SeSACCharactorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD643AF2935228B00CCF7F9 /* SeSACCharactorImage.swift */; };
 		CFDF0BFF2918C22200E586A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0BFE2918C22200E586A1 /* SnapKit */; };
@@ -257,6 +258,7 @@
 		CF73610D2929FB4900ECC920 /* Reactive_BaseViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive_BaseViewController+Extension.swift"; sourceTree = "<group>"; };
 		CF935DB629392A9E00A8473D /* WebSocketControlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketControlService.swift; sourceTree = "<group>"; };
 		CF935DB829392F0700A8473D /* HomeChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChattingViewModel.swift; sourceTree = "<group>"; };
+		CFA489032941AF640099D73D /* BasePaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePaddingLabel.swift; sourceTree = "<group>"; };
 		CFD643AD29351FD100CCF7F9 /* BackGroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundImage.swift; sourceTree = "<group>"; };
 		CFD643AF2935228B00CCF7F9 /* SeSACCharactorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCharactorImage.swift; sourceTree = "<group>"; };
 		CFDF0C062918C35100E586A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -764,6 +766,7 @@
 				CFDF0C202918FDDC00E586A1 /* InputTextField.swift */,
 				CFDF0C37291928C500E586A1 /* MainButton.swift */,
 				CF73610629260D8900ECC920 /* CustomAnnotation.swift */,
+				CFA489032941AF640099D73D /* BasePaddingLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1262,6 +1265,7 @@
 				CF416A0F292B57D6003EB279 /* HomeWordSearchView.swift in Sources */,
 				CFDF0C192918DF9200E586A1 /* BaseView.swift in Sources */,
 				CFEEC9F32938D471005B9A27 /* DateFormat.swift in Sources */,
+				CFA489042941AF640099D73D /* BasePaddingLabel.swift in Sources */,
 				CF2E8324291D74F600D2DE1C /* BirthInputViewModel.swift in Sources */,
 				CFEEC9F92938DB25005B9A27 /* HomeChattingView.swift in Sources */,
 				CF935DB729392A9E00A8473D /* WebSocketControlService.swift in Sources */,

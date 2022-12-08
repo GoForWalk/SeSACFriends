@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class FirstChatTableView: BaseTableViewCell {
+final class FirstChatTableViewCell: BaseTableViewCell {
     
     let dateLabel: UILabel = {
         let label = UILabel()
@@ -54,10 +54,27 @@ final class FirstChatTableView: BaseTableViewCell {
     
     override func configure() {
         super.configure()
-        addSubViews(views: dateLabel, stackView, infoLabel)
+        contentView.addSubViews(views: dateLabel, stackView, infoLabel)
     }
     
     override func setConstraints() {
+        dateLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(8)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(12)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(24)
+            
+        }
+        
+        infoLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(stackView.snp.bottom).offset(2)
+            make.bottom.equalToSuperview().inset(8)
+        }
         
     }
     
