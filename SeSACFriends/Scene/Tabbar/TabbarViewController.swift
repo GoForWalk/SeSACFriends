@@ -25,8 +25,8 @@ final class TabbarController: UITabBarController {
         let shopVC = ShopViewController()
         shopVC.tabBarItem = UITabBarItem(title: "새싹샵", image: Images.tabbarShop_inAcive, selectedImage: Images.tabbarShop)
         
-        let friendsVC = FriendsViewController()
-        friendsVC.tabBarItem = UITabBarItem(title: "새싹친구", image: Images.tabbarFriends_inAcive, selectedImage: Images.tabbarFriends)
+//        let friendsVC = FriendsViewController()
+//        friendsVC.tabBarItem = UITabBarItem(title: "새싹친구", image: Images.tabbarFriends_inAcive, selectedImage: Images.tabbarFriends)
         
         let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: "홈", image: Images.tabbarHome_inActive, selectedImage: Images.tabbarHome)
@@ -34,7 +34,7 @@ final class TabbarController: UITabBarController {
         viewControllers = [
             UINavigationController(rootViewController: profileVC),
             UINavigationController(rootViewController: shopVC),
-            UINavigationController(rootViewController: friendsVC),
+//            UINavigationController(rootViewController: friendsVC),
             UINavigationController(rootViewController: homeVC)
         ]
     }

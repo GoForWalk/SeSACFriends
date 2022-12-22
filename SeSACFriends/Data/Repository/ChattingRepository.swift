@@ -13,6 +13,7 @@ import RxSwift
 protocol ChattingRepository: AnyObject {
     func getChattingList(otherID: String) -> Single<[ChatDTO]>
     func postMyChat(text: String, otherID: String) -> Single<ChatDTO>
+    func postSocketChat(chatData: ChatDTO) -> [ChatDTO]
 }
 
 final class ChattingRepositoryImpi: ChattingRepository {
@@ -38,7 +39,7 @@ final class ChattingRepositoryImpi: ChattingRepository {
                     let temp = chatting.payload.map { data in
                         return ChatDTO(id: data.id, to: data.to, from: data.from, chat: data.chat, createdAt: data.createdAt.stringToDate(format: DateFormat.format) ?? Date())
                     }
-                    self?.postMyChatToLocalRealm(chat: temp)
+                    self?.postChatToLocalRealm(chat: temp)
                     localData.append(contentsOf: temp)
                     emitter(.success(localData))
                     
@@ -60,7 +61,7 @@ final class ChattingRepositoryImpi: ChattingRepository {
                 switch result {
                 case .success(let chatData):
                     let chatDTO = ChatDTO(id: chatData.id, to: chatData.to, from: chatData.from, chat: chatData.chat, createdAt: chatData.createdAt.stringToDate(format: DateFormat.format) ?? Date())
-                    self?.postMyChatToLocalRealm(chat: [chatDTO])
+                    self?.postChatToLocalRealm(chat: [chatDTO])
                     emitter(.success(chatDTO))
                 case .failure(let error as APIError):
                     emitter(.failure(error))
@@ -71,6 +72,12 @@ final class ChattingRepositoryImpi: ChattingRepository {
             return Disposables.create()
         }
     }//: postMyChat
+    
+    /// WebSocket 에서 Chatting Data들어왔을때 Local Realm에 Chatting Data 저장하는 Method
+    func postSocketChat(chatData: ChatDTO) -> [ChatDTO] {
+        postChatToLocalRealm(chat: [chatData])
+        return fetchLastChat(to: chatData.to)
+    }
     
 }
 
@@ -91,7 +98,7 @@ private extension ChattingRepositoryImpi {
         return temp
     }
     
-    func postMyChatToLocalRealm(chat: [ChatDTO]) {
+    func postChatToLocalRealm(chat: [ChatDTO]) {
         do {
             try localChatListRealm.write {
                 chat.forEach { chat in

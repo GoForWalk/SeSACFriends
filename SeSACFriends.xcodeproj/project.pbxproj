@@ -635,8 +635,8 @@
 				CF1C10362931FEC200C402F9 /* HomeMatchCardListViewModel.swift */,
 				CF416A12292B5806003EB279 /* HomeSearchWordViewModel.swift */,
 				CF1C102B2931EAA500C402F9 /* HomeTabViewModel.swift */,
-				CF1C10342931FEAC00C402F9 /* HomeEmptyCardViewModel.swift */,
 				CF935DB829392F0700A8473D /* HomeChattingViewModel.swift */,
+				CF1C10342931FEAC00C402F9 /* HomeEmptyCardViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

@@ -38,9 +38,6 @@ final class HomeChattingViewController: KeyboardViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(YourChatTableViewCell.self), for: indexPath) as? YourChatTableViewCell else { return  UITableViewCell() }
             
             return cell
-            
-        default:
-            return UITableViewCell()
         }
         
     }
@@ -61,7 +58,6 @@ final class HomeChattingViewController: KeyboardViewController {
     override func configure() {
         super.configure()
         setNavi()
-        mainView.chatTableView.delegate = self
         mainView.chatTableView.register(FirstChatTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(FirstChatTableViewCell.self))
         mainView.chatTableView.register(YourChatTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(YourChatTableViewCell.self))
         mainView.chatTableView.register(MyChatTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(MyChatTableViewCell.self))
@@ -69,7 +65,12 @@ final class HomeChattingViewController: KeyboardViewController {
     
     override func bind() {
         
-        let input = HomeChattingViewModel.Input()
+        let input = HomeChattingViewModel.Input(
+            text: mainView.textField.rx.text,
+            postButton: mainView.button.rx.tap,
+            viewWillAppear: self.rx.viewWillAppear,
+            viewDidDisappear: self.rx.viewDidDisappear
+        )
         
         let output = viewModel.transform(input: input, disposeBag: disposeBag)
         
@@ -85,13 +86,8 @@ final class HomeChattingViewController: KeyboardViewController {
             }
             .disposed(by: disposeBag)
         
-        let textSource = mainView.button.rx.tap
-            .map { "" }
-            .withLatestFrom(mainView.textField.rx.text)
-            .asObservable()
-        
         // TODO: 추가 띄우기
-        navigationItem.rightBarButtonItem?.rx.tap
+//        navigationItem.rightBarButtonItem?.rx.tap
         
     }
     
@@ -129,7 +125,7 @@ private extension HomeChattingViewController {
 @frozen enum MessageTypes {
     case my
     case your
-    case first
+//    case first
 }
 
 struct ChatData: Hashable {
